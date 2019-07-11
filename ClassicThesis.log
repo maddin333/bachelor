@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.18)  8 JUL 2019 17:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.18)  11 JUL 2019 15:36
 entering extended mode
-**c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.tex
-(c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.tex
+**c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.tex
+(c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.tex
 LaTeX2e <2017-04-15>
 Babel <3.15> and hyphenation patterns for 75 language(s) loaded.
 (C:\Users\marti\AppData\Roaming\MiKTeX\2.9\tex\latex\silence\silence.sty
@@ -145,7 +145,7 @@ Package tocbasic Info: omitting babel extension for `lot'
 \c@table=\count98
 Class scrreprt Info: Redefining `\numberline' on input line 6799.
 \bibindent=\dimen102
-) (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\classicthesis-config.tex ("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+) (c:/Users\marti\Documents\GitHub\bachelor\classicthesis-config.tex ("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks23
 \inpenc@posthook=\toks24
@@ -1104,7 +1104,7 @@ File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 ) (C:\Users\marti\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstlang2.sty
 File: lstlang2.sty 2015/06/04 1.6 listings language file
-) (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\classicthesis.sty
+) (c:/Users\marti\Documents\GitHub\bachelor\classicthesis.sty
 Package: classicthesis 2018/06/03 v4.6 Typographic style for a classic-looking thesis
  ("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
@@ -1437,7 +1437,7 @@ Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
  (C:\Users\marti\AppData\Roaming\MiKTeX\2.9\tex\latex\biblatex\lbx\english.lbx
 File: english.lbx 2017/12/19 v3.10 biblatex localization (PK/JW/AB)
-)) (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\ClassicThesis.aux (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\FrontBackmatter/DirtyTitlepage.aux) (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\FrontBackmatter/Titlepage.aux) (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\FrontBackmatter/Titleback.aux) (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\FrontBackmatter/Contents.aux) (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\Chapters/Chapter01.aux) (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\Chapters/Chapter02.aux) (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\Chapters/Chapter03.aux) (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\FrontBackmatter/Bibliography.aux))
+)) (c:/Users\marti\Documents\GitHub\bachelor\ClassicThesis.aux (c:/Users\marti\Documents\GitHub\bachelor\FrontBackmatter/DirtyTitlepage.aux) (c:/Users\marti\Documents\GitHub\bachelor\FrontBackmatter/Titlepage.aux) (c:/Users\marti\Documents\GitHub\bachelor\FrontBackmatter/Titleback.aux) (c:/Users\marti\Documents\GitHub\bachelor\FrontBackmatter/Contents.aux) (c:/Users\marti\Documents\GitHub\bachelor\Chapters/Chapter01.aux) (c:/Users\marti\Documents\GitHub\bachelor\Chapters/Chapter02.aux) (c:/Users\marti\Documents\GitHub\bachelor\Chapters/Chapter03.aux) (c:/Users\marti\Documents\GitHub\bachelor\FrontBackmatter/Bibliography.aux))
 \openout1 = `ClassicThesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
@@ -1468,7 +1468,7 @@ Package biblatex Info: Data encoding 'ascii' specified.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'ClassicThesis.bbl' found.
- (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\ClassicThesis.bbl)
+ (c:/Users\marti\Documents\GitHub\bachelor\ClassicThesis.bbl)
 Package biblatex Info: Reference section=0 on input line 59.
 Package biblatex Info: Reference segment=0 on input line 59.
  (C:\Users\marti\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
@@ -1526,7 +1526,7 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 59.
 LaTeX Info: Redefining \pageref on input line 59.
 LaTeX Info: Redefining \nameref on input line 59.
- (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\ClassicThesis.out) (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\ClassicThesis.out)
+ (c:/Users\marti\Documents\GitHub\bachelor\ClassicThesis.out) (c:/Users\marti\Documents\GitHub\bachelor\ClassicThesis.out)
 \@outlinefile=\write5
 \openout5 = `ClassicThesis.out'.
 
@@ -1547,7 +1547,7 @@ Package auxhook Info: \AddLineBeginMainAux comes a little late,
 ))
 \openout2 = `FrontBackmatter/DirtyTitlepage.aux'.
 
- (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\FrontBackmatter/DirtyTitlepage.tex
+ (c:/Users\marti\Documents\GitHub\bachelor\FrontBackmatter/DirtyTitlepage.tex
 LaTeX Font Info:    Try loading font information for OT1+pplx on input line 8.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pplx.fd"
 File: ot1pplx.fd 2004/09/06 font definitions for OT1/pplx.
@@ -1587,7 +1587,7 @@ Package babel Info: Redefining ngerman shorthand "~
 {C:/Users/marti/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 \openout2 = `FrontBackmatter/Titlepage.aux'.
 
- (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\FrontBackmatter/Titlepage.tex
+ (c:/Users\marti\Documents\GitHub\bachelor\FrontBackmatter/Titlepage.tex
 <gfx/HTWK_logo.jpg, id=11, 1192.455pt x 644.4075pt>
 File: gfx/HTWK_logo.jpg Graphic file (type jpg)
 <use gfx/HTWK_logo.jpg>
@@ -1606,10 +1606,10 @@ Package babel Info: Redefining ngerman shorthand "~
 
 
 
- <c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/gfx/HTWK_logo.jpg>])
+ <c:/Users/marti/Documents/GitHub/bachelor/gfx/HTWK_logo.jpg>])
 \openout2 = `FrontBackmatter/Titleback.aux'.
 
- (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\FrontBackmatter/Titleback.tex
+ (c:/Users\marti\Documents\GitHub\bachelor\FrontBackmatter/Titleback.tex
 LaTeX Font Info:    Try loading font information for OMS+pplj on input line 8.
 LaTeX Font Info:    No file OMSpplj.fd. on input line 8.
 
@@ -1632,13 +1632,13 @@ Package babel Info: Redefining ngerman shorthand "~
 ]
 \openout2 = `FrontBackmatter/Contents.aux'.
 
- (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\FrontBackmatter/Contents.tex
+ (c:/Users\marti\Documents\GitHub\bachelor\FrontBackmatter/Contents.tex
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 6.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 6.
 Package tocbasic Info: character protrusion at toc deactivated on input line 11.
- (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\ClassicThesis.toc
+ (c:/Users\marti\Documents\GitHub\bachelor\ClassicThesis.toc
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/pplj/m/sc/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -1680,7 +1680,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 49.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 49.
- (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\ClassicThesis.lol)
+ (c:/Users\marti\Documents\GitHub\bachelor\ClassicThesis.lol)
 \tf@lol=\write7
 \openout7 = `ClassicThesis.lol'.
 
@@ -1718,7 +1718,7 @@ Package babel Info: Redefining ngerman shorthand "~
 ]
 \openout2 = `Chapters/Chapter01.aux'.
 
- (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\Chapters/Chapter01.tex
+ (c:/Users\marti\Documents\GitHub\bachelor\Chapters/Chapter01.tex
 Kapitel 1.
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 2.
@@ -1781,7 +1781,7 @@ Package babel Info: Redefining ngerman shorthand "~
 ]
 \openout2 = `Chapters/Chapter02.aux'.
 
- (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\Chapters/Chapter02.tex
+ (c:/Users\marti\Documents\GitHub\bachelor\Chapters/Chapter02.tex
 Kapitel 2.
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 2.
@@ -1900,7 +1900,7 @@ Package babel Info: Redefining ngerman shorthand "~
  [11]
 \openout2 = `Chapters/Chapter03.aux'.
 
- (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\Chapters/Chapter03.tex
+ (c:/Users\marti\Documents\GitHub\bachelor\Chapters/Chapter03.tex
 Kapitel 3.
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 2.
@@ -1952,14 +1952,14 @@ Package babel Info: Redefining ngerman shorthand "~
 ]
 \openout2 = `FrontBackmatter/Bibliography.aux'.
 
- (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\FrontBackmatter/Bibliography.tex
+ (c:/Users\marti\Documents\GitHub\bachelor\FrontBackmatter/Bibliography.tex
 
 LaTeX Warning: Empty bibliography on input line 15.
 
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 113.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 113.
- (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\ClassicThesis.aux (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\FrontBackmatter/DirtyTitlepage.aux) (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\FrontBackmatter/Titlepage.aux) (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\FrontBackmatter/Titleback.aux) (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\FrontBackmatter/Contents.aux) (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\Chapters/Chapter01.aux) (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\Chapters/Chapter02.aux) (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\Chapters/Chapter03.aux) (c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\FrontBackmatter/Bibliography.aux))
+ (c:/Users\marti\Documents\GitHub\bachelor\ClassicThesis.aux (c:/Users\marti\Documents\GitHub\bachelor\FrontBackmatter/DirtyTitlepage.aux) (c:/Users\marti\Documents\GitHub\bachelor\FrontBackmatter/Titlepage.aux) (c:/Users\marti\Documents\GitHub\bachelor\FrontBackmatter/Titleback.aux) (c:/Users\marti\Documents\GitHub\bachelor\FrontBackmatter/Contents.aux) (c:/Users\marti\Documents\GitHub\bachelor\Chapters/Chapter01.aux) (c:/Users\marti\Documents\GitHub\bachelor\Chapters/Chapter02.aux) (c:/Users\marti\Documents\GitHub\bachelor\Chapters/Chapter03.aux) (c:/Users\marti\Documents\GitHub\bachelor\FrontBackmatter/Bibliography.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 113.
 
 
@@ -2145,14 +2145,14 @@ Package logreq Info: Writing requests to 'ClassicThesis.run.xml'.
  ) 
 Here is how much of TeX's memory you used:
  37015 strings out of 493312
- 680772 string characters out of 3138899
+ 679662 string characters out of 3138899
  1501068 words of memory out of 3000000
  39511 multiletter control sequences out of 15000+200000
  622630 words of font info for 403 fonts, out of 3000000 for 9000
  1145 hyphenation exceptions out of 8191
- 69i,23n,91p,9148b,3620s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 69i,23n,91p,9133b,3620s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/euler/eurb10.pfb><C:/Users/marti/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/fpl/fplrc8a.pfb><C:/Users/marti/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/fpl/fplrij8a.pfb><C:/Users/marti/AppData/Roaming/MiKTeX/2.9/fonts/type1/bera/fvmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on c:/Users\marti\OneDrive\Dokumente\Studium\SS19\bachelor\ClassicThesis.pdf (17 pages, 289027 bytes).
+Output written on c:/Users\marti\Documents\GitHub\bachelor\ClassicThesis.pdf (17 pages, 288861 bytes).
 PDF statistics:
  313 PDF objects out of 1000 (max. 8388607)
  119 named destinations out of 1000 (max. 500000)

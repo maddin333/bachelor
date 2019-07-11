@@ -1,7 +1,7 @@
-PWD c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor
+PWD c:/Users/marti/Documents/GitHub/bachelor
 INPUT C:/Users/marti/AppData/Local/MiKTeX/2.9/miktex/data/le/pdftex/pdflatex.fmt
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.tex
-OUTPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.log
+INPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.tex
+OUTPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.log
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/latex/silence/silence.sty
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/latex/silence/silence.sty
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/latex/koma-script/scrreprt.cls
@@ -21,8 +21,8 @@ INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/latex/koma-script/scrsize11p
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/public/cm/cmr10.tfm
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/latex/koma-script/typearea.sty
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/latex/koma-script/typearea.sty
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/classicthesis-config.tex
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/classicthesis-config.tex
+INPUT c:/Users/marti/Documents/GitHub/bachelor/classicthesis-config.tex
+INPUT c:/Users/marti/Documents/GitHub/bachelor/classicthesis-config.tex
 INPUT C:/Program Files/MiKTeX 2.9/tex/latex/base/inputenc.sty
 INPUT C:/Program Files/MiKTeX 2.9/tex/latex/base/inputenc.sty
 INPUT C:/Program Files/MiKTeX 2.9/tex/latex/base/utf8.def
@@ -148,8 +148,8 @@ INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/public/cm/cmr10.tfm
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/public/cm/cmr10.tfm
 INPUT C:/Program Files/MiKTeX 2.9/tex/generic/unicode-data/UnicodeData.txt
 INPUT C:/Program Files/MiKTeX 2.9/tex/generic/unicode-data/UnicodeData.txt
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/nul:.tex
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/nul:.tex
+INPUT c:/Users/marti/Documents/GitHub/bachelor/nul:.tex
+INPUT c:/Users/marti/Documents/GitHub/bachelor/nul:.tex
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3pdfmode.def
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3pdfmode.def
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/latex/l3packages/xparse/xparse.sty
@@ -204,8 +204,8 @@ INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/latex/listings/lstlang1.sty
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/latex/listings/lstlang1.sty
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/latex/listings/lstlang2.sty
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/latex/listings/lstlang2.sty
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/classicthesis.sty
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/classicthesis.sty
+INPUT c:/Users/marti/Documents/GitHub/bachelor/classicthesis.sty
+INPUT c:/Users/marti/Documents/GitHub/bachelor/classicthesis.sty
 INPUT C:/Program Files/MiKTeX 2.9/tex/generic/ifxetex/ifxetex.sty
 INPUT C:/Program Files/MiKTeX 2.9/tex/generic/ifxetex/ifxetex.sty
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/latex/xcolor/xcolor.sty
@@ -273,32 +273,32 @@ INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/latex/biblatex/lbx/american.
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/latex/biblatex/lbx/american.lbx
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/latex/biblatex/lbx/english.lbx
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/latex/biblatex/lbx/english.lbx
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/DirtyTitlepage.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/DirtyTitlepage.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Titlepage.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Titlepage.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Titleback.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Titleback.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Contents.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Contents.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/Chapters/Chapter01.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/Chapters/Chapter01.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/Chapters/Chapter02.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/Chapters/Chapter02.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/Chapters/Chapter03.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/Chapters/Chapter03.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Bibliography.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Bibliography.aux
-OUTPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/DirtyTitlepage.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/DirtyTitlepage.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Titlepage.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Titlepage.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Titleback.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Titleback.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Contents.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Contents.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/Chapters/Chapter01.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/Chapters/Chapter01.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/Chapters/Chapter02.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/Chapters/Chapter02.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/Chapters/Chapter03.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/Chapters/Chapter03.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Bibliography.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Bibliography.aux
+OUTPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.aux
 INPUT C:/Program Files/MiKTeX 2.9/tex/latex/psnfss/t1pplj.fd
 INPUT C:/Program Files/MiKTeX 2.9/tex/latex/psnfss/t1pplj.fd
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplr9d.tfm
-OUTPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis-blx.bib
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.bbl
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.bbl
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.bbl
+OUTPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis-blx.bib
+INPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.bbl
+INPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.bbl
+INPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.bbl
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/context/base/supp-pdf.mkii
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/context/base/supp-pdf.mkii
 INPUT C:/Program Files/MiKTeX 2.9/tex/latex/oberdiek/epstopdf-base.sty
@@ -311,21 +311,21 @@ INPUT C:/Program Files/MiKTeX 2.9/tex/latex/hyperref/nameref.sty
 INPUT C:/Program Files/MiKTeX 2.9/tex/latex/hyperref/nameref.sty
 INPUT C:/Program Files/MiKTeX 2.9/tex/generic/oberdiek/gettitlestring.sty
 INPUT C:/Program Files/MiKTeX 2.9/tex/generic/oberdiek/gettitlestring.sty
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.out
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.out
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.out
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.out
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.out
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.out
-OUTPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.out
-OUTPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.pdf
+INPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.out
+INPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.out
+INPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.out
+INPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.out
+INPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.out
+INPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.out
+OUTPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.out
+OUTPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.pdf
 INPUT C:/Program Files/MiKTeX 2.9/tex/latex/oberdiek/bookmark.sty
 INPUT C:/Program Files/MiKTeX 2.9/tex/latex/oberdiek/bookmark.sty
 INPUT C:/Program Files/MiKTeX 2.9/tex/latex/oberdiek/bkm-pdftex.def
 INPUT C:/Program Files/MiKTeX 2.9/tex/latex/oberdiek/bkm-pdftex.def
-OUTPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/DirtyTitlepage.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/DirtyTitlepage.tex
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/DirtyTitlepage.tex
+OUTPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/DirtyTitlepage.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/DirtyTitlepage.tex
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/DirtyTitlepage.tex
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplr9d.tfm
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplrc9d.tfm
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplrc9d.tfm
@@ -366,9 +366,9 @@ INPUT C:/Program Files/MiKTeX 2.9/fonts/vf/adobe/palatino/pplr9d.vf
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplr8r.tfm
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/fonts/tfm/public/mathpazo/fplmr.tfm
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplrc8r.tfm
-OUTPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Titlepage.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Titlepage.tex
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Titlepage.tex
+OUTPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Titlepage.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Titlepage.tex
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Titlepage.tex
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplr9d.tfm
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplr9d.tfm
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplrc9d.tfm
@@ -390,20 +390,20 @@ INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/fonts/tfm/public/mathpazo/zplmr7
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/fonts/tfm/public/mathpazo/zplmr7t.tfm
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplr9d.tfm
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplrc9d.tfm
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/gfx/HTWK_logo.jpg
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/gfx/HTWK_logo.jpg
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/gfx/HTWK_logo.jpg
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/gfx/HTWK_logo.jpg
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/gfx/HTWK_logo.jpg
+INPUT c:/Users/marti/Documents/GitHub/bachelor/gfx/HTWK_logo.jpg
+INPUT c:/Users/marti/Documents/GitHub/bachelor/gfx/HTWK_logo.jpg
+INPUT c:/Users/marti/Documents/GitHub/bachelor/gfx/HTWK_logo.jpg
+INPUT c:/Users/marti/Documents/GitHub/bachelor/gfx/HTWK_logo.jpg
+INPUT c:/Users/marti/Documents/GitHub/bachelor/gfx/HTWK_logo.jpg
 INPUT C:/Program Files/MiKTeX 2.9/fonts/vf/adobe/palatino/pplrc9d.vf
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplrc8r.tfm
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplr8r.tfm
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplr8r.tfm
 INPUT C:/Program Files/MiKTeX 2.9/fonts/vf/adobe/palatino/pplr9d.vf
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/fonts/tfm/public/mathpazo/fplmr.tfm
-OUTPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Titleback.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Titleback.tex
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Titleback.tex
+OUTPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Titleback.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Titleback.tex
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Titleback.tex
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplri9d.tfm
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/public/cm/cmsy10.tfm
 INPUT C:/Program Files/MiKTeX 2.9/fonts/vf/adobe/palatino/pplr9d.vf
@@ -412,12 +412,12 @@ INPUT C:/Program Files/MiKTeX 2.9/fonts/vf/adobe/palatino/pplri9d.vf
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplri8r.tfm
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/fonts/tfm/public/mathpazo/fplmri.tfm
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplrij8r.tfm
-OUTPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Contents.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Contents.tex
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Contents.tex
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.toc
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.toc
-OUTPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.toc
+OUTPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Contents.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Contents.tex
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Contents.tex
+INPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.toc
+INPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.toc
+OUTPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.toc
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplr9d.tfm
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplr9t.tfm
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplr9t.tfm
@@ -433,20 +433,20 @@ INPUT C:/Program Files/MiKTeX 2.9/fonts/vf/adobe/palatino/pplr9d.vf
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplr8r.tfm
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/fonts/tfm/public/mathpazo/fplmr.tfm
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplrc8r.tfm
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.lol
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.lol
-OUTPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.lol
-OUTPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/Chapters/Chapter01.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/Chapters/Chapter01.tex
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/Chapters/Chapter01.tex
+INPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.lol
+INPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.lol
+OUTPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.lol
+OUTPUT c:/Users/marti/Documents/GitHub/bachelor/Chapters/Chapter01.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/Chapters/Chapter01.tex
+INPUT c:/Users/marti/Documents/GitHub/bachelor/Chapters/Chapter01.tex
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplrc9d.tfm
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplr9d.tfm
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplrc9d.tfm
 INPUT C:/Program Files/MiKTeX 2.9/fonts/vf/adobe/palatino/pplrc9d.vf
 INPUT C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/palatino/pplr8r.tfm
-OUTPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/Chapters/Chapter02.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/Chapters/Chapter02.tex
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/Chapters/Chapter02.tex
+OUTPUT c:/Users/marti/Documents/GitHub/bachelor/Chapters/Chapter02.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/Chapters/Chapter02.tex
+INPUT c:/Users/marti/Documents/GitHub/bachelor/Chapters/Chapter02.tex
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/latex/bera/t1fvm.fd
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/tex/latex/bera/t1fvm.fd
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/fonts/tfm/public/bera/fvmr8t.tfm
@@ -455,33 +455,33 @@ INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/fonts/tfm/public/bera/fvmr8r.tfm
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/fonts/tfm/public/bera/fvmr8t.tfm
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/fonts/vf/public/bera/fvmr8t.vf
 INPUT C:/Users/marti/AppData/Roaming/MiKTeX/2.9/fonts/tfm/public/bera/fvmr8r.tfm
-OUTPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/Chapters/Chapter03.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/Chapters/Chapter03.tex
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/Chapters/Chapter03.tex
-OUTPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Bibliography.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Bibliography.tex
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Bibliography.tex
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/DirtyTitlepage.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/DirtyTitlepage.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Titlepage.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Titlepage.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Titleback.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Titleback.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Contents.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Contents.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/Chapters/Chapter01.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/Chapters/Chapter01.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/Chapters/Chapter02.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/Chapters/Chapter02.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/Chapters/Chapter03.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/Chapters/Chapter03.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Bibliography.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/FrontBackmatter/Bibliography.aux
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.out
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.out
-INPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.run.xml
-OUTPUT c:/Users/marti/OneDrive/Dokumente/Studium/SS19/bachelor/ClassicThesis.run.xml
+OUTPUT c:/Users/marti/Documents/GitHub/bachelor/Chapters/Chapter03.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/Chapters/Chapter03.tex
+INPUT c:/Users/marti/Documents/GitHub/bachelor/Chapters/Chapter03.tex
+OUTPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Bibliography.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Bibliography.tex
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Bibliography.tex
+INPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/DirtyTitlepage.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/DirtyTitlepage.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Titlepage.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Titlepage.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Titleback.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Titleback.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Contents.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Contents.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/Chapters/Chapter01.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/Chapters/Chapter01.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/Chapters/Chapter02.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/Chapters/Chapter02.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/Chapters/Chapter03.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/Chapters/Chapter03.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Bibliography.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/FrontBackmatter/Bibliography.aux
+INPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.out
+INPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.out
+INPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.run.xml
+OUTPUT c:/Users/marti/Documents/GitHub/bachelor/ClassicThesis.run.xml
 INPUT C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc
 INPUT C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb
