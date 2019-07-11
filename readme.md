@@ -11,6 +11,8 @@ Ziel der Arbeit ist es, mögliche Schwierigkeiten bei der Evolution von Software
 
 ## Forschungsstand und Theoretische Grundlage
 
+Obwohl die beschriebenen Aufgaben in vielen Projekten regelmäßig auftreten, ist der Forschungsstand - abgesehen von allgemeinen Hinweisen - nicht sehr weit.
+
 ## Konzept
 
 ## Vorläufige Gliederung
