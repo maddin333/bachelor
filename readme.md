@@ -11,12 +11,42 @@ Ziel der Arbeit ist es, mögliche Schwierigkeiten bei der Evolution von Software
 
 ## Forschungsstand und Theoretische Grundlage
 
-Obwohl die beschriebenen Aufgaben in vielen Projekten regelmäßig auftreten, ist der Forschungsstand - abgesehen von allgemeinen Hinweisen - nicht sehr weit.
+Obwohl die beschriebene Aufgabe regelmäßig auftritt,
 
 ## Konzept
 
 ## Vorläufige Gliederung
 
+    - Einleitung
+      - Motivation
+      - Aufgabe
+      - Aufbau
+    - Grundlagen
+      - IEEE-Standard Software Zyklen
+      - Software Maintenance
+    - Major-Release PHP 7
+      - Änderungen
+        - Änderungen der Engine
+        - Änderungen des Codes
+      - Ziele
+    - Untersuchung geeigneter Mittel
+      - Lauffähigkeit historischen Codes
+        - Code-Verwaltung
+        - Lokale Lösung
+        - Docker
+      - Erkennung des zu ändernden Codes
+        - php7mar
+      - Refactoring
+        - Unit-Tests
+        - Search & Replace
+        - Wrapping
+    - Strukturen zur Beschleunigung des Refactorings
+    - Schlussbetrachtungen
+      - Fazit
+      - Ausblick
+
 ## Zeitplan
+  
+  - f
 
 ## Eigene Motivation
