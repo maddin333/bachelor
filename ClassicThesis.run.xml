@@ -56,15 +56,15 @@
       <file>blx-bibtex.def</file>
       <file>biblatex.def</file>
       <file>blx-natbib.def</file>
-      <file>standard.bbx</file>
-      <file>numeric.bbx</file>
       <file>numeric-comp.bbx</file>
+      <file>numeric.bbx</file>
+      <file>standard.bbx</file>
       <file>numeric-comp.cbx</file>
       <file>biblatex.cfg</file>
-      <file>german.lbx</file>
       <file>ngerman.lbx</file>
-      <file>english.lbx</file>
+      <file>german.lbx</file>
       <file>american.lbx</file>
+      <file>english.lbx</file>
     </requires>
   </internal>
   <external package="biblatex" priority="5" active="0">
@@ -90,7 +90,6 @@
     </requires>
     <requires type="editable">
       <file>Bibliography.bib</file>
-      <file>AMiede_Publications.bib</file>
     </requires>
     <requires type="static">
       <file>biblatex.bst</file>
