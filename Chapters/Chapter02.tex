@@ -1,10 +1,42 @@
 %*****************************************
-\chapter{Major-Release php7}\label{ch:php7}
+\chapter{Anforderungsanalyse}\label{ch:php7}
 %*****************************************
+Dieser Abschnitt soll beleuchten, welche Bedingungen PHP in Version 7 gegenüber Version 5 an lauffähige Software stellt. Zudem werden die Änderungen in den Kontext der
+zeitlichen Entwicklung gestellt, um Aussagen über Gründe dieser zu treffen.
 
-\section{Neue Funktionen}
-
+\section{Abwärtsinkompatible Änderungen}
+Änderungen in dieser Kategorie führen in älteren Versionen zu Fehlern oder unerwartetem Verhalten und sind in dieser Umgebung somit nicht lauffähig. Durch diese wird ein 
+Wechsel der Umgebung zwingend vorrausgesetzt.
 
 \section{Veraltete Funktionen}
+Als veraltet markierte Funktionen sind in der neuen Umgebung zwar noch unterstützt, sollten aber nach Möglichkeit nicht mehr eingesetzt und schnellstmöglich durch geeignete 
+Funktionen ersetzt werden, da sie möglicherweise in zukünftigen Versionen entfernt oder verändert werden. Werden diese Funktionen trotzdem eingesetzt, wird eine Warnung 
+ausgegeben, die Lauffähigkeit des Programms jedoch nicht beeinflusst.
+    \subsection{Implizite Benennung von Konstruktoren}
+    Mit der Einführung der objektorientierten Programmierung in PHP 4 wurde festgelegt, dass Funktionen mit dem selben Namen wie die umschließende Klasse implizit als 
+    Konstruktor der Klasse erkannt werden. Ein Beispiel zur Implementierung eines Konstruktors nach diesem Prinzip ist in Listing~\ref{lst:php4construct} dargestellt.
+    PHP 7 unterstützt diese Notation zwar noch, allerdings wird die, in PHP 5 eingeführte, explizite Benennung mit dem Schlüsselwort \textit{\_\_construct} (siehe 
+    Listing~\ref{lst:php5construct}) bevorzugt.
+        \begin{lstlisting}[language=php, caption={Beispiel eines impliziten Konstruktors}, label={lst:php4construct}]
+            <?php
+            class foo {
+                function foo($a) {
+                    echo("Created instance of class 'foo'");
+                }
+            }
+            ?>
+        \end{lstlisting}
+
+        \begin{lstlisting}[language=php, caption={Beispiel eines expliziten Konstruktors}, label={lst:php5construct}]
+            <?php
+            class foo {
+                function __construct($a) {
+                    echo("Created instance of class 'foo'");
+                }
+            }
+            ?>
+        \end{lstlisting}
+    
+    \subsection{Statische Aufrufe nicht-statischer Funktionen}
 
 \section{Geänderte Funktionen}
