@@ -38,8 +38,12 @@ ausgegeben, die Lauffähigkeit des Programms jedoch nicht beeinflusst.
         \end{lstlisting}
     
     \subsection{Statische Aufrufe nicht-statischer Funktionen}
-    
+    Mit dem Schlüsselwort \textit{static} versehene Funktionen einer Klasse erlauben das Benutzen der Funktion, ohne die 
+    Instantiierung der Klasse selber. Damit steht die entsprechende Funktion nicht im Kontext eines Objekts, sondern 
+    im Kontext der entsprechenden Klasse. Im Gegensatz zu anderen objektorientierten Programmiersprachen (bspw. Java) ist es 
+    in PHP bisher möglich, auch nicht-statische Methoden ohne eine Instantiierung zu verwenden. Diese Möglichkeit wurde mit
+    PHP 7 für veraltet erklärt und sollte nicht mehr genutzt werden.
 
 \section{Geänderte Funktionen}
 
-\section{}
+\section{Neue Funktionen}
