@@ -8,6 +8,7 @@ jederzeit eine lauffähige Version des Quellcodes gefordert ist. Diese Anforderu
 ## Zielsetzung und Erkenntnisinteresse
 
 Ziel der Arbeit ist es, mögliche Schwierigkeiten bei der Evolution von Software herauszuarbeiten, sowie Möglichkeiten aufzuzeigen, diese zu erkennen und zu eliminieren. Dabei sollen nicht nur softwaretechnische Aspekte beleuchtet werden, sondern auch spezifische Lösungsaspekte in der agilen Entwicklung gezeigt werden.
+--> Welche Maßnahmen sollten ergriffen werden, um den Prozess der Evolution zu beschleunigen?
 
 ## Forschungsstand und Theoretische Grundlage
 
