@@ -11,39 +11,57 @@ Wechsel der Umgebung zwingend vorrausgesetzt.
 \section{Veraltete Funktionen}
 Als veraltet markierte Funktionen sind in der neuen Umgebung zwar noch unterstützt, sollten aber nach Möglichkeit nicht mehr eingesetzt und schnellstmöglich durch geeignete 
 Funktionen ersetzt werden, da sie möglicherweise in zukünftigen Versionen entfernt oder verändert werden. Werden diese Funktionen trotzdem eingesetzt, wird eine Warnung 
-ausgegeben, die Lauffähigkeit des Programms jedoch nicht beeinflusst.
+ausgegeben, die Programmierer darauf hinweisen soll, dass die Verwendung der Funktion möglicherweise gefährlich sein kann. Die Lauffähigkeit des Programms wird bis zur 
+abschließenden Entfernung der Funktion jedoch nicht beeinflusst. \cite{oracle_how_2004}
     \subsection{Implizite Benennung von Konstruktoren}
     Mit der Einführung der objektorientierten Programmierung in PHP 4 wurde festgelegt, dass Funktionen mit dem selben Namen wie die umschließende Klasse implizit als 
     Konstruktor der Klasse erkannt werden. Ein Beispiel zur Implementierung eines Konstruktors nach diesem Prinzip ist in Listing~\ref{lst:php4construct} dargestellt.
     PHP 7 unterstützt diese Notation zwar noch, allerdings wird die, in PHP 5 eingeführte, explizite Benennung mit dem Schlüsselwort \textit{\_\_construct} (siehe 
-    Listing~\ref{lst:php5construct}) bevorzugt.
-        \begin{lstlisting}[language=php, caption={Beispiel eines impliziten Konstruktors}, label={lst:php4construct}]
-            <?php
-            class foo {
-                function foo($a) {
-                    echo("Created instance of class 'foo'");
-                }
+    Listing~\ref{lst:php5construct}) bevorzugt. Hierdurch soll die Verwirrung darum, wann eine Funktion einen Konstruktor darstellt aufgehoben werden. \cite{levi_php:_2014}
+    \begin{lstlisting}[language=php, caption={Beispiel eines impliziten Konstruktors}, label={lst:php4construct}]
+        <?php
+        class foo {
+            function foo($a) {
+                echo("Created instance of class 'foo'");
             }
-            ?>
-        \end{lstlisting}
+        }
+        ?>
+    \end{lstlisting}
 
-        \begin{lstlisting}[language=php, caption={Beispiel eines expliziten Konstruktors}, label={lst:php5construct}]
-            <?php
-            class foo {
-                function __construct($a) {
-                    echo("Created instance of class 'foo'");
-                }
+    \begin{lstlisting}[language=php, caption={Beispiel eines expliziten Konstruktors}, label={lst:php5construct}]
+        <?php
+        class foo {
+            function __construct($a) {
+                echo("Created instance of class 'foo'");
             }
-            ?>
-        \end{lstlisting}
+        }
+        ?>
+    \end{lstlisting}
     
     \subsection{Statische Aufrufe nicht-statischer Funktionen}
     Mit dem Schlüsselwort \textit{static} versehene Funktionen einer Klasse erlauben das Benutzen der Funktion, ohne die 
     Instantiierung der Klasse selber. Damit steht die entsprechende Funktion nicht im Kontext eines Objekts, sondern 
-    im Kontext der entsprechenden Klasse. Im Gegensatz zu anderen objektorientierten Programmiersprachen (bspw. Java) ist es 
+    im Kontext der entsprechenden Klasse. Im Gegensatz zu anderen objektorientierten Programmiersprachen (bspw. Java) war es 
     in PHP bisher möglich, auch nicht-statische Methoden ohne eine Instantiierung zu verwenden. Diese Möglichkeit wurde mit
-    PHP 7 für veraltet erklärt und sollte nicht mehr genutzt werden.
+    PHP 7 für veraltet erklärt und sollte nicht mehr genutzt werden. Dadurch werden Programmierfehler verhindert, da der Kontext, in dem eine Funktion ausgeführt wird nun
+    Eindeutig ist. Das Beispiel~\ref{lst:php7static} wird eine Warnung ausgeben, dass eine nicht-statische Methode statisch aufgerufen wird.
+    \begin{lstlisting}[language=php, caption={Beispiel eines statischen Aufrufs einer nicht-satischen Funktion in PHP 7}, label={lst:php7static}]
+        <?php
+        class foo {
+            function bar() {
+                echo("'bar' is not a static function");
+            }
+        }
+
+        foo::bar();
+        ?>
+    \end{lstlisting}
 
 \section{Geänderte Funktionen}
+In diese Gruppe fallen Funktionen, deren Benutzung und/oder Verhalten geändert wurden, allerdings nicht vollständig veraltet sind. Dies bedeutet zum Beipiel, dass 
+einzelne Funktionsparameter entfernt wurden oder andere Datentypen zurückgegeben werden.
+    \subsection{preg\_replace}
+    Die Funktion \textit{preg\_replace()} ersetzt Teile einer Zeichenkette nach einem, als regulärem Ausdruck angegebenen, Muster. Mit \textit{\acs{PCRE}-Modifikatoren} 
+    kann die Verhaltensweise des regulären Ausdrucks gesteuert werden. In \acs{PHP} 7 wurde der Modifikator \textit{\\e} entfernt
 
 \section{Neue Funktionen}
