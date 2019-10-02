@@ -17,7 +17,7 @@ abschließenden Entfernung der Funktion jedoch nicht beeinflusst. \cite{oracle_h
     Mit der Einführung der objektorientierten Programmierung in PHP 4 wurde festgelegt, dass Funktionen mit dem selben Namen wie die umschließende Klasse implizit als 
     Konstruktor der Klasse erkannt werden. Ein Beispiel zur Implementierung eines Konstruktors nach diesem Prinzip ist in Listing~\ref{lst:php4construct} dargestellt.
     PHP 7 unterstützt diese Notation zwar noch, allerdings wird die, in PHP 5 eingeführte, explizite Benennung mit dem Schlüsselwort \textit{\_\_construct} (siehe 
-    Listing~\ref{lst:php5construct}) bevorzugt. Hierdurch soll die Verwirrung darum, wann eine Funktion einen Konstruktor darstellt aufgehoben werden. \cite{levi_php:_2014}
+    Listing~\ref{lst:php5construct}) bevorzugt. Hierdurch soll die Verwirrung darum, wann eine Funktion einen Konstruktor darstellt aufgehoben werden. \cite{morrison_php:_2014}
     \begin{lstlisting}[language=php, caption={Beispiel eines impliziten Konstruktors}, label={lst:php4construct}]
         <?php
         class foo {
@@ -60,15 +60,15 @@ abschließenden Entfernung der Funktion jedoch nicht beeinflusst. \cite{oracle_h
 \section{Geänderte Funktionen}
 In diese Gruppe fallen Funktionen, deren Benutzung und/oder Verhalten geändert wurden, allerdings nicht vollständig veraltet sind. Dies bedeutet zum Beipiel, dass 
 einzelne Funktionsparameter entfernt wurden oder andere Datentypen zurückgegeben werden.
-    \subsection{preg\_replace}
+    \subsection{preg\_replace} \label{preg_replace}
     Die Funktion \textit{preg\_replace()} ersetzt Teile einer Zeichenkette nach einem, als regulärem Ausdruck angegebenen, Muster. Mit \textit{\acs{PCRE}-Modifikatoren} 
     kann die Verhaltensweise des regulären Ausdrucks gesteuert werden. In \acs{PHP} 7 wurde der Modifikator \textit{/e} entfernt, mit dem die Zeichenkette durch das Ergebnis
-    einer Funktion ersetzt wird. Ein Beipiel ist die Umwandlung aller kleingeschriebenen Zeichen eines Strings in Großbuchstaben.~\ref{lst:php5preg_rep} Die Verwendung
+    einer Funktion ersetzt wird. Ein Beipiel ist die Umwandlung aller kleingeschriebenen Zeichen eines Strings in Großbuchstaben, dargestellt in Listing~\ref{lst:php5preg_rep}. Die Verwendung
     des Modifikators wird aufgrund der Maskierungsregeln für bestimmte Zeichen als sehr kompliziert beschrieben. Gleichzeitig stellt die einfache Art der Evaluierung
     des Ergebnisses keine Schutzmechanismen zur Verfügung, wodurch Sicherheitslücken entstehen können, sobald es einem Angreifer gelingt, ausfühbaren Code in diese
     Funktion einzuschleusen. 
 
-    \begin{lstlisting}[language=php, caption={Beispiel der Benutzung von preg\_replace mit dem Modifikator /e}, label={lst:php5preg_rep}]
+    \begin{lstlisting}[language=php, caption={Beispiel der Nutzung von preg\_replace mit dem Modifikator /e}, label={lst:php5preg_rep}]
         <?php
         $uppercase = preg_replace(
             "/([a-z]*)/e",
@@ -87,3 +87,40 @@ einzelne Funktionsparameter entfernt wurden oder andere Datentypen zurückgegebe
     der Funktionsparameter entfernt wurde. \cite{nikic_remove_2014}
 
 \section{Neue Funktionen}
+    \subsection{Anonyme Klassen}
+    Mit dem Hinzufügen von anonymen Klassen implementiert \acs{PHP} ein Konzept, das bereits aus anderen Objektorientierten Sprachen, beispielsweise Java 
+    \cite{oracle_anonymous_nodate}, bekannt ist. Diese können benutzt werden, um gleichzeitig mit der Definition eine einmalig genutzte Klasse zu instanziieren, ohne eigens 
+    dafür eine neue lokale Klasse erstellen zu müssen., wie in Listing~\ref{lst:php7anon_class} dargestellt wird.
+
+    \begin{lstlisting}[language=php, caption={Beispiel der Nutzung anonymer Klassen}, label={lst:php7anon_class}]
+        <?php
+        $foo = new class {
+            public function bar() {
+                echo "Hello World";
+            }
+        };
+
+        $foo->bar();
+        ?>
+    \end{lstlisting}
+
+    \subsection{preg\_replace\_callback\_array()}
+    Ähnlich wie die im Abschnitt \ref{preg_replace} beschriebene Funktion \textit{preg\_replace()} mit dem Modifikator \textit{/e}, ersetzt 
+    \textit{preg\_replace\_callback\_array()} Zeichenketten anhand eines Musters und einer Ersetzungsfuntion. Im eingeführten \textit{preg\_replace\_callback\_array()} 
+    kann nun ein assiozatives Array angegeben werden, das mehrere Muster und ihre entsprechenden Callback-Funktionen enthält. Durch die Nutzung verschiedener 
+    Ersetzungsfunktionen kann auf die Nutzung einer einzelnen, stark verzweigten Ersetzungsfuntion verzichtet werden. Dadurch wird entsprechender Quellcode lesbarer 
+    und besser wartbar (vgl. \cite[S. 34f]{martin_clean_2012}).
+
+    \subsection{Typdeklaration für Rückgabewerte} %TODO: Referenz PHP Typen
+    Als schwach typisierte Sprache bot \acs{PHP} bisher keine Möglichkeit der Deklaration von Typen für Rückgabewerte von Funktionen. Dies kann nun durch Angabe des
+    Typs zwischen Funktionsdeklaration und dem Code der Funktion geschehen. Dadurch sollen unter anderem ungewollte Rückgabewerte verhindert werden, als auch die 
+    automatisierte Dokumentation von Funktionen vereinfacht werden. \cite{morrison_php:_2014-1}
+
+\section{Entfernte Erweiterungen}
+    \subsection{mysql}
+    Die seit \acs{PHP} 5 als veraltet erklärte Erweiterung \textit{mysql} wird nicht mehr unterstützt. Dies wird mit Sicherheitsrisiken begründet. So unterstützt
+    \textit{mysql} beispielsweise keine \textbf{Prepared Statements}, welche einen wirksamen Schutz gegen \textbf{SQL Injections} bieten. \cite{oracle_mysql_nodate}
+    Zudem stehen mit \textit{mysqli} und \textit{PDO} aktuellere Erweiterungen zur Verfügung.
+    
+    \subsection{ereg}
+
