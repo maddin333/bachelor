@@ -1,12 +1,49 @@
 %*****************************************
-\chapter{Anforderungsanalyse}\label{ch:php7}
+\chapter{Änderungen der PHP-API}\label{ch:php7}
 %*****************************************
-Dieser Abschnitt soll beleuchten, welche Bedingungen PHP in Version 7 gegenüber Version 5 an lauffähige Software stellt. Zudem werden die Änderungen in den Kontext der
-zeitlichen Entwicklung gestellt, um Aussagen über Gründe dieser zu treffen.
+Dieser Abschnitt stellt eine Auswahl der Bedingungen vor, welche die \acs{PHP}-\acs{API} in Version 7 gegenüber Version 5 an lauffähige Software stellt und welche 
+neuen Mittel Entwicklern zur Verfügung gestellt werden. Die Änderungen werden in den Kontext der Weiterentwicklung der Programmiersprache gestellt, um Aussagen 
+über die Gründe dieser zu treffen.
 
 \section{Abwärtsinkompatible Änderungen}
 Änderungen in dieser Kategorie führen in älteren Versionen zu Fehlern oder unerwartetem Verhalten und sind in dieser Umgebung somit nicht lauffähig. Durch diese wird ein 
-Wechsel der Umgebung zwingend vorrausgesetzt.
+Wechsel der Ausführungsumgebung zwingend vorrausgesetzt.
+
+    \subsection{Interpretation von Variablen}
+    \acs{PHP} bietet die Möglichkeit des indirekten Zugriffs auf Variablen. Das bedeutet, dass der Wert einer Variablen den Namen einer weiteren Variablen darstellt.
+    Bisher war die Syntax durch mehrere Sonderfälle geregelt. Mit \acs{PHP} 7 wird eine strikte Evaluierung eines solchen Audrucks von links nach rechts eingeführt, 
+    um die Nutzung dieser zu vereinheitlichen. Wie sich die einzelnen Fälle Unterscheiden ist in Tabelle~\ref{tab:indirect-expressions} aufgeführt.
+
+    \begin{table}[]
+        \caption{Vergleich der Evaluation indirekter Variablen zwischen PHP 5 und PHP 7}
+        \label{tab:indirect-expressions}
+        \begin{tabular}{lll}
+        \textbf{Ausdruck}               & \textbf{PHP 5}                    & \textbf{PHP 7}                \\ \hline
+        \$\$foo{[}'bar'{]}{[}'baz'{]}   & \$\{\$foo{[}'bar'{]}{[}'baz'{]}\} & (\$\$foo){[}'bar'{]}{[}'baz'{]} \\ \hline
+        \$foo->\$bar{[}'baz'{]}         & \$foo->\{\$bar{[}'baz'{]}\}       & (\$foo->\$bar){[}'baz'{]}       \\ \hline
+        \$foo->\$bar{[}'baz'{]}()       & \$foo->\{\$bar{[}'baz'{]}\}()     & (\$foo->\$bar){[}'baz'{]}()     \\ \hline
+        Foo::\$bar{[}'baz'{]}()         & Foo::\{\$bar{[}'baz'{]}\}()       & (Foo::\$bar){[}'baz'{]}()    
+        \end{tabular}
+    \end{table}
+
+    \subsection{Switch-Anweisungen mit mehreren default-Blöcken}
+    Switch-Anweisungen, welche mehrere default-Blöcke enthalten werden ab sofort als fehlerhafte Syntax erkannt und werfen einen Fehler. Dies war bisher nicht der Fall,
+    allerdings wurde bei einer solchen Anweisung nur der letzte default-Block ausgewertet. Dieses Verhalten zeigt sich in Listing~\ref{lst:php5switch}. Der entsprechende
+    Codeausschnitt gibt unter \acs{PHP} 5 immer "Evaluated" aus, bei dem Versuch der Auführung unter \acs{PHP} 7 wird ein Fehler geworfen. Damit wird ein Bruch der
+    \acs{PHP}-Spezifikation \cite{php_group_php_nodate} behoben.
+
+    \begin{lstlisting}[language=php, caption={Beispiel meherer default-Blöcke in Switch-Anweisungen}, label={lst:php5switch}]
+        <?php
+        switch (1) {
+            default:
+                echo("Never evaluated");
+                break;
+            default:
+                echo("Evaluated")
+                break;
+        }
+        ?>
+    \end{lstlisting}
 
 \section{Veraltete Funktionen}
 Als veraltet markierte Funktionen sind in der neuen Umgebung zwar noch unterstützt, sollten aber nach Möglichkeit nicht mehr eingesetzt und schnellstmöglich durch geeignete 
@@ -113,14 +150,28 @@ einzelne Funktionsparameter entfernt wurden oder andere Datentypen zurückgegebe
 
     \subsection{Typdeklaration für Rückgabewerte} %TODO: Referenz PHP Typen
     Als schwach typisierte Sprache bot \acs{PHP} bisher keine Möglichkeit der Deklaration von Typen für Rückgabewerte von Funktionen. Dies kann nun durch Angabe des
-    Typs zwischen Funktionsdeklaration und dem Code der Funktion geschehen. Dadurch sollen unter anderem ungewollte Rückgabewerte verhindert werden, als auch die 
-    automatisierte Dokumentation von Funktionen vereinfacht werden. \cite{morrison_php:_2014-1}
+    Typs zwischen Funktionsdeklaration und dem Code der Funktion geschehen, wie in Listing~\ref{lst:php7returnvalues}. Dadurch sollen unter anderem ungewollte Rückgabewerte verhindert werden, als auch die 
+    automatisierte Dokumentation von Funktionen vereinfacht werden. \cite{morrison_php:_2014-1} 
+
+    \begin{lstlisting}[language=php, caption={Typdeklaration für Rückgabewerte}, label={lst:php7returnvalues}]
+        <?php
+        public function foo(): int {
+            return 42;
+        }
+        ?>
+    \end{lstlisting}
 
 \section{Entfernte Erweiterungen}
+Einige Funktionalitäten von \acs{PHP} sind nicht in die Sprache selbst eingebaut, sondern werden durch externe Erweiterungen eingebunden, die jedoch standardmäßig
+mit \acs{PHP} ausgeliefert werden. Diese stehen somit nicht unter der Verwaltung der \acs{PHP}-Entwickler und werden unabhängig weiterentwickelt.
     \subsection{mysql}
     Die seit \acs{PHP} 5 als veraltet erklärte Erweiterung \textit{mysql} wird nicht mehr unterstützt. Dies wird mit Sicherheitsrisiken begründet. So unterstützt
     \textit{mysql} beispielsweise keine \textbf{Prepared Statements}, welche einen wirksamen Schutz gegen \textbf{SQL Injections} bieten. \cite{oracle_mysql_nodate}
     Zudem stehen mit \textit{mysqli} und \textit{PDO} aktuellere Erweiterungen zur Verfügung.
     
     \subsection{ereg}
+    Die Erweiterung \textit{ereg} bietet verschiedene Funktionen für die Nutzung von \textbf{POSIX}-kompatiblen \textbf{Regulären Ausdrücken}. Die Erweiterung wurde
+    zugungsten von \textit{\acs{PCRE}} entfernt, da diese unter anderem bessere Unterstützung von Unicode-Zeichen bietet und aktiv weiterentwickelt wird. \cite{popov_php:_2014}
 
+\section{Fazit}
+Die Weiterentwicklung von \acs{PHP} steht 
