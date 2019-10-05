@@ -9,7 +9,7 @@ neuen Mittel Entwicklern zur Verfügung gestellt werden. Die Änderungen werden 
 Änderungen in dieser Kategorie führen in älteren Versionen zu Fehlern oder unerwartetem Verhalten und sind in dieser Umgebung somit nicht lauffähig. Durch diese wird ein 
 Wechsel der Ausführungsumgebung zwingend vorrausgesetzt.
 
-    \subsection{Interpretation von Variablen}
+    \subsection{Interpretation indirekter Variablenzugriffe}
     \acs{PHP} bietet die Möglichkeit des indirekten Zugriffs auf Variablen. Das bedeutet, dass der Wert einer Variablen den Namen einer weiteren Variablen darstellt.
     Bisher war die Syntax durch mehrere Sonderfälle geregelt. Mit \acs{PHP} 7 wird eine strikte Evaluierung eines solchen Audrucks von links nach rechts eingeführt, 
     um die Nutzung dieser zu vereinheitlichen. Wie sich die einzelnen Fälle Unterscheiden ist in Tabelle~\ref{tab:indirect-expressions} aufgeführt.
@@ -42,6 +42,20 @@ Wechsel der Ausführungsumgebung zwingend vorrausgesetzt.
                 echo("Evaluated")
                 break;
         }
+        ?>
+    \end{lstlisting}
+
+    \subsection{Verkehrte Reihenfolge der Variablenzuweisung mit list}
+    Die Funktion \textit{list()} ermöglicht die Zuweisung von Variablen als wären diese ein Array. Quellcode der sich auf die bisherige Praxis verlässt, dass \textit{list()}
+    den letzten angegebenen Wert zuerst zuweist, kann nun nicht mehr eingesetzt werden, da die Reihenfolge der Zuweisung umgekehrt wurde. 
+    Obwohl keine klaren Gründe auszumachen sind, liegt die Vermutung nahe, dass die Änderung Verwirrungen über das Verhalten der Funktion vermindern soll. Listing
+    \ref{lst:php5list} würde bei der Ausführung unter \acs{PHP} 5 beispielsweise \glqq3\grqq{} als Ergebnis ausgeben. Dies entspricht nicht der erwartbaren Reihenfolge.
+
+    \begin{lstlisting}[language=php, caption={Beispiel der Verwendung von list()}, label={lst:php5list}]
+        <?php
+        list($first, $second, $third) = [1,2,3];
+
+        echo($first);
         ?>
     \end{lstlisting}
 
