@@ -2,21 +2,59 @@
 \chapter{Untersuchung geeigneter Mittel}\label{ch:tools} 
 %************************************************
 
-Wie in Kapitel \ref{ch:php7} gezeigt, sind die Veränderungen zwischen \acs{PHP} 5 und \acs{PHP} 7 nicht nur sehr umfangreich, sondern erfordern auch den Eingriff in Quellcode.
+Wie in Kapitel \ref{ch:php7} gezeigt, sind die Veränderungen zwischen \acs{PHP} 5 und \acs{PHP} 7 nicht nur sehr umfangreich, sondern erfordern auch große Eingriffe 
+in den betroffenen Quellcode. \textbf{ISO/IEC 14764} sieht vor, die Migration zu definieren
 
+\section{Erkennung des zu ändernden Codes}
+    Um alten Code migrieren zu können, müssen alle Stellen gefunden werden, die in ihrer ursprünglichen Form in der neuen Umgebung nicht lauffähig sind. Dafür relevante
+    Beispiele sind in Kapitel \ref{ch:php7} gelistet, die gesamte Liste kann der Dokumentation entnommen werden. Die Erkennung kann je nach Umfang des Quellcodes
+    und der verwendeten Funktionen entweder manuell oder automatisiert durchgeführt werden. Für beide Arten werden im folgenden Beispiele genannt und die jeweiligen
+    Vor- und Nachteile diskutiert.
+    \subsection{Manuelle Erkennung}
+        Eine manuelle Erkennung des Codes bietet sich vor allem bei kleinen Softwareprojekten an, bei denen ein vollumfänglicher Überblick über den eingesetzten Code
+        besteht. Hier kann durch die in typischen Editoren und Entwicklungsumgebungen integrierte Suche genutzt werden um alle Vorkommen von nicht lauffähigen
+        Funktionen zu finden und diese anschließend einem Refactoring zu unterziehen. Besonders einfach gestaltet sich diese Methode bei entfernten Funktionen,
+        beispielsweise die der Erweiterung \textit{ereg}\ref{ereg}. Diese kann der Entwickler in der Dokumentation nachschlagen und den Code auf etwaige Vorkommen prüfen.
+        Schwierig wird die manuelle Erkennung bei Änderungen wie der Einhaltung des Standards in Switch-Anweisungen\ref{switch}. Hier ist eine Suche nur über umfangreiche
+        Suchmuster (Reguläre Ausdrücke) möglich, die meist nicht trivial zu erstellen sind und viele Einzelfälle (z.B. verschachtelte Switch-Anweisungen) abdecken müssen.
+        In diesen Fällen ist durch die manuelle Suche höchstens eine Eingrenzung des Problems möglich.
+    \subsection{Automatisierte Erkennung}
+        Da die zuvor besprochene manuelle Erkennung betroffenen Codes nur für einzelne Fälle oder kleine Projekte in Frage kommt, bietet sich als alternative die 
+        automatiche Erkennung an, mit dem Ziel, dem Entwickler einen vollumfänglichen Überblick der zu überarbeitenden Stellen im Code zu liefern. Im vorliegenden Fall
+        wurde das Tool \textit{\ac{php7mar}}\footnote{Alexia. php7mar. URL: \url{https://github.com/Alexia/php7mar}} des Entwicklers \textit{Alexia} genutzt.
+        \textit{\ac{php7mar}} erkennt mithilfe von \textbf{Regulären Audrücken}, \textbf{String-Matching} und \textbf{Lexikalischer Analyse} kritischen Code in 
+        Projekten und generiert daraus einen Bericht, bestehend aus Zeilenangaben, gefundenen Problemen und Lösungshinweisen. Ein Beispiel eines solchen Berichts findet
+        sich in Listing\ref{lst:php7mar}. In der Datei \textit{GMCSS.php} werden drei Fehlerklassen gefunden: Erstens mehrere Fälle der Nutzung der veralteten Definition von
+        Konstruktoren, zweitens einige Vorkommen der Entfernten Erweiterung \textit{mysql}, sowie drittens ein indirekter Variablenzugriff, dessen Aussage unter PHP 7
+        möglicherweise eine andere ist (vgl. Kapitel~\ref{indirectVar}). Insbesondere der erste Fall zeigt die Überlegenheit eines Analysetools, da solche Fehler nur
+        schwer mit einer trivialen Suche zu finden sind.
+
+        \begin{lstlisting}[caption={Beispiel eines generierten Berichts mit \textit{\ac{php7mar}}}, label={lst:php7mar}]
+            #### C:\Users\Nutzer\Documents\GitHub\gambio_tickets75\StyleEdit\classes\GMCSS.php
+            * oldClassConstructors
+            * Line 55:  `function GMCSS($p_css_file, $p_type='archive')`
+            * Line 384: `function GMCSSImport($p_css_file = false, $p_import_mode = '')`
+            * Line 791: `function GMCSSExport($p_css_file)`
+            * Line 912: `function GMCSSUpload($p_files, $p_type)`
+            * Line 982: `function GMCSSArchive()`
+            * deprecatedFunctions
+            * Line 302: `$t_css_query = mysql_query("`
+            * Line 311: `if((int)mysql_num_rows($t_css_query) > 0)`
+            * Line 313: `$t_row_styles = mysql_fetch_array($t_css_query, MYSQL_ASSOC);`
+            * Line 316: `$t_css_query = mysql_query("`
+            * Line 325: `if((int)mysql_num_rows($t_css_query) > 0)`
+            * variableInterpolation
+            * Line 359: `global $$shippingModule; //notice $$`
+        \end{lstlisting}
+
+\section{Refactoring}
+    \subsection{Unit-Tests}
+    \subsection{Search \& Replace}
+    \subsection{Wrapping}
 
 \section{Lauffähigkeit historischen Codes}
     \subsection{Codeverwaltung}
     \subsection{Lokale Entwicklungsumgebung}
     \subsection{Continous Integration mittels Containern}
 
-\section{Erkennung des zu ändernden Codes}
-Um alten Code migrieren zu können, müssen alle Stellen gefunden werden, die in ihrer ursprünglichen Form in der neuen Umgebung nicht lauffähig wären.
-    \subsection{Manuelle Erkennung}
 
-    \subsection{Automatisierte Erkennung}
-
-\section{Refactoring}
-    \subsection{Unit-Tests}
-    \subsection{Search \& Replace}
-    \subsection{Wrapping}

@@ -3,13 +3,13 @@
 %*****************************************
 Dieser Abschnitt stellt eine Auswahl der Bedingungen vor, welche die \acs{PHP}-\acs{API} in Version 7 gegenüber Version 5 an lauffähige Software stellt und welche 
 neuen Mittel Entwicklern zur Verfügung gestellt werden. Die Änderungen werden in den Kontext der Weiterentwicklung der Programmiersprache gestellt, um Aussagen 
-über die Gründe dieser zu treffen.
+über die Gründe dieser zu treffen und - \textbf{ISO/IEC 14764} entsprechend - die Anforderungen an die Migration festzustellen.
 
 \section{Abwärtsinkompatible Änderungen}
 Änderungen in dieser Kategorie führen in älteren Versionen zu Fehlern oder unerwartetem Verhalten und sind in dieser Umgebung somit nicht lauffähig. Durch diese wird ein 
 Wechsel der Ausführungsumgebung zwingend vorrausgesetzt.
 
-    \subsection{Interpretation indirekter Variablenzugriffe}
+    \subsection{Interpretation indirekter Variablenzugriffe}\label{indirectVar}
     \acs{PHP} bietet die Möglichkeit des indirekten Zugriffs auf Variablen. Das bedeutet, dass der Wert einer Variablen den Namen einer weiteren Variablen darstellt.
     Bisher war die Syntax durch mehrere Sonderfälle geregelt. Mit \acs{PHP} 7 wird eine strikte Evaluierung eines solchen Audrucks von links nach rechts eingeführt, 
     um die Nutzung dieser zu vereinheitlichen. Wie sich die einzelnen Fälle Unterscheiden ist in Tabelle~\ref{tab:indirect-expressions} aufgeführt.
@@ -26,7 +26,7 @@ Wechsel der Ausführungsumgebung zwingend vorrausgesetzt.
         \end{tabular}
     \end{table}
 
-    \subsection{Switch-Anweisungen mit mehreren default-Blöcken}
+    \subsection{Switch-Anweisungen mit mehreren default-Blöcken}\label{switch}
     Switch-Anweisungen, welche mehrere default-Blöcke enthalten werden ab sofort als fehlerhafte Syntax erkannt und werfen einen Fehler. Dies war bisher nicht der Fall,
     allerdings wurde bei einer solchen Anweisung nur der letzte default-Block ausgewertet. Dieses Verhalten zeigt sich in Listing~\ref{lst:php5switch}. Der entsprechende
     Codeausschnitt gibt unter \acs{PHP} 5 immer "Evaluated" aus, bei dem Versuch der Auführung unter \acs{PHP} 7 wird ein Fehler geworfen. Damit wird ein Bruch der
@@ -183,9 +183,18 @@ mit \acs{PHP} ausgeliefert werden. Diese stehen somit nicht unter der Verwaltung
     \textit{mysql} beispielsweise keine \textbf{Prepared Statements}, welche einen wirksamen Schutz gegen \textbf{SQL Injections} bieten. \cite{oracle_mysql_nodate}
     Zudem stehen mit \textit{mysqli} und \textit{PDO} aktuellere Erweiterungen zur Verfügung.
     
-    \subsection{ereg}
+    \subsection{ereg}\label{ereg}
     Die Erweiterung \textit{ereg} bietet verschiedene Funktionen für die Nutzung von \textbf{POSIX}-kompatiblen \textbf{Regulären Ausdrücken}. Die Erweiterung wurde
     zugungsten von \textit{\acs{PCRE}} entfernt, da diese unter anderem bessere Unterstützung von Unicode-Zeichen bietet und aktiv weiterentwickelt wird. \cite{popov_php:_2014}
 
 \section{Fazit}
-Die Weiterentwicklung von \acs{PHP} steht 
+Die Ziele der Weiterentwicklung von \acs{PHP} lassen sich folgendermaßen zusammenfassen:
+\begin{itemize}
+    \item Erhöhung der Sicherheit
+    \item Bessere Verständlichkeit des geschriebenen Quellcodes
+\end{itemize}  
+Die Erhöhung der Sicherheit wird hauptsächlich durch die Entfernung von Erweiterungen erreicht, die nicht weiterentwickelt werden. Entwickler werden dadurch gezwungen,
+diese mit Mitteln zu ersetzen, welche zum Einen auch zukünftig mit Sicherheitsupdates versorgt werden und zum Anderen Features bieten um den Quellcode zusätzlich
+zu härten. Auch die Erweiterung von Konzepten der Typsicherheit und die Ersetzung von als Sicherheitsrisiko geltenden Funktionen dient diesem Zweck.\\
+Dem Ziel der besseren Verständlichkeit von Quellcode dienen beispielsweise die Vereinheitlichung von Variableninterpretation, die Abschaffung der doppelten Konzepte
+der Deklaration von Konstruktoren und die Anpassung der \textit{list()}-Funktion an gewohnte Denkweisen.\\
