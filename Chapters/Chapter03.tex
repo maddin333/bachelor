@@ -48,13 +48,40 @@ in den betroffenen Quellcode. \textbf{ISO/IEC 14764} sieht vor, die Migration zu
         \end{lstlisting}
 
 \section{Refactoring}
+    Refactoring beschreibt die Technik, bestehenden Code in seiner Struktur so zu verändern, dass dieser änderbar bleibt und wichtige Bestandteile leicht indentifizierbar 
+    bleiben, ohne jedoch den eigentlichen Sinn des Programms zu verändern. \cite{fowler_refactoring_1999} Bei der Migration von Software muss dem Refactoring ein hoher Stellenwert zugemessen werden, 
+    da große Bestandteile des Codes ausgetauscht und verändert werden, was nach Lehman \cite[S. 1060-1076]{lehman_programs_1980} zur Degeneration von Software führt.
+    Die Schwierigkeit des Refactorings liegt häufig im zeitaufwändigen Verstehen des vorliegenden Codes. Diese Zeit muss jedoch für die Migration der Software ohnehin 
+    aufgewendet werden, womit sich ein Refactoring hier durchaus anbietet.
+    Die Ziele des Refatorings können durch verschiedenste Techniken erreicht werden, beispielsweise die Zerlegung von Funktionen in kleinere, bessere verständliche 
+    Funktionen oder die Auslagerung von immer wieder genutztem Code in eine eigene Funktion.
+    \subsection{Extrahieren}
+        Bei der Extraktion von Funktionen sollen häufig genutzte Programmteile in eine eigene, wiederverwendbare Funktion ausgelagert werden. Dazu wird die neue Funktion
+        angelegt, 
+    \subsection{Zerlegung von Funktionen}
     \subsection{Unit-Tests}
-    \subsection{Search \& Replace}
-    \subsection{Wrapping}
 
 \section{Lauffähigkeit historischen Codes}
-    \subsection{Codeverwaltung}
-    \subsection{Lokale Entwicklungsumgebung}
-    \subsection{Continous Integration mittels Containern}
+    Der Standard ISO/IEC 14764 sieht auch nach der erfolgten Migration eine Unterstützung der alten Umgebung vor. Dies ist natürlich vor allem bei Produkten sinnvoll, 
+    die von Dritten eingesetzt werden, die dadurch vor nicht erwartetem Verhalten der Software geschützt werden. Allerdings ist eine Unterstützung der alten Umgebung 
+    auch bei unternehmenseigener Software sinnvoll. Beispielsweise lassen sich Fehler im Programm zurückverfolgen, Änderungen nachvollziehen und sichergestellt werden,
+    dass im Falle eines Fehlers bei der Migration eine lauffähige Version zur Verfügung steht. Daraus ergeben sich jedoch einige Probleme. So muss nicht nur der Quellcode 
+    von alten Versionen eines Programms zur Verfügung stehen, sondern auch die verschiedenen Umgebungen um die Software ausführen zu können.
+    \subsection{Versionsverwaltung}
+        Grundlage für die Unterstützung alter Versionen einer Software ist, dass diese Versionen in ihrem ausgelieferten Zustand vorhanden sind und Änderungen, die seitdem
+        vorgenommen wurden protokolliert und nachvollziehbar sind. Ein einfacher Ansatz dazu wäre beispielsweise die Ablage des Programmcodes in einem eindeutig benannten 
+        Ordner, nachdem eine Änderung durchgeführt wurde, sowie der Einsatz eines Programms wie beispielsweise \textbf{Diff} \footnote{GNU Diffutils, URL: \url{http://www.gnu.org/software/diffutils/}} 
+        zur Kenntlichmachung von Änderungen zwischen zwei Dateien. Diese Vorgehensweise kann zwar für kleinere Projekte genügen, ist jedoch für große Projekte mit mehreren 
+        hundert einzelnen Dateien und beliebig vielen bearbeitenden Personen nicht geeignet. Dieses Problem kann durch den Einsatz einer dedizierten Software zur 
+        Versionsverwaltung gelöst werden. Diese Software beinhaltet den gesamten Quellcode des Projekts in einem \textbf{Repository}, stellt diesen den Nutzern bereit 
+        und protokolliert jede Änderung, sogenannte \textbf{Commits}. Durch diese Protokollierung kann der Quellcode in jeden beliebigen früheren Zustand zurückversetzt 
+        werden, und somit auch weiter gewartet werden. Bekannte Programme zur Versionsverwaltung mit den genannten Funktionen sind zum Beispiel 
+        \textit{Git}\footnote{Git, \url{https://git-scm.com/}} oder \textit{Mercurial}\footnote{Mercurial, URL: \url{https://www.mercurial-scm.org/}}
+    \subsection{Ausführungsumgebung}
+        Zu jeder historischen Version der Software muss die passende Ausführungsumgebung zur Verfügung stehen. Dies betrifft nicht nur PHP, sondern beispielsweise auch 
+        Python mit der immer noch andauernden flächendeckenden Umstellung von Version 2 auf 3. 
+        \subsubsection{Lokale Ausführungsumgebung}
+        
+        \subsubsection{Continuous Integration mittels Containern}
 
 
