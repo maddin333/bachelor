@@ -78,10 +78,17 @@ in den betroffenen Quellcode. \textbf{ISO/IEC 14764} sieht vor, die Migration zu
         werden, und somit auch weiter gewartet werden. Bekannte Programme zur Versionsverwaltung mit den genannten Funktionen sind zum Beispiel 
         \textit{Git}\footnote{Git, \url{https://git-scm.com/}} oder \textit{Mercurial}\footnote{Mercurial, URL: \url{https://www.mercurial-scm.org/}}
     \subsection{Ausführungsumgebung}
-        Zu jeder historischen Version der Software muss die passende Ausführungsumgebung zur Verfügung stehen. Dies betrifft nicht nur PHP, sondern beispielsweise auch 
-        Python mit der immer noch andauernden flächendeckenden Umstellung von Version 2 auf 3. 
+        Zu jeder historischen Version der Software muss die passende Ausführungsumgebung zur Verfügung stehen. Eine triviale 
+        Lösung ist die lokale Installation verschiedener Umgebungen auf dem relevanten System. Einen weiteren Lösungsansatz 
+        bietet die Virtualisierung der Ausführungsumgebung mittels Containern. Die Vor- und Nachteile beider Ansätze 
+        werden im folgenden Diskutiert.
         \subsubsection{Lokale Ausführungsumgebung}
-        
+        Der triviale Lösungsansatz, verschiedene Ausführungsumgebungen bereitzustellen ist, alle benötigten Versionen lokal 
+        auf dem relevanten System (beispielsweise dem Computer des Entwicklers) zu installieren. Dies hat den Vorteil, dass 
+        keine zusätzliche Software benötigt wird und die volle Geschwindigkeit des Systems zur Ausführung bereitsteht. 
+        Allerdings hat diese Variante den Nachteil, dass der Nutzer (im Besipiel der Entwickler) selbst dafür verantwortlich ist, 
+        die passende Ausführungsumgebung bereitzustellen und sicherstellen muss, dass diese richtig konfiguriert sind. 
         \subsubsection{Continuous Integration mittels Containern}
+        Container 
 
 
