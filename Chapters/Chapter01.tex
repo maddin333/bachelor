@@ -19,9 +19,36 @@ Folgende Aktionen sind durch den Ausführenden nach \textbf{ISO/IEC 14764} umzus
     \item Support der alten Umgebung
 \end{itemize}
 
-\section{PHP}
-\textbf{\ac{PHP}} ist eine Skriptsprache, welche seit 1994 entwickelt wird und seit 1995 Open-Source bereitgestellt wird.
-Obwohl \textbf{PHP} viele Einsatzzwecke abdeckt, wird es hauptsächlich dazu genutzt, dynamische Websites zu programmieren.
+\section{Die Programmiersprache PHP}
+\ac{PHP} ist eine Skriptsprache, welche seit 1994 entwickelt wird und seit 1995 Open-Source bereitgestellt wird.
+Obwohl \ac{PHP} viele Einsatzzwecke abdeckt, wird es hauptsächlich dazu genutzt, dynamische Websites zu programmieren. 
+Rasmus Lerdorf, der Erfinder von \ac{PHP}, entwickelte zunächst eine Reihe von \ac{CGI} in \textit{C}, um die Anzahl der 
+Besucher seiner Webseite zu tracken. Diese \ac{CGI} wurden immer umfangreicher, wodurch sich im Laufe der Zeit eine 
+eigenständige Programmiersprache entwickelte, die durch den \textbf{Zend-Engine} genannten Compiler interpretiert wird.
 
-\section{Versionierung}
-Was ist ein Major-Release, welche Versionierungsarten sind möglich, welche wird von PHP eingesetzt?
+\section{Versionierung von Software}
+Für die Benennung von Releases einer Software gibt es keinen einheitlichen Standard. Jedem Entwickler steht es frei, seine
+Software nach einem bestimmten Muster zu benennen. So benennt \textit{Canonical} das Betriebssystem Ubuntu stets nach der 
+Jahres- und Monatszahl der Veröffentlichung (bspw. erschien Ubuntu 19.10 im Oktober 2019). \ac{PHP} hingegen implementiert
+lose die Spezifikation \textit{Semantic Versioning 2.0.0}. Diese legt ein Muster für Versionsnummern fest, das 
+folgendermaßen aufgebaut ist: \\
+Die Versionsnummer folgt immer dem Muster \\ \centerline{\textbf{Major}.\textbf{Minor}.\textbf{Patch}{[-\textbf{Pre-Release}]}}
+Mit jedem Release wird eine der Nummern inkrementiert, wobei die nachfolgenden Nummern auf ,,0`` zurückgesetzt werden 
+und folgende Regeln für die Nummerierung gelten \cite{preston-werner_semantic_nodate}:
+\begin{itemize}
+    \item \textbf{Major} wird inkrementiert, wenn inkompatible Änderungen an der API vorgenommen werden
+    \item \textbf{Minor} wird inkrementiert, wenn abwärtskompatible Funktionalitäten eingeführt werden
+    \item \textbf{Patch} wird inkrementiert, wenn abwärtskompatible Bugfixes implementiert werden
+    \item \textbf{Pre-Release} ist eine alphanumerische Zeichenkette, die frei vergeben werden kann
+\end{itemize}
+Von einem \textbf{Major-Release} spricht man folglich dann, wenn inkompatible Änderungen an der API stattfinden. 
+Die Nummerierung der Releases bei \ac{PHP} folgt zwar der Spezifikation, jedoch mit einer Ausnahme. So beträgt der 
+Sprung zwischen den beiden letzten veröffentlichten Major-Releases zwei Nummern (von 5.x.x zu 7.x.x). Diese Abweichung 
+von der Spezifikation wurde aus Gründen des Marketings beschlossen, da die Arbeit an der unveröffentlichten Version 6 
+im Jahr 2010 aufgrund von Schwierigkeiten in der Implementierung von Unicode abgebrochen wurde, jedoch bereits Material 
+(Blogposts, Lehrbücher etc.) zu dieser Version im Umlauf waren und Vewirrung von Nutzern vermieden werden sollte.
+\begin{figure}[bth]
+    \myfloatalign
+    {\includegraphics[width=1\linewidth]{gfx/semVer}} \quad
+    \caption[Grafische Darstellung der Versionierung von \acs{PHP}]{Grafische Darstellung der Versionierung von \acs{PHP}}\label{fig:example}
+\end{figure}
