@@ -22,9 +22,12 @@ Folgende Aktionen sind durch den Ausführenden nach \textbf{ISO/IEC 14764} umzus
 \section{Die Programmiersprache PHP}
 \ac{PHP} ist eine Skriptsprache, welche seit 1994 entwickelt wird und seit 1995 Open-Source bereitgestellt wird.
 Obwohl \ac{PHP} viele Einsatzzwecke abdeckt, wird es hauptsächlich dazu genutzt, dynamische Websites zu programmieren. 
-Rasmus Lerdorf, der Erfinder von \ac{PHP}, entwickelte zunächst eine Reihe von \ac{CGI} in \textit{C}, um die Anzahl der 
-Besucher seiner Webseite zu tracken. Diese \ac{CGI} wurden immer umfangreicher, wodurch sich im Laufe der Zeit eine 
+Rasmus Lerdorf, der Erfinder von \ac{PHP}, entwickelte zunächst eine Reihe von \acp{CGI} in \textit{C}, um die Anzahl der 
+Besucher seiner Webseite zu erfassen. Diese \acp{CGI} wurden immer umfangreicher, wodurch sich im Laufe der Zeit eine 
 eigenständige Programmiersprache entwickelte, die durch den \textbf{Zend-Engine} genannten Compiler interpretiert wird.
+\ac{PHP} steht auf Platz 6 der beliebstesten Programmiersprachen weltweit\cite{carbonnelle_pypl_2019} und ist die Grundlage
+für bekannte Projekte wie das Content Management System \textit{Wordpress}\footnote{Wordpress, \url{https://wordpress.org}}
+oder die e-Commerce Plattform \textit{Magento}\footnote{Magento, \url{https://magento.com}}.
 
 \section{Versionierung von Software}
 Für die Benennung von Releases einer Software gibt es keinen einheitlichen Standard. Jedem Entwickler steht es frei, seine
@@ -47,8 +50,10 @@ Sprung zwischen den beiden letzten veröffentlichten Major-Releases zwei Nummern
 von der Spezifikation wurde aus Gründen des Marketings beschlossen, da die Arbeit an der unveröffentlichten Version 6 
 im Jahr 2010 aufgrund von Schwierigkeiten in der Implementierung von Unicode abgebrochen wurde, jedoch bereits Material 
 (Blogposts, Lehrbücher etc.) zu dieser Version im Umlauf waren und Vewirrung von Nutzern vermieden werden sollte.
+Ein beispielhafter Auschnitt der Versionshistorie von \ac{PHP} wird in Abbildung~\ref{fig:semVer} gezeigt, dabei werden die einzelnen
+Versionsschritte deutlich, wobei einzelne Versionen zur Vereinfachung ausgelassen wurden.
 \begin{figure}[bth]
     \myfloatalign
     {\includegraphics[width=1\linewidth]{gfx/semVer}} \quad
-    \caption[Grafische Darstellung der Versionierung von \acs{PHP}]{Grafische Darstellung der Versionierung von \acs{PHP}}\label{fig:example}
+    \caption[Grafische Darstellung der Versionierung von PHP]{Grafische Darstellung der Versionierung von \acs{PHP}}\label{fig:semVer}
 \end{figure}

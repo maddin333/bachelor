@@ -89,6 +89,20 @@ in den betroffenen Quellcode. \textbf{ISO/IEC 14764} sieht vor, die Migration zu
         Allerdings hat diese Variante den Nachteil, dass der Nutzer (im Besipiel der Entwickler) selbst dafür verantwortlich ist, 
         die passende Ausführungsumgebung bereitzustellen und sicherstellen muss, dass diese richtig konfiguriert sind. 
         \subsubsection{Continuous Integration mittels Containern}
-        Container 
+        Container sind eine Art der Virtualisierung von Betriebssystemen, die schon seit einigen Jahren, beispielsweise 
+        seit 2008 durch \textit{LXC}\footnote{Linux Containers, \url{https://linuxcontainers.org/}} zum Einsatz kommt. 
+        Container unterscheiden sich von herkömmlichen virtuellen Maschinen darin, dass diese sich den Kernel des 
+        Host-Betriebssystems teilen und dadurch deutlich leichtgewichtiger und portabler sind \cite{scheepers_virtualization_2014}. 
+        Docker, eine populäre Software zur Containervirtualisierung, bietet neben der Unterstützung von Windows als Host-
+        Betriebssystem auch eine Plattform zum Austausch von fertig konfigurierten Conatainern an und stellt zudem einfache 
+        Mechanismen zur Anpassung bereit. So können Container sehr einfach über ein sogenanntes \textit{Dockerfile} konfiguriert 
+        werden. Dieses enthält alle Informationen über den Container, beispielsweise das gewünschte Betriebssystem und die 
+        installierten Applikationen mitsamt deren Konfigurationen \cite{anderson_docker_2015}. Diese Datei kann im Repository platziert werden, wodurch jeder 
+        Entwickler eine exakt gleich konfigurierte Ausführungsumgebung für die Software starten kann. Durch die Konfiguration 
+        über das \textit{Dockerfile}, eine einfache Textdatei, und deren Speicherung im Repository ergibt sich auch der Vorteil, 
+        dass für jede Version der Software eine angepasste Ausführungsumgebung bereitgestellt werden kann. Nachteilig ist bei
+        dieser Variante der Bereitstellung der Ausführungsumgebung, dass die initiale Konfiguration des Containers nicht nur 
+        die Konfiguration der Ausführungsumgebung (etwa des Webservers) betrifft, sondern auch die des Betriebssystems sowie 
+        der Virtualisierungssoftware.
 
 
