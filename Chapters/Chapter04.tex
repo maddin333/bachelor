@@ -1,6 +1,26 @@
 %************************************************
-\chapter{Migration des Tickets75 Online-Shops}\label{ch:migration} 
+\chapter{Migration des Tickets75 Onlineshops}\label{ch:migration} 
 %************************************************
 
-Ablauf der praktischen Migration nach ISO/IEC 14764
+Dieses Kapitel beschreibt die Migration des Onlineshops der Firma \textit{tickets75} von \ac{PHP} 5.6 zu \ac{PHP} 7.3, sowie die 
+genutzten Werkzeuge und Techniken. Die Codebasis 
+für das Projekt umfasst 5732 einzelne \ac{PHP}-Dateien, bestehend aus 596.198 Zeilen Code. Diese Menge verdeutlicht, dass 
+entsprechende Werkzeuge zur Automatisierung nötig sind, da kein Überblick über die Gesamtheit der Codebasis bestehen kann.
 
+\section{Anforderungsanalyse}
+Die Anforderungsanalyse ist der wichtigste Schritt zur Vorbereitung der Migration. Durch sie kann eine Abschätzung getroffen werden, 
+wie schwer und welche Teile des Codes von der Migration betroffen sind. Dies ist vor allem wichtig, hinsichtlich der 
+Wirtschaftlichkeit einer Migration. Im vorliegenden Fall wurde die Analyse mit dem Programm \textit{php7mar} durchgeführt.
+Die Ergebnisse, dargestellt in \ref{tab:migrationPercentage}, zeigen, dass zwar über 10\% der Dateien unter \ac{PHP} 7 
+Fehler enthalten, gemessen an den betroffenen Codezeilen aber nur ein kleiner Teil (unter 0,5\%) des Codes migiriert werden muss.
+ 
+\begin{table}
+    \centering
+    \caption{Anteil zu migrierender Codeteile an der gesamten Codebasis}
+    \label{tab:migrationPercentage}
+    \begin{tabular}{llll}
+                        & Gesamt & Betroffen & Anteil   \\
+    \textbf{Dateien}    & 5732   & 690       & 12,04\%  \\
+    \textbf{Codezeilen} & 596198 & 1431      & 0,24\%  
+    \end{tabular}
+\end{table}
