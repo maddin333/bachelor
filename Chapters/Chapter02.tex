@@ -5,7 +5,7 @@ Dieser Abschnitt stellt eine Auswahl der Bedingungen vor, welche die \acs{PHP}-\
 neuen Mittel Entwicklern zur Verfügung gestellt werden. Die Änderungen werden in den Kontext der Weiterentwicklung der Programmiersprache gestellt, um Aussagen 
 über die Gründe dieser zu treffen und - \textbf{ISO/IEC 14764} entsprechend - die Anforderungen an die Migration festzustellen.
 Die Auswahl basiert zu einem Teil auf der Auswertung des mit \textit{php7mar} generierten Berichts. Mit Hilfe eines Python-Skripts 
-wurden die, für die Migration des Onlineshops wichtigsten Funktionen herausgefiltert. Die weiteren Funktionen wurden im 
+wurden die für die Migration des Onlineshops wichtigsten Funktionen herausgefiltert. Weitere Funktionen wurden im 
 Gespräch mit Kollegen der Firma \textit{tickets75} als wichtig herausgearbeitet, da diese erfahrungsgemäß oft angewandt werden.
 
 \section{Abwärtsinkompatible Änderungen}
@@ -29,6 +29,25 @@ Wechsel der Ausführungsumgebung zwingend vorrausgesetzt.
         \end{tabular}
     \end{table}
 
+    \subsection{Abfrage von Funktionsparametern mit func\_get\_args()}
+    Der Aufruf der Funktion \textit{func\_get\_args()} in einer benutzerdefinierten Methode liefert ein Array mit Kopien der 
+    Argumente, mit denen die Methode aufgerufen wurde. Damit lassen sich Funktionen mit einer variablen Anzahl an Parametern 
+    realisieren. Im Gegensatz zu \ac{PHP} 5 werden nun nicht mehr die Argumente zum Zeitpunkt des Aufrufs der Methode 
+    zurückgegeben, sondern deren (möglicherweise bis dahin veränderte) Wert zum Zeitpunkt des Aufrufs von 
+    \textit{func\_get\_args()}. Das Beispiel~\ref{lst:phpfuncget} gibt unter \ac{PHP} 5 den Wert ,,1`` aus, unter \ac{PHP} 7 
+    hingegen den Wert ,,2``.
+
+    \begin{lstlisting}[language=php, caption={Beispiel des Aufrufs von func\_get\_args()}, label={lst:phpfuncget}]
+        <?php
+        function foo($bar) {
+            bar++;
+            echo(func_get_args(0));
+        }
+
+        foo(1);
+        ?>
+    \end{lstlisting}
+
     \subsection{Switch-Anweisungen mit mehreren default-Blöcken}\label{switch}
     Switch-Anweisungen, welche mehrere default-Blöcke enthalten werden ab sofort als fehlerhafte Syntax erkannt und werfen einen Fehler. Dies war bisher nicht der Fall,
     allerdings wurde bei einer solchen Anweisung nur der letzte default-Block ausgewertet. Dieses Verhalten zeigt sich in Listing~\ref{lst:php5switch}. Der entsprechende
@@ -37,7 +56,7 @@ Wechsel der Ausführungsumgebung zwingend vorrausgesetzt.
 
     \begin{lstlisting}[language=php, caption={Beispiel meherer default-Blöcke in Switch-Anweisungen}, label={lst:php5switch}]
         <?php
-        switch (1) {
+        switch(1) {
             default:
                 echo("Never evaluated");
                 break;

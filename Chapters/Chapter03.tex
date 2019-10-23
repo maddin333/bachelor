@@ -30,21 +30,21 @@ in den betroffenen Quellcode. \textbf{ISO/IEC 14764} sieht vor, die Migration zu
         schwer mit einer trivialen Suche zu finden sind.
 
         \begin{lstlisting}[caption={Beispiel eines generierten Berichts mit \textit{\ac{php7mar}}}, label={lst:php7mar}]
-            #### C:\Users\Nutzer\Documents\GitHub\gambio_tickets75\StyleEdit\classes\GMCSS.php
-            * oldClassConstructors
-            * Line 55:  `function GMCSS($p_css_file, $p_type='archive')`
-            * Line 384: `function GMCSSImport($p_css_file = false, $p_import_mode = '')`
-            * Line 791: `function GMCSSExport($p_css_file)`
-            * Line 912: `function GMCSSUpload($p_files, $p_type)`
-            * Line 982: `function GMCSSArchive()`
-            * deprecatedFunctions
-            * Line 302: `$t_css_query = mysql_query("`
-            * Line 311: `if((int)mysql_num_rows($t_css_query) > 0)`
-            * Line 313: `$t_row_styles = mysql_fetch_array($t_css_query, MYSQL_ASSOC);`
-            * Line 316: `$t_css_query = mysql_query("`
-            * Line 325: `if((int)mysql_num_rows($t_css_query) > 0)`
-            * variableInterpolation
-            * Line 359: `global $$shippingModule; //notice $$`
+        #### C:\Users\Nutzer\Documents\GitHub\gambio_tickets75\StyleEdit\classes\GMCSS.php
+        * oldClassConstructors
+        * Line 55:  `function GMCSS($p_css_file, $p_type='archive')`
+        * Line 384: `function GMCSSImport($p_css_file = false, $p_import_mode = '')`
+        * Line 791: `function GMCSSExport($p_css_file)`
+        * Line 912: `function GMCSSUpload($p_files, $p_type)`
+        * Line 982: `function GMCSSArchive()`
+        * deprecatedFunctions
+        * Line 302: `$t_css_query = mysql_query(`
+        * Line 311: `if((int)mysql_num_rows($t_css_query) > 0)`
+        * Line 313: `$t_row_styles = mysql_fetch_array($t_css_query, MYSQL_ASSOC);`
+        * Line 316: `$t_css_query = mysql_query(`
+        * Line 325: `if((int)mysql_num_rows($t_css_query) > 0)`
+        * variableInterpolation
+        * Line 359: `global $$shippingModule; //notice $$`
         \end{lstlisting}
 
 \section{Refactoring}
