@@ -48,6 +48,29 @@ Wechsel der Ausführungsumgebung zwingend vorrausgesetzt.
         ?>
     \end{lstlisting}
 
+    \subsection{Automatische Maskierung mit magic\_quotes\_runtime}
+    Magic Quotes (dt. ,,Magische Anführungszeichen``) waren eine in \ac{PHP} eingebaute Option, die es unerfahrenen Entwicklern 
+    erleichtern sollte, sich gegen SQL-Injections zu schützen. Dazu wurden Sonderzeichen in Strings, die aus externen Quellen 
+    stammten, automatisch mit einem Backslash maskiert. Da die Option standardmäßig aktiv war, jedoch per Konfiguration 
+    ausgeschaltet werden konnte, war es möglich, dass Code auf verschiedenen Systemen unterschiedlich reagierte und sich 
+    Entwickler in vermeintlicher Sicherheit wägten.\cite{php_group_php:_nodate-4} Mit \ac{PHP} 5.4 wurde die Funktionalität entfernt, Funktionen wie 
+    \textit{set\_magic\_quotes\_runtime()} und \textit{magic\_quotes\_runtime()} aus Gründen der Abwärtskompatibilität jedoch 
+    nur als veraltet markiert. Ein Einsatz dieser Funktionen unter \ac{PHP} 7 resultiert in einem Fehler. 
+    
+    \subsection{Verkehrte Reihenfolge der Variablenzuweisung mit list}
+    Die Funktion \textit{list()} ermöglicht die Zuweisung von Variablen als wären diese ein Array. Quellcode der sich auf die bisherige Praxis verlässt, dass \textit{list()}
+    den letzten angegebenen Wert zuerst zuweist, kann nun nicht mehr eingesetzt werden, da die Reihenfolge der Zuweisung umgekehrt wurde. 
+    Obwohl keine klaren Gründe auszumachen sind, liegt die Vermutung nahe, dass die Änderung Verwirrungen über das Verhalten der Funktion vermindern soll. Listing
+    \ref{lst:php5list} würde bei der Ausführung unter \acs{PHP} 5 beispielsweise \glqq3\grqq{} als Ergebnis ausgeben. Dies entspricht nicht der erwartbaren Reihenfolge.
+
+    \begin{lstlisting}[language=php, caption={Beispiel der Verwendung von list()}, label={lst:php5list}]
+        <?php
+        list($first, $second, $third) = [1,2,3];
+
+        echo($first);
+        ?>
+    \end{lstlisting}
+
     \subsection{Switch-Anweisungen mit mehreren default-Blöcken}\label{switch}
     Switch-Anweisungen, welche mehrere default-Blöcke enthalten werden ab sofort als fehlerhafte Syntax erkannt und werfen einen Fehler. Dies war bisher nicht der Fall,
     allerdings wurde bei einer solchen Anweisung nur der letzte default-Block ausgewertet. Dieses Verhalten zeigt sich in Listing~\ref{lst:php5switch}. Der entsprechende
@@ -67,19 +90,6 @@ Wechsel der Ausführungsumgebung zwingend vorrausgesetzt.
         ?>
     \end{lstlisting}
 
-    \subsection{Verkehrte Reihenfolge der Variablenzuweisung mit list}
-    Die Funktion \textit{list()} ermöglicht die Zuweisung von Variablen als wären diese ein Array. Quellcode der sich auf die bisherige Praxis verlässt, dass \textit{list()}
-    den letzten angegebenen Wert zuerst zuweist, kann nun nicht mehr eingesetzt werden, da die Reihenfolge der Zuweisung umgekehrt wurde. 
-    Obwohl keine klaren Gründe auszumachen sind, liegt die Vermutung nahe, dass die Änderung Verwirrungen über das Verhalten der Funktion vermindern soll. Listing
-    \ref{lst:php5list} würde bei der Ausführung unter \acs{PHP} 5 beispielsweise \glqq3\grqq{} als Ergebnis ausgeben. Dies entspricht nicht der erwartbaren Reihenfolge.
-
-    \begin{lstlisting}[language=php, caption={Beispiel der Verwendung von list()}, label={lst:php5list}]
-        <?php
-        list($first, $second, $third) = [1,2,3];
-
-        echo($first);
-        ?>
-    \end{lstlisting}
 
 \section{Veraltete Funktionen}
 Als veraltet markierte Funktionen sind in der neuen Umgebung zwar noch unterstützt, sollten aber nach Möglichkeit nicht mehr eingesetzt und schnellstmöglich durch geeignete 
@@ -145,9 +155,25 @@ einzelne Funktionsparameter entfernt wurden oder andere Datentypen zurückgegebe
         <?php
         $uppercase = preg_replace(
             "/([a-z]*)/e",
-            "strtoupper($1)",
+            "strtoupper('$1')",
             $mixedCase
         );
+        ?>
+    \end{lstlisting}
+    
+    \section{Doppelte Funktionsparameter}
+    Bisher war es möglich, Funktionen zu definieren, die mehrere Parameter mit dem selben Namen akzeptieren. Dabei wurde der 
+    Variablen der Wert des zuletzt definierten Parameters zugewiesen. Beispiel~\ref{lst:php5parameter} verdeutlicht dieses 
+    Verhalten, indem die Ausgabe den Wert ,,3`` zeigt. Diese Praxis ist in \ac{PHP} 7 nicht mehr möglich und 
+    führt zu einem Fehler.
+
+    \begin{lstlisting}[language=php, caption={Beispiel meherer gleichnamiger Funktionsparameter}, label={lst:php5parameter}]
+        <?php
+            function foo($x, $x){
+                echo($x);
+            }
+            
+            foo(1,2);
         ?>
     \end{lstlisting}
 

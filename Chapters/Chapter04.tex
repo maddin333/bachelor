@@ -10,10 +10,14 @@ entsprechende Werkzeuge zur Automatisierung nötig sind, da kein Überblick übe
 \section{Anforderungsanalyse}
 Die Anforderungsanalyse ist der wichtigste Schritt zur Vorbereitung der Migration. Durch sie kann eine Abschätzung getroffen werden, 
 wie schwer und welche Teile des Codes von der Migration betroffen sind. Dies ist vor allem wichtig, hinsichtlich der 
-Wirtschaftlichkeit einer Migration. Im vorliegenden Fall wurde die Analyse mit dem Programm \textit{php7mar} durchgeführt.
+Wirtschaftlichkeit einer Migration. Ist der Anteil zu migrierenden Codes zu hoch, kann es sinnvoll sein, eine Software 
+komlett neu zu schreiben. Im vorliegenden Fall wurde die Analyse mit dem Programm \textit{php7mar} durchgeführt.
 Die Ergebnisse, dargestellt in \ref{tab:migrationPercentage}, zeigen, dass zwar über 10\% der Dateien unter \ac{PHP} 7 
-Fehler enthalten, gemessen an den betroffenen Codezeilen aber nur ein kleiner Teil (unter 0,5\%) des Codes migiriert werden muss.
- 
+Fehler enthalten, gemessen an den betroffenen Codezeilen aber nur ein kleiner Teil (0,24\%) des Codes migiriert werden muss.
+Eine granularere Analyse erlaubt das angehängte Python-Skript, welches die tatsächlich genutzten Funktionen aus dem Report 
+herausfiltert. Die Ergebnisse in Tabelle~\ref{tab:migrationFunctions} zeigen, dass die Datenbankverbindung mittels der 
+Erweiterung \textit{mysql} der größte Schwerpunkt der Migration darstellt. Ähnlich große Verbreitung haben implizite 
+Konstruktoren.
 \begin{table}
     \centering
     \caption{Anteil zu migrierender Codeteile an der gesamten Codebasis}
@@ -24,3 +28,57 @@ Fehler enthalten, gemessen an den betroffenen Codezeilen aber nur ein kleiner Te
     \textbf{Codezeilen} & 596198 & 1431      & 0,24\%  
     \end{tabular}
 \end{table}
+
+\begin{table}
+    \centering
+    \caption{Vorkommen zu migrierender Funktionen in der Codebasis}
+    \label{tab:migrationFunctions}
+    \begin{tabular}{llll}
+                                            & Anzahl der Vorkommen \\
+    \textbf{mysql}                          & 722   \\
+    \textbf{Implizite Konstrukoren}         & 453 \\
+    \textbf{list}                           & 30 \\
+    \textbf{foreach per Referenz}           & 21 \\
+    \textbf{Magic Quotes}                   & 20 \\
+    \textbf{Indirekte Variablenzugriffe}    & 20 \\
+    \textbf{preg\_replace mit Option /e}    & 17 \\
+    \textbf{Konstruktoraufruf per Referenz} & 6 \\
+    \textbf{Doppelte Funktionsparameter}    & 3 \\    
+    \textbf{Array per Referenz}             & 1 \\
+    \end{tabular}
+\end{table}
+
+\section{Entwicklung von Werkzeugen zur Durchführung der Migration}
+Für die Durchführung der Migration, im speziellen die Anpassung der Software an die neue Umgebung, wurde ein Docker-Container 
+erstellt, welcher eine einheitliche Konfiguration der Auführungsumgebung bereitstellt. Dazu wurde auf zwei vorgefertigte 
+Images zurückgegriffen, eine \ac{PHP}-Installation in Version 7.2 und eine \textit{MySQL}-Datenbank um eine lokale Kopie 
+der Datenbank für Tests bereitzustellen. Zudem wurde zur Unterstützung der Entwicklung die Erweiterung \textit{Xdebug}\footnote{Xdebug, \url{https://xdebug.org/}} 
+installiert und konfiguriert, wodurch Entwicklern auch bei einer serverseitigen Ausführung des Codes eine Schnittstelle 
+für den Debugger der Entwicklungsumgebung bereitgestellt wird.
+
+\section{Entwicklung der an die neue Umgebung angepassten Software}
+
+    \subsection{Ersetzen von preg\_replace mit Option /e}
+    Die gleiche Funktionsweise wie \textit{preg\_replace} mit der Option \textit{/e} bietet \ac{PHP} seit der Version 4 mit der 
+    Funktion \textit{preg\_replace\_callback}. Diese Funktion erwartet neben dem regulären Ausdruck und dem zu prüfenden 
+    String eine Callback-Funktion, welche die Treffer des regulären Ausdrucks verarbeitet und eine Ersetzung zurückgibt.
+    Beispiel~\ref{lst:php7preg_rep} zeigt, wie \textit{preg\_replace\_callback} die Funktion \textit{preg\_replace} unter 
+    Verwendung einer anonymen Funktion ersetzen kann. Die erste Zeile zeigt die ursprüngliche Variante, darunter ist die 
+    Ersetzung zu sehen. Diese definiert eine anonyme Funktion, die wiederrum die Funktion \textit{removeEvilAttributes} aufruft. 
+    Diese Verkettung geschieht, um maximale Kompatibilität zu gewährleisten, da \textit{removeEvilAttributes} einen String 
+    als Argument erwartet, beim direkten Aufruf über \textit{preg\_relace\_callback} ein Array übergeben bekommen würde. Um 
+    die Funktion nicht ändern zu müssen und somit möglicherweise Inkompatibilitäten zu schaffen, wurde dieser Workaround 
+    gewählt.
+
+    \begin{lstlisting}[language=php, caption={Beispiel der Nutzung von preg\_replace\_callback}, label={lst:php7preg_rep}]
+        <?php
+        preg_replace('/<(.*?)>/ie', "'<'.removeEvilAttributes('\\1').'>'", $source);
+        
+        preg_replace_callback(
+            '/<(.*?)>/i', 
+            function($matches){
+                return '<'.removeEvilAttributes($matches[1]).'>';
+            },
+            $source);
+        ?>
+    \end{lstlisting}

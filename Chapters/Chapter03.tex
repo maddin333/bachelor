@@ -27,7 +27,9 @@ in den betroffenen Quellcode. \textbf{ISO/IEC 14764} sieht vor, die Migration zu
         sich in Listing\ref{lst:php7mar}. In der Datei \textit{GMCSS.php} werden drei Fehlerklassen gefunden: Erstens mehrere Fälle der Nutzung der veralteten Definition von
         Konstruktoren, zweitens einige Vorkommen der Entfernten Erweiterung \textit{mysql}, sowie drittens ein indirekter Variablenzugriff, dessen Aussage unter PHP 7
         möglicherweise eine andere ist (vgl. Kapitel~\ref{indirectVar}). Insbesondere der erste Fall zeigt die Überlegenheit eines Analysetools, da solche Fehler nur
-        schwer mit einer trivialen Suche zu finden sind.
+        schwer mit einer trivialen Suche zu finden sind. Trotzdem ist auch dieses Werkzeug nicht vollständig. Beispielsweise werden Fehler, die die Funktion 
+        \textit{preg\_replace}~\ref{preg_replace} betreffen, nicht gefunden. Diese Funktion wurde zum Zwecke der vollständigen Analyse nachgepflegt und auf 
+        \textit{Github} veröffentlicht.\footnote{Martin Duschek. php7mar, URL: \url{https://github.com/maddin333/php7mar}}
 
         \begin{lstlisting}[caption={Beispiel eines generierten Berichts mit \textit{\ac{php7mar}}}, label={lst:php7mar}]
         #### C:\Users\Nutzer\Documents\GitHub\gambio_tickets75\StyleEdit\classes\GMCSS.php
@@ -47,7 +49,7 @@ in den betroffenen Quellcode. \textbf{ISO/IEC 14764} sieht vor, die Migration zu
         * Line 359: `global $$shippingModule; //notice $$`
         \end{lstlisting}
 
-\section{Refactoring}
+\section{Refactoring} %TODO
     Refactoring beschreibt die Technik, bestehenden Code in seiner Struktur so zu verändern, dass dieser änderbar bleibt und wichtige Bestandteile leicht indentifizierbar 
     bleiben, ohne jedoch den eigentlichen Sinn des Programms zu verändern. \cite{fowler_refactoring_1999} Bei der Migration von Software muss dem Refactoring ein hoher Stellenwert zugemessen werden, 
     da große Bestandteile des Codes ausgetauscht und verändert werden, was nach Lehman \cite[S. 1060-1076]{lehman_programs_1980} zur Degeneration von Software führt.
