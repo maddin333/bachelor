@@ -58,6 +58,33 @@ für den Debugger der Entwicklungsumgebung bereitgestellt wird.
 
 \section{Entwicklung der an die neue Umgebung angepassten Software}
 
+    \subsection{Ersetzung impliziter Konstruktoren}
+    Die Ersetzung impliziter Konstruktoren~\ref{php5implicit} im Quellcode stellt sich im Grunde trivial dar, da der 
+    Funktionsname des Konstruktors direkt durch das Schlüsselwort \textit{\_\_construct} ersetzt werden kann. 
+    Dadurch bleiben alle Konstruktoraufrufe durch \textit{new} funktionsfähig. Allerdings 
+    ist dabei zu beachten, dass die betreffende Konstruktorfunktion auch direkt über ihren Namen aufgerufen werden kann.
+    Deshalb ist es ratsam, die ursprüngliche Konstruktorfunktion unverändert zu lassen und diese über den neuen 
+    Konstruktor aufzurufen. Funktionsparameter müssen entsprechend vom neuen Konstruktor an die Funktion übergeben werden. 
+    Das Beispiel~\ref{lst:php7implicit} zeigt diesen Workaround, der zu maximal möglicher Kompatibilität führt, 
+    ohne jeden Aufruf der Funktion zu überprüfen. Dabei 
+    wurde der ursprüngliche Konstruktor unverändert belassen, die Funktion \textit{\_\_construct} wurde hinzugefügt. Diese 
+    nimmt den Parameter \textit{\$order\_id} entgegen und ruft die Funktion \textit{order} mit diesem auf. Dadurch 
+    bleibt \textit{order} innerhalb der Klasse aufrufbar.
+
+    \begin{lstlisting}[language=php, caption={Beispiel der Ersetzung impliziter Konstruktoren}, label={lst:php7implicit}]
+        <?php
+        class order {
+            function __construct($order_id) {
+                $this->$order($order_id);
+            }
+
+            function order($order_id) {
+                print($order_id);
+            }
+        }
+        ?>
+    \end{lstlisting}
+
     \subsection{Ersetzen von preg\_replace mit Option /e}
     Die gleiche Funktionsweise wie \textit{preg\_replace} mit der Option \textit{/e} bietet \ac{PHP} seit der Version 4 mit der 
     Funktion \textit{preg\_replace\_callback}. Diese Funktion erwartet neben dem regulären Ausdruck und dem zu prüfenden 
@@ -82,3 +109,9 @@ für den Debugger der Entwicklungsumgebung bereitgestellt wird.
             $source);
         ?>
     \end{lstlisting}
+
+\section{Durchführung der Migration}
+
+\section{Verifikation der Migration}
+
+\section{Support der alten Umgebung}

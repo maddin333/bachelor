@@ -96,7 +96,7 @@ Als veraltet markierte Funktionen sind in der neuen Umgebung zwar noch unterstü
 Funktionen ersetzt werden, da sie möglicherweise in zukünftigen Versionen entfernt oder verändert werden. Werden diese Funktionen trotzdem eingesetzt, wird eine Warnung 
 ausgegeben, die Programmierer darauf hinweisen soll, dass die Verwendung der Funktion möglicherweise gefährlich sein kann. Die Lauffähigkeit des Programms wird bis zur 
 abschließenden Entfernung der Funktion jedoch nicht beeinflusst. \cite{oracle_how_2004}
-    \subsection{Implizite Benennung von Konstruktoren}
+    \subsection{Implizite Benennung von Konstruktoren}\label{php5implicit}
     Mit der Einführung der objektorientierten Programmierung in PHP 4 wurde festgelegt, dass Funktionen mit dem selben Namen wie die umschließende Klasse implizit als 
     Konstruktor der Klasse erkannt werden. Ein Beispiel zur Implementierung eines Konstruktors nach diesem Prinzip ist in Listing~\ref{lst:php4construct} dargestellt.
     PHP 7 unterstützt diese Notation zwar noch, allerdings wird die, in PHP 5 eingeführte, explizite Benennung mit dem Schlüsselwort \textit{\_\_construct} (siehe 
