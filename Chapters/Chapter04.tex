@@ -17,7 +17,8 @@ Fehler enthalten, gemessen an den betroffenen Codezeilen aber nur ein kleiner Te
 Eine granularere Analyse erlaubt das angehängte Python-Skript, welches die tatsächlich genutzten Funktionen aus dem Report 
 herausfiltert. Die Ergebnisse in Tabelle~\ref{tab:migrationFunctions} zeigen, dass die Datenbankverbindung mittels der 
 Erweiterung \textit{mysql} der größte Schwerpunkt der Migration darstellt. Ähnlich große Verbreitung haben implizite 
-Konstruktoren.
+Konstruktoren. Die Fehlerklasse \textit{Arraywert per Referenz} wird von \textit{php7mar} zwar ausgewiesen, steht jedoch 
+nicht in Zusammenhang mit der Migration zu \ac{PHP} 7.
 \begin{table}
     \centering
     \caption{Anteil zu migrierender Codeteile an der gesamten Codebasis}
@@ -44,7 +45,7 @@ Konstruktoren.
     \textbf{Konstruktoraufruf per Referenz} & 6 \\
     \textbf{preg\_replace mit Option /e}    & 5 \\
     \textbf{Doppelte Funktionsparameter}    & 3 \\    
-    \textbf{Array per Referenz}             & 1 \\
+    \textbf{Arraywert per Referenz}             & 1 \\
     \end{tabular}
 \end{table}
 
@@ -58,7 +59,9 @@ für den Debugger der Entwicklungsumgebung bereitgestellt wird.
 
 \section{Entwicklung der an die neue Umgebung angepassten Software}
 
-    \subsection{Ersetzung impliziter Konstruktoren}
+    \subsection{Ersetzen der Erweiterung mysql}
+
+    \subsection{Ersetzen impliziter Konstruktoren}
     Die Ersetzung impliziter Konstruktoren~\ref{php5implicit} im Quellcode stellt sich im Grunde trivial dar, da der 
     Funktionsname des Konstruktors direkt durch das Schlüsselwort \textit{\_\_construct} ersetzt werden kann. 
     Dadurch bleiben alle Konstruktoraufrufe durch \textit{new} funktionsfähig. Allerdings 
@@ -85,6 +88,12 @@ für den Debugger der Entwicklungsumgebung bereitgestellt wird.
         ?>
     \end{lstlisting}
 
+    \subsection{Überprüfung des Einsatzes von list}
+
+    \subsection{Entfernen aller Aufrufe von Magic Quotes}
+
+    \subsection{Ersetzen von Konstruktoraufrufen per Referenz}
+
     \subsection{Ersetzen von preg\_replace mit Option /e}
     Die gleiche Funktionsweise wie \textit{preg\_replace} mit der Option \textit{/e} bietet \ac{PHP} seit der Version 4 mit der 
     Funktion \textit{preg\_replace\_callback}. Diese Funktion erwartet neben dem regulären Ausdruck und dem zu prüfenden 
@@ -109,6 +118,10 @@ für den Debugger der Entwicklungsumgebung bereitgestellt wird.
             $source);
         ?>
     \end{lstlisting}
+
+    \subsection{Entfernen doppelter Funktionsparameter}
+
+    \subsection{}
 
 \section{Durchführung der Migration}
 
