@@ -12,7 +12,7 @@ Die Anforderungsanalyse ist der wichtigste Schritt zur Vorbereitung der Migratio
 wie schwer und welche Teile des Codes von der Migration betroffen sind. Dies ist vor allem wichtig, hinsichtlich der 
 Wirtschaftlichkeit einer Migration. Ist der Anteil zu migrierenden Codes zu hoch, kann es sinnvoll sein, eine Software 
 komlett neu zu schreiben. Im vorliegenden Fall wurde die Analyse mit dem Programm \textit{php7mar} durchgeführt.
-Die Ergebnisse, dargestellt in \ref{tab:migrationPercentage}, zeigen, dass zwar über 10\% der Dateien unter \ac{PHP} 7 
+Die Ergebnisse, dargestellt in Tabelle~\ref{tab:migrationPercentage}, zeigen, dass zwar über 10\% der Dateien unter \ac{PHP} 7 
 Fehler enthalten, gemessen an den betroffenen Codezeilen aber nur ein kleiner Teil (0,24\%) des Codes migiriert werden muss.
 Eine granularere Analyse erlaubt das angehängte Python-Skript, welches die tatsächlich genutzten Funktionen aus dem Report 
 herausfiltert. Die Ergebnisse in Tabelle~\ref{tab:migrationFunctions} zeigen, dass die Datenbankverbindung mittels der 
@@ -38,14 +38,14 @@ nicht in Zusammenhang mit der Migration zu \ac{PHP} 7.
                                             & Anzahl fehlerhafter Dateien \\
     \textbf{mysql}                          & 722   \\
     \textbf{Implizite Konstrukoren}         & 453 \\
-    \textbf{list}                           & 30 \\
     \textbf{foreach per Referenz}           & 21 \\
     \textbf{Magic Quotes}                   & 20 \\
     \textbf{Indirekte Variablenzugriffe}    & 20 \\
     \textbf{Konstruktoraufruf per Referenz} & 6 \\
     \textbf{preg\_replace mit Option /e}    & 5 \\
     \textbf{Doppelte Funktionsparameter}    & 3 \\    
-    \textbf{Arraywert per Referenz}             & 1 \\
+    \textbf{list}                           & 1 \\
+    \textbf{Arraywert per Referenz}         & 1 \\
     \end{tabular}
 \end{table}
 
@@ -62,7 +62,7 @@ für den Debugger der Entwicklungsumgebung bereitgestellt wird.
     \subsection{Ersetzen der Erweiterung mysql}
 
     \subsection{Ersetzen impliziter Konstruktoren}
-    Die Ersetzung impliziter Konstruktoren~\ref{php5implicit} im Quellcode stellt sich im Grunde trivial dar, da der 
+    Die Ersetzung impliziter Konstruktoren (vgl. Kapitel~\ref{php5implicit} im Quellcode stellt sich im Grunde trivial dar, da der 
     Funktionsname des Konstruktors direkt durch das Schlüsselwort \textit{\_\_construct} ersetzt werden kann. 
     Dadurch bleiben alle Konstruktoraufrufe durch \textit{new} funktionsfähig. Allerdings 
     ist dabei zu beachten, dass die betreffende Konstruktorfunktion auch direkt über ihren Namen aufgerufen werden kann.
@@ -87,13 +87,29 @@ für den Debugger der Entwicklungsumgebung bereitgestellt wird.
         }
         ?>
     \end{lstlisting}
-
-    \subsection{Überprüfung des Einsatzes von list}
-
+    
     \subsection{Entfernen aller Aufrufe von Magic Quotes}
-
+    Wie in Kapitel~\ref{php5magicquotes} ausgeführt, haben Aufrufe von \textit{magic\_quotes\_runtime} sowie \textit{set\_magic\_quotes\_runtime} seit \ac{PHP} 5.4 
+    keinen Effekt mehr. Daher können diese bei einer Migration von \ac{PHP} 5.6 gefahrlos entfernt werden. Trotzdem ist darauf zu achten, dass Inhalte aus 
+    externen Quellen mit angemessenen Funktionen maskiert werden, um Sicherheitsrisiken zu vermeiden. Die Erweiterung \textit{mysqli} bietet dafür beispielsweise 
+    die Funktion \textit{mysqli\_real\_escape\_string}, welche Sonderzeichen unter Berücksichtigung des eingestellten Zeichensatzes maskiert.
+    
     \subsection{Ersetzen von Konstruktoraufrufen per Referenz}
-
+    Die Ersetzung von Konstruktoraufrufen, die per Referenz zugewiesen werden ist trivial. Es genügt, bei allen Vorkommen die Referenz zu 
+    entfernen und durch einen Zuweisungsoperator zu ersetzen, da der Operator \textit{new} seit \ac{PHP} 5 automatisch eine Referenz zurückgibt. 
+    Die Ersetzung wird im Beispiel~\ref{lst:php7newReference} deutlich. Der auf den Konstruktoraufruf folgende Code kann unverändert mit dem Objekt arbeiten.
+    
+    \begin{lstlisting}[language=php, caption={Beispiel der Ersetzung von Konstruktoraufrufen per Referenz}, label={lst:php7newReference}]
+        <?php
+        $rv =& new $class($this); //alter Konstruktoraufruf per Refrenz
+        $rv = new $class($this); //neuer Konstruktoraufruf ohne Referenz
+        
+        if(is_subclass_of($rv, 'IclearBase')) {
+            $rv->icError =& $this->getObject('IclearError', true);
+            }
+        ?>
+    \end{lstlisting}
+    
     \subsection{Ersetzen von preg\_replace mit Option /e}
     Die gleiche Funktionsweise wie \textit{preg\_replace} mit der Option \textit{/e} bietet \ac{PHP} seit der Version 4 mit der 
     Funktion \textit{preg\_replace\_callback}. Diese Funktion erwartet neben dem regulären Ausdruck und dem zu prüfenden 
@@ -105,24 +121,44 @@ für den Debugger der Entwicklungsumgebung bereitgestellt wird.
     als Argument erwartet, beim direkten Aufruf über \textit{preg\_relace\_callback} ein Array übergeben bekommen würde. Um 
     die Funktion nicht ändern zu müssen und somit möglicherweise Inkompatibilitäten zu schaffen, wurde dieser Workaround 
     gewählt.
-
+        
     \begin{lstlisting}[language=php, caption={Beispiel der Nutzung von preg\_replace\_callback}, label={lst:php7preg_rep}]
         <?php
         preg_replace('/<(.*?)>/ie', "'<'.removeEvilAttributes('\\1').'>'", $source);
         
         preg_replace_callback(
             '/<(.*?)>/i', 
-            function($matches){
-                return '<'.removeEvilAttributes($matches[1]).'>';
+        function($matches){
+            return '<'.removeEvilAttributes($matches[1]).'>';
             },
             $source);
         ?>
     \end{lstlisting}
-
+            
     \subsection{Entfernen doppelter Funktionsparameter}
+    Wie in Kapitel~\ref{php5double} beschrieben, führt die Angabe mehrerer Funktionsparameter mit dem selben Namen unter \ac{PHP} 7 zu einem Fehler.
+    Um diesen zu korrigieren reicht es nicht aus, die überflüssigen Parameter zu löschen. Vielmehr müssen alle Aufrufe der Funktion überprüft werden, 
+    um entscheiden zu können, welches Vorgehen sinnvoll ist. Sind die Parameter wie in Aufruf 1 im Beispiel~\ref{lst:php7double} mit der gleichen Variable 
+    belegt, genügt das Löschen eines Parameters in der Funktion und im Aufruf. Sind die Parameter jedoch unterschiedlich belegt, darf, um die Funktionalität 
+    zu erhalten, nur der letzte Parameter bestehen bleiben, da dessen Wert innerhalb der Funktion zum Tragen kommt.
+    
+    \begin{lstlisting}[language=php, caption={Beispiel der Nutzung von preg\_replace\_callback}, label={lst:php7double}]
+        <?php
+        function foo($bar, $bar) {
+            echo($bar);
+            }
+            
+            //Aufruf 1
+            foo($x,$x);
+            //Aufruf 2
+            foo($x,$y);
+            ?>
+        \end{lstlisting}
 
-    \subsection{}
-
+    \subsection{Überprüfung des Einsatzes von list}
+    Da sich bei der Verwendung der Funktion \textit{list}, wie in Kapitel~\ref{php5listChanges} beschrieben, Änderungen ergeben haben, muss jeder Aufruf der 
+    Funktion geprüft werden. Die Überprüfung im vorliegenden Fall ergab keinen Handlungsbedarf, da %TODO 
+                
 \section{Durchführung der Migration}
 
 \section{Verifikation der Migration}

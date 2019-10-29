@@ -48,29 +48,47 @@ Wechsel der Ausführungsumgebung zwingend vorrausgesetzt.
         ?>
     \end{lstlisting}
 
-    \subsection{foreachbyreference}
+    \subsection{Foreach ändert nicht mehr den Arrayzeiger}
     %TODO
 
-    \subsection{Automatische Maskierung mit magic\_quotes\_runtime}
+    \subsection{Konstruktoraufrufe per Referenz}
+    Aufrufe des Operators \textit{new} können nicht mehr per Referenz an eine Variable übergeben werden. Dieses Verhalten ist seit \ac{PHP} 5.3 als veraltet 
+    markiert und wurde in \ac{PHP} 7 entfernt, da ein Konstruktoaufruf automatisch eine Referenz auf das Objekt zurückgibt.\cite{php_group_php:_nodate-5}
+
+    \subsection{Automatische Maskierung mit magic\_quotes\_runtime}\label{php5magicquotes}
     Magic Quotes (dt. ,,Magische Anführungszeichen``) waren eine in \ac{PHP} eingebaute Option, die es unerfahrenen Entwicklern 
     erleichtern sollte, sich gegen SQL-Injections zu schützen. Dazu wurden Sonderzeichen in Strings, die aus externen Quellen 
     stammten, automatisch mit einem Backslash maskiert. Da die Option standardmäßig aktiv war, jedoch per Konfiguration 
     ausgeschaltet werden konnte, war es möglich, dass Code auf verschiedenen Systemen unterschiedlich reagierte und sich 
-    Entwickler in vermeintlicher Sicherheit wägten.\cite{php_group_php:_nodate-4} Mit \ac{PHP} 5.4 wurde die Funktionalität entfernt, Funktionen wie 
-    \textit{set\_magic\_quotes\_runtime()} und \textit{magic\_quotes\_runtime()} aus Gründen der Abwärtskompatibilität jedoch 
+    Entwickler in vermeintlicher Sicherheit wägten.\cite{php_group_php:_nodate-4} Mit \ac{PHP} 5.4 wurde jegliche Funktionalität entfernt, Funktionen wie 
+    \textit{set\_magic\_quotes\_runtime()} und \textit{magic\_quotes\_runtime()} aus Gründen der Kompatibilität jedoch 
     nur als veraltet markiert. Ein Einsatz dieser Funktionen unter \ac{PHP} 7 resultiert in einem Fehler. 
     
-    \subsection{Verkehrte Reihenfolge der Variablenzuweisung mit list}
+    \subsection{Änderungen der Funktion list}\label{php5listChanges}
     Die Funktion \textit{list()} ermöglicht die Zuweisung von Variablen als wären diese ein Array. Quellcode der sich auf die bisherige Praxis verlässt, dass \textit{list()}
-    den letzten angegebenen Wert zuerst zuweist, kann nun nicht mehr eingesetzt werden, da die Reihenfolge der Zuweisung umgekehrt wurde. 
-    Obwohl keine klaren Gründe auszumachen sind, liegt die Vermutung nahe, dass die Änderung Verwirrungen über das Verhalten der Funktion vermindern soll. Listing
-    \ref{lst:php5list} würde bei der Ausführung unter \acs{PHP} 5 beispielsweise \glqq3\grqq{} als Ergebnis ausgeben. Dies entspricht nicht der erwartbaren Reihenfolge.
+    den letzten angegebenen Wert zuerst zuweist, kann nun nicht mehr eingesetzt werden, da die Reihenfolge der Zuweisung bei Verwendung des Operators \textit{\[\]} umgekehrt wurde. 
+    Obwohl keine klaren Gründe für die Änderung angegeben werden, liegt die Vermutung nahe, dass dadurch Verwirrungen über das Verhalten der Funktion vermindert werden sollen. 
+    Listing~\ref{lst:php5list} würde bei der Ausführung unter \acs{PHP} 5 beispielsweise \glqq3\grqq{} als Ergebnis ausgeben. Dies entspricht nicht der erwartbaren Reihenfolge.
+    Zudem verliert \textit{list} die Möglichkeit Strings zu entpacken. Die Möglichkeit, leere Argumente zu übergeben wurde ebenso entfernt. Beide Optionen werden in 
+    Beispiel~\ref{lst:php5list1} gezeigt.
 
     \begin{lstlisting}[language=php, caption={Beispiel der Verwendung von list()}, label={lst:php5list}]
         <?php
-        list($first, $second, $third) = [1,2,3];
+        list($foo[], $foo[], $foo[]) = [1,2,3];
 
-        echo($first);
+        echo($foo[0])
+        ?>
+    \end{lstlisting}
+
+    \begin{lstlisting}[language=php, caption={Beispiel unerlaubter Verwendungen von list()}, label={lst:php5list1}]
+        <?php
+        //Entpacken eines Strings mit list()
+        $foo = 'bar';
+        list($a[], $a[], $a[]) = $foo;
+
+        //Angabe leerer Argumente in list()
+        $foo = [3,2];
+        list(,,) = $foo;
         ?>
     \end{lstlisting}
 
@@ -164,7 +182,7 @@ einzelne Funktionsparameter entfernt wurden oder andere Datentypen zurückgegebe
         ?>
     \end{lstlisting}
     
-    \section{Doppelte Funktionsparameter}
+    \section{Doppelte Funktionsparameter}\label{php5double}
     Bisher war es möglich, Funktionen zu definieren, die mehrere Parameter mit dem selben Namen akzeptieren. Dabei wurde der 
     Variablen der Wert des zuletzt definierten Parameters zugewiesen. Beispiel~\ref{lst:php5parameter} verdeutlicht dieses 
     Verhalten, indem die Ausgabe den Wert ,,3`` zeigt. Diese Praxis ist in \ac{PHP} 7 nicht mehr möglich und 
