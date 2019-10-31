@@ -248,9 +248,9 @@ einzelne Funktionsparameter entfernt wurden oder andere Datentypen zurückgegebe
 Einige Funktionalitäten von \acs{PHP} sind nicht in die Sprache selbst eingebaut, sondern werden durch externe Erweiterungen eingebunden, die jedoch standardmäßig
 mit \acs{PHP} ausgeliefert werden. Diese stehen somit nicht unter der Verwaltung der \acs{PHP}-Entwickler und werden unabhängig weiterentwickelt.
     \subsection{mysql}
-    Die seit \acs{PHP} 5 als veraltet erklärte Erweiterung \textit{mysql} wird nicht mehr unterstützt. Dies wird mit Sicherheitsrisiken begründet. So unterstützt
+    Die seit \acs{PHP} 5.5 als veraltet erklärte Erweiterung \textit{mysql} wird nicht mehr unterstützt. Dies wird mit Sicherheitsrisiken begründet. So unterstützt
     \textit{mysql} beispielsweise keine \textbf{Prepared Statements}, welche einen wirksamen Schutz gegen \textbf{SQL Injections} bieten. \cite{oracle_mysql_nodate}
-    Zudem stehen mit \textit{mysqli} und \textit{PDO} aktuellere Erweiterungen zur Verfügung.
+    Zudem stehen mit \textit{mysqli} und \textit{PDO\_MySQL} aktuellere Erweiterungen zur Verfügung.
     
     \subsection{ereg}\label{ereg}
     Die Erweiterung \textit{ereg} bietet verschiedene Funktionen für die Nutzung von \textbf{POSIX}-kompatiblen \textbf{Regulären Ausdrücken}. Die Erweiterung wurde
@@ -261,6 +261,7 @@ Die Ziele der Weiterentwicklung von \acs{PHP} lassen sich folgendermaßen zusamm
 \begin{itemize}
     \item Erhöhung der Sicherheit
     \item Bessere Verständlichkeit des geschriebenen Quellcodes
+    \item Höhere Ausführungsgeschwindigkeit
 \end{itemize}  
 Die Erhöhung der Sicherheit wird hauptsächlich durch die Entfernung von Erweiterungen erreicht, die nicht weiterentwickelt werden. Entwickler werden dadurch gezwungen,
 diese mit Mitteln zu ersetzen, welche zum Einen auch zukünftig mit Sicherheitsupdates versorgt werden und zum Anderen Features bieten um den Quellcode zusätzlich

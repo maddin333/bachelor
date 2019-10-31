@@ -7,18 +7,20 @@ genutzten Werkzeuge und Techniken. Die Codebasis
 für das Projekt umfasst 5732 einzelne \ac{PHP}-Dateien, bestehend aus 596.198 Zeilen Code. Diese Menge verdeutlicht, dass 
 entsprechende Werkzeuge zur Automatisierung nötig sind, da kein Überblick über die Gesamtheit der Codebasis bestehen kann.
 
-\section{Anforderungsanalyse}
+\section{Anforderungsanalyse}\label{analyze}
 Die Anforderungsanalyse ist der wichtigste Schritt zur Vorbereitung der Migration. Durch sie kann eine Abschätzung getroffen werden, 
 wie schwer und welche Teile des Codes von der Migration betroffen sind. Dies ist vor allem wichtig, hinsichtlich der 
 Wirtschaftlichkeit einer Migration. Ist der Anteil zu migrierenden Codes zu hoch, kann es sinnvoll sein, eine Software 
 komlett neu zu schreiben. Im vorliegenden Fall wurde die Analyse mit dem Programm \textit{php7mar} durchgeführt.
 Die Ergebnisse, dargestellt in Tabelle~\ref{tab:migrationPercentage}, zeigen, dass zwar über 10\% der Dateien unter \ac{PHP} 7 
 Fehler enthalten, gemessen an den betroffenen Codezeilen aber nur ein kleiner Teil (0,24\%) des Codes migiriert werden muss.
+Bei dieser Zahl ist zu beachten, dass Zeilen mit mehreren 
 Eine granularere Analyse erlaubt das angehängte Python-Skript, welches die tatsächlich genutzten Funktionen aus dem Report 
 herausfiltert. Die Ergebnisse in Tabelle~\ref{tab:migrationFunctions} zeigen, dass die Datenbankverbindung mittels der 
 Erweiterung \textit{mysql} der größte Schwerpunkt der Migration darstellt. Ähnlich große Verbreitung haben implizite 
-Konstruktoren. Die Fehlerklasse \textit{Arraywert per Referenz} wird von \textit{php7mar} zwar ausgewiesen, steht jedoch 
-nicht in Zusammenhang mit der Migration zu \ac{PHP} 7.
+Konstruktoren. Die Fehlerklassen \textit{Arraywert per Referenz} sowie \textit{foreach per Referenz} wird von \textit{php7mar} zwar ausgewiesen, stehen jedoch 
+nur bedingt in Zusammenhang mit der Migration zu \ac{PHP} 7. Diese Konstrukte sind keine Fehler, werden aufgrund ihrer Implikationen (beispielsweise des empfohlenen 
+Zurücksetzen des Arrayzeigers nach der Benutzung von foreach mit Referenz) von einigen Entwicklern nicht zur Benutzung empfohlen\footnote{Johannes Schlüter, 'References and foreach', \url{https://schlueters.de/blog/archives/141-references-and-foreach.html} (besucht am 30.10.2019)}.
 \begin{table}
     \centering
     \caption{Anteil zu migrierender Codeteile an der gesamten Codebasis}
@@ -35,16 +37,15 @@ nicht in Zusammenhang mit der Migration zu \ac{PHP} 7.
     \caption{Vorkommen zu migrierender Funktionen in der Codebasis}
     \label{tab:migrationFunctions}
     \begin{tabular}{llll}
-                                            & Anzahl fehlerhafter Dateien \\
-    \textbf{mysql}                          & 722   \\
+                                            & Anzahl der Vorkommen \\
+    \textbf{mysql}                          & 722 \\
     \textbf{Implizite Konstrukoren}         & 453 \\
     \textbf{foreach per Referenz}           & 21 \\
     \textbf{Magic Quotes}                   & 20 \\
     \textbf{Indirekte Variablenzugriffe}    & 20 \\
     \textbf{Konstruktoraufruf per Referenz} & 6 \\
     \textbf{preg\_replace mit Option /e}    & 5 \\
-    \textbf{Doppelte Funktionsparameter}    & 3 \\    
-    \textbf{list}                           & 1 \\
+    \textbf{Doppelte Funktionsparameter}    & 3 \\
     \textbf{Arraywert per Referenz}         & 1 \\
     \end{tabular}
 \end{table}
@@ -57,11 +58,18 @@ der Datenbank für Tests bereitzustellen. Zudem wurde zur Unterstützung der Ent
 installiert und konfiguriert, wodurch Entwicklern auch bei einer serverseitigen Ausführung des Codes eine Schnittstelle 
 für den Debugger der Entwicklungsumgebung bereitgestellt wird.
 
-\section{Entwicklung der an die neue Umgebung angepassten Software}
+\section{Entwicklung der an die neue Umgebung angepassten Software}\label{develop}
 
-    \subsection{Ersetzen der Erweiterung mysql}
+    \subsection{Ersetzen der Erweiterung mysql}\label{mysql}
+    Da die Erweiterung \textit{mysql} für Datenbankverbindungen schon seit \ac{PHP} 5.5 veraltet ist, stehen Entwicklern seitdem auch Alternativen zur Verfügung. Mit \textit{mysqli} und 
+    \textit{PDO\_MySQL} werden zwei \acp{API} bereitgestellt, deren Funktionalitäten weit über die der alten Erweiterung hinausgehen. Die Entscheidung zwischen 
+    beiden Möglichkeiten fiel aufgrund zweier Faktoren auf \textit{mysqli}: Zum einen die syntaktische Ähnlichkeit zwischen \textit{mysql} und \textit{mysqli}, 
+    da bei vielen Funktionen nur der \textit{mysql}-Präfix geändert, sowie eine explizite Datenbankverbindung angegeben werden muss. Zum anderen bietet \textit{mysqli} 
+    sowohl ein objektorientiertes, als auh ein prozedurales Interface, \textit{PDO\_MySQL} ist dagegen nur objektorientiert nutzbar. Da \textit{mysql} rein 
+    prozedural genutzt werden konnte, bietet es sich an, dies voerst beizubehalten und bei Bedarf auf einen objektorientierten Ansatz zu wechseln.
+    %TODO
 
-    \subsection{Ersetzen impliziter Konstruktoren}
+    \subsection{Ersetzen impliziter Konstruktoren}\label{construct}
     Die Ersetzung impliziter Konstruktoren (vgl. Kapitel~\ref{php5implicit} im Quellcode stellt sich im Grunde trivial dar, da der 
     Funktionsname des Konstruktors direkt durch das Schlüsselwort \textit{\_\_construct} ersetzt werden kann. 
     Dadurch bleiben alle Konstruktoraufrufe durch \textit{new} funktionsfähig. Allerdings 
@@ -87,12 +95,28 @@ für den Debugger der Entwicklungsumgebung bereitgestellt wird.
         }
         ?>
     \end{lstlisting}
+
+    \subsection{}
     
     \subsection{Entfernen aller Aufrufe von Magic Quotes}
-    Wie in Kapitel~\ref{php5magicquotes} ausgeführt, haben Aufrufe von \textit{magic\_quotes\_runtime} sowie \textit{set\_magic\_quotes\_runtime} seit \ac{PHP} 5.4 
+    Wie in Kapitel~\ref{php5magicquotes} ausgeführt, haben Aufrufe der Funktionen \textit{magic\_quotes\_runtime} sowie \textit{set\_magic\_quotes\_runtime} seit \ac{PHP} 5.4 
     keinen Effekt mehr. Daher können diese bei einer Migration von \ac{PHP} 5.6 gefahrlos entfernt werden. Trotzdem ist darauf zu achten, dass Inhalte aus 
     externen Quellen mit angemessenen Funktionen maskiert werden, um Sicherheitsrisiken zu vermeiden. Die Erweiterung \textit{mysqli} bietet dafür beispielsweise 
     die Funktion \textit{mysqli\_real\_escape\_string}, welche Sonderzeichen unter Berücksichtigung des eingestellten Zeichensatzes maskiert.
+    
+    \subsection{Korrektur indirekter Variablenzugriffe}\label{indirect}
+    %TODO
+    \begin{lstlisting}[language=php, caption={Anpassung indirekter Variablenzugriffe}, label={lst:php7newReference}]
+        <?php
+        if (isset ($$_SESSION['payment']->form_action_url)) {
+            $form_action_url = $$_SESSION['payment']->form_action_url;
+        }
+        
+        if (isset (${$_SESSION}['payment']->form_action_url)) {
+            $form_action_url = ${$_SESSION}['payment']->form_action_url;
+        }       
+        ?>
+    \end{lstlisting}
     
     \subsection{Ersetzen von Konstruktoraufrufen per Referenz}
     Die Ersetzung von Konstruktoraufrufen, die per Referenz zugewiesen werden ist trivial. Es genügt, bei allen Vorkommen die Referenz zu 
@@ -110,7 +134,7 @@ für den Debugger der Entwicklungsumgebung bereitgestellt wird.
         ?>
     \end{lstlisting}
     
-    \subsection{Ersetzen von preg\_replace mit Option /e}
+    \subsection{Ersetzen von preg\_replace mit Option /e}\label{preg}
     Die gleiche Funktionsweise wie \textit{preg\_replace} mit der Option \textit{/e} bietet \ac{PHP} seit der Version 4 mit der 
     Funktion \textit{preg\_replace\_callback}. Diese Funktion erwartet neben dem regulären Ausdruck und dem zu prüfenden 
     String eine Callback-Funktion, welche die Treffer des regulären Ausdrucks verarbeitet und eine Ersetzung zurückgibt.
@@ -154,13 +178,26 @@ für den Debugger der Entwicklungsumgebung bereitgestellt wird.
             foo($x,$y);
             ?>
         \end{lstlisting}
-
-    \subsection{Überprüfung des Einsatzes von list}
-    Da sich bei der Verwendung der Funktion \textit{list}, wie in Kapitel~\ref{php5listChanges} beschrieben, Änderungen ergeben haben, muss jeder Aufruf der 
-    Funktion geprüft werden. Die Überprüfung im vorliegenden Fall ergab keinen Handlungsbedarf, da %TODO 
                 
 \section{Durchführung der Migration}
+Für die Ausführung der im vorangegangenen Kapitel entwickelten Software wird eine neue Ausführungsumgebung mit \ac{PHP} 7 benötigt. Dazu wurden zwei neue 
+Server angemietet, um die alte Infrastruktur nachzubilden und beide Systeme für Tests an der neuen Umgebung parallel zueinander zu betreiben. Auf den neuen 
+Servern, die identische Konfigurationen zu den bisher zum Einsatz gekommenen Geräten aufweisen, wurde \ac{PHP} 7.2 als Ausführungsumgebung installiert. 
+Als Software für den Webserver wird Apache\footnote{Apache HTTP Server Project, \url{https://httpd.apache.org/}} eingesetzt. Nach erfolgreichen Tests konnte die 
+alte Infrastruktur durch die neue ersetzt werden, die migrierte Software also produktiv eingesetzt werden. Durch den vorgeschalteten Load-Balancer konnte jeweils 
+ein Server aus dem Produktivbetrieb entfernt werden und durch den neuen ersetz werden. Dadurch konnte die Webseite mit geringer Ausfallzeit migiriert werden und 
+im Falle eines Fehlers hätte schnell auf die alte Infrastruktur zurückgegriffen werden können.
 
-\section{Verifikation der Migration}
+\section{Verifikation der Migration}\label{newrelic}
+Zur Verifikation der Migration wurden zum einen eigene Tests durchgeführt, vor allem verschiedene Testkäufe um die Funktion für Kunden des Onlineshops zu verifizieren, 
+sowie administrative Tätigkeiten wie die Anpassung der Startseite und das Hinzufügen von Produkten zum Katalog. Zum Anderen wurde die Funktion der Webseite durch das 
+Monitoring-Tool \textit{New Relic}\footnote{New Relic, \url{https://newrelic.de}} überwacht. Dieses Werkzeug überwacht die Performance der Applikation und meldet Fehler 
+in der Ausführung.
 
 \section{Support der alten Umgebung}
+Diese Anforderung im Standard \textbf{ISO/IEC 14764} betrifft vor allem Software, die an Kunden ausgeliefert wird und dort möglicherweise auch nach der Migration 
+zum Einsatz kommt und weiter gepflegt werden soll. Für den vorliegenden Fall ist dies nur relevant, falls signifikante Fehler in der migrierten Software auftreten, 
+die einen weiteren Einsatz unmöglich machen und den erneuten Einsatz der alten Software und Ausführungsumgebung erfordern.
+Zu diesem Zweck wurde für eine Übergangszeit von einem Monat die alte Infrastruktur weiter in Betrieb gehalten, bevor diese abgeschaltet wurde. Der ursprüngliche 
+Code, der nicht unter \ac{PHP} 7 lauffähig ist, steht mitsamt einer lauffähigen Ausführungsumgebung, wie in Kapitel~\ref{VCS} beschrieben, weiter über die 
+Versionsverwaltung zur Verfügung.

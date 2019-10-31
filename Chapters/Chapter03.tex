@@ -18,9 +18,9 @@ in den betroffenen Quellcode. \textbf{ISO/IEC 14764} sieht vor, die Migration zu
         Schwierig wird die manuelle Erkennung bei Änderungen wie der Einhaltung des Standards in Switch-Anweisungen\ref{switch}. Hier ist eine Suche nur über umfangreiche
         Suchmuster (Reguläre Ausdrücke) möglich, die meist nicht trivial zu erstellen sind und viele Einzelfälle (z.B. verschachtelte Switch-Anweisungen) abdecken müssen.
         In diesen Fällen ist durch die manuelle Suche höchstens eine Eingrenzung des Problems möglich.
-    \subsection{Automatisierte Erkennung}
+    \subsection{Automatisierte Erkennung}\label{automatic}
         Da die zuvor besprochene manuelle Erkennung betroffenen Codes nur für einzelne Fälle oder kleine Projekte in Frage kommt, bietet sich als alternative die 
-        automatiche Erkennung an, mit dem Ziel, dem Entwickler einen vollumfänglichen Überblick der zu überarbeitenden Stellen im Code zu liefern. Im vorliegenden Fall
+        automatische Erkennung an, mit dem Ziel, dem Entwickler einen vollumfänglichen Überblick der zu überarbeitenden Stellen im Code zu liefern. Im vorliegenden Fall
         wurde das Tool \textit{\ac{php7mar}}\footnote{Alexia. php7mar. URL: \url{https://github.com/Alexia/php7mar}} des Entwicklers \textit{Alexia} genutzt.
         \textit{\ac{php7mar}} erkennt mithilfe von \textbf{Regulären Audrücken}, \textbf{String-Matching} und \textbf{Lexikalischer Analyse} kritischen Code in 
         Projekten und generiert daraus einen Bericht, bestehend aus Zeilenangaben, gefundenen Problemen und Lösungshinweisen. Ein Beispiel eines solchen Berichts findet
@@ -63,7 +63,7 @@ in den betroffenen Quellcode. \textbf{ISO/IEC 14764} sieht vor, die Migration zu
     \subsection{Zerlegung von Funktionen}
     \subsection{Unit-Tests}
 
-\section{Lauffähigkeit historischen Codes}
+\section{Lauffähigkeit historischen Codes}\label{VCS}
     Der Standard ISO/IEC 14764 sieht auch nach der erfolgten Migration eine Unterstützung der alten Umgebung vor. Dies ist natürlich vor allem bei Produkten sinnvoll, 
     die von Dritten eingesetzt werden, die dadurch vor nicht erwartetem Verhalten der Software geschützt werden. Allerdings ist eine Unterstützung der alten Umgebung 
     auch bei unternehmenseigener Software sinnvoll. Beispielsweise lassen sich Fehler im Programm zurückverfolgen, Änderungen nachvollziehen und sichergestellt werden,
@@ -79,7 +79,7 @@ in den betroffenen Quellcode. \textbf{ISO/IEC 14764} sieht vor, die Migration zu
         und protokolliert jede Änderung, sogenannte \textbf{Commits}. Durch diese Protokollierung kann der Quellcode in jeden beliebigen früheren Zustand zurückversetzt 
         werden, und somit auch weiter gewartet werden. Bekannte Programme zur Versionsverwaltung mit den genannten Funktionen sind zum Beispiel 
         \textit{Git}\footnote{Git, \url{https://git-scm.com/}} oder \textit{Mercurial}\footnote{Mercurial, URL: \url{https://www.mercurial-scm.org/}}
-    \subsection{Ausführungsumgebung}
+    \subsection{Ausführungsumgebung}\label{execution}
         Zu jeder historischen Version der Software muss die passende Ausführungsumgebung zur Verfügung stehen. Eine triviale 
         Lösung ist die lokale Installation verschiedener Umgebungen auf dem relevanten System. Einen weiteren Lösungsansatz 
         bietet die Virtualisierung der Ausführungsumgebung mittels Containern. Die Vor- und Nachteile beider Ansätze 
