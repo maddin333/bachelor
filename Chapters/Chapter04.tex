@@ -17,7 +17,7 @@ Fehler enthalten, gemessen an den betroffenen Codezeilen aber nur ein kleiner Te
 Bei dieser Zahl ist zu beachten, dass Zeilen mit mehreren 
 Eine granularere Analyse erlaubt das angehängte Python-Skript, welches die tatsächlich genutzten Funktionen aus dem Report 
 herausfiltert. Die Ergebnisse in Tabelle~\ref{tab:migrationFunctions} zeigen, dass die Datenbankverbindung mittels der 
-Erweiterung \textit{mysql} der größte Schwerpunkt der Migration darstellt. Ähnlich große Verbreitung haben implizite 
+Erweiterung \textit{mysql} den größten Schwerpunkt der Migration darstellt. Ähnlich große Verbreitung haben implizite 
 Konstruktoren. Die Fehlerklassen \textit{Arraywert per Referenz} sowie \textit{foreach per Referenz} wird von \textit{php7mar} zwar ausgewiesen, stehen jedoch 
 nur bedingt in Zusammenhang mit der Migration zu \ac{PHP} 7. Diese Konstrukte sind keine Fehler, werden aufgrund ihrer Implikationen (beispielsweise des empfohlenen 
 Zurücksetzen des Arrayzeigers nach der Benutzung von foreach mit Referenz) von einigen Entwicklern nicht zur Benutzung empfohlen\footnote{Johannes Schlüter, 'References and foreach', \url{https://schlueters.de/blog/archives/141-references-and-foreach.html} (besucht am 30.10.2019)}.
@@ -37,9 +37,10 @@ Zurücksetzen des Arrayzeigers nach der Benutzung von foreach mit Referenz) von 
     \caption{Vorkommen zu migrierender Funktionen in der Codebasis}
     \label{tab:migrationFunctions}
     \begin{tabular}{llll}
-                                            & Anzahl der Vorkommen \\
+                                            & Anzahl betroffener Codezeilen \\
     \textbf{mysql}                          & 722 \\
     \textbf{Implizite Konstrukoren}         & 453 \\
+    \textbf{funcGetArg}                     & 86 \\
     \textbf{foreach per Referenz}           & 21 \\
     \textbf{Magic Quotes}                   & 20 \\
     \textbf{Indirekte Variablenzugriffe}    & 20 \\
