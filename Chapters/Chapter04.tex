@@ -97,7 +97,7 @@ für den Debugger der Entwicklungsumgebung bereitgestellt wird.
         ?>
     \end{lstlisting}
 
-    \subsection{}
+    %   \subsection{}
     
     \subsection{Entfernen aller Aufrufe von Magic Quotes}
     Wie in Kapitel~\ref{php5magicquotes} ausgeführt, haben Aufrufe der Funktionen \textit{magic\_quotes\_runtime} sowie \textit{set\_magic\_quotes\_runtime} seit \ac{PHP} 5.4 
@@ -193,7 +193,8 @@ im Falle eines Fehlers hätte schnell auf die alte Infrastruktur zurückgegriffe
 Zur Verifikation der Migration wurden zum einen eigene Tests durchgeführt, vor allem verschiedene Testkäufe um die Funktion für Kunden des Onlineshops zu verifizieren, 
 sowie administrative Tätigkeiten wie die Anpassung der Startseite und das Hinzufügen von Produkten zum Katalog. Zum Anderen wurde die Funktion der Webseite durch das 
 Monitoring-Tool \textit{New Relic}\footnote{New Relic, \url{https://newrelic.de}} überwacht. Dieses Werkzeug überwacht die Performance der Applikation und meldet Fehler 
-in der Ausführung.
+in der Ausführung. Durch diese Überwachung wäre es möglich gewesen, möglichst schnell auf etwaige Fehler zu reagieren und geeignete 
+Gegenmaßnahmen zu ergreifen, bspw. einen Rollback auf die alte Infrastruktur oder einen Hotfix der neuen Version.
 
 \section{Support der alten Umgebung}
 Diese Anforderung im Standard \textbf{ISO/IEC 14764} betrifft vor allem Software, die an Kunden ausgeliefert wird und dort möglicherweise auch nach der Migration 
