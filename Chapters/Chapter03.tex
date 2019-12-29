@@ -3,7 +3,9 @@
 %************************************************
 
 Wie in Kapitel \ref{ch:php7} gezeigt, sind die Veränderungen zwischen \acs{PHP} 5 und \acs{PHP} 7 nicht nur sehr umfangreich, sondern erfordern auch große Eingriffe 
-in den betroffenen Quellcode. \textbf{ISO/IEC 14764} sieht vor, die Migration zu definieren
+in den betroffenen Quellcode. \textbf{ISO/IEC 14764} sieht zum Einen eine Definition der Migration vor, die durch die Erkennung 
+des zu migrierenden Codes erfolgt. Zum Anderen steht die Migration selber, als auch die Unterstützung des veralteten Produkts 
+im Vordergrund. Geeigente Methoden und Mittel werden im folgenden Kapitel vorgestellt. 
 %TODO
 
 \section{Erkennung des zu ändernden Codes}
@@ -51,13 +53,27 @@ in den betroffenen Quellcode. \textbf{ISO/IEC 14764} sieht vor, die Migration zu
         \end{lstlisting}
 
 \section{Refactoring} %TODO
-    Refactoring beschreibt die Technik, bestehenden Code in seiner Struktur so zu verändern, dass dieser änderbar bleibt und wichtige Bestandteile leicht indentifizierbar 
+    Refactoring beschreibt nach Fowler die Technik, bestehenden Code in seiner Struktur so zu verändern, dass dieser änderbar bleibt und wichtige Bestandteile leicht indentifizierbar 
     bleiben, ohne jedoch den eigentlichen Sinn des Programms zu verändern. \cite{fowler_refactoring_1999} Bei der Migration von Software muss dem Refactoring ein hoher Stellenwert zugemessen werden, 
     da große Bestandteile des Codes ausgetauscht und verändert werden, was nach Lehman \cite[S. 1060-1076]{lehman_programs_1980} zur Degeneration von Software führt.
     Die Schwierigkeit des Refactorings liegt häufig im zeitaufwändigen Verstehen des vorliegenden Codes. Diese Zeit muss jedoch für die Migration der Software ohnehin 
-    aufgewendet werden, womit sich ein Refactoring hier durchaus anbietet.
+    aufgewendet werden, womit sich ein Refactoring hier durchaus anbietet. Zudem kann auch die Migration selber nach Fowler als eine 
+    Art des Refactoring gesehen werden, da dadurch das externe Verhalten des Programmes nicht verändert wird, oftmals jedoch 
+    die Strktur des Codes. Ein Beispiel dafür ist der Austausch der Datenbank-Schnittstelle, der das Verhalten des Programms 
+    nicht verändert, in der Struktur des Codes allerdings, bspw. durch veränderte Parameter und andere Funktionsaufrufe, 
+    Änderungen erzwingt.
     Die Ziele des Refatorings können durch verschiedenste Techniken erreicht werden, beispielsweise die Zerlegung von Funktionen in kleinere, bessere verständliche 
     Funktionen oder die Auslagerung von immer wieder genutztem Code in eine eigene Funktion.
+    \subsection{Fassaden-Klassen}
+    Eine Fassaden-Klasse (engl. ,,facade class'' oder ,,wrapper facade'') bezeichnet nach Schmidt eine oder mehrere Klassen, die 
+    existierende Funktionen und deren Daten zusammenfasst. Diese Klasse(n) bilden eine Abstraktion, die eine spezielle 
+    Funktionalität bereitstellt. \cite[S. 54]{schmidt_pattern-oriented_2000} 
+    Dies kann wünschenswert sein, um einzelne nicht-objektorientierte Funktionen zusammenfassen und gleichzeitig deren Daten 
+    sicher innerhalb des privaten Teils einer Klasse vorzuhalten. Die Technik kann jedoch auch dazu genutzt werden, um häufig 
+    verwendete Daten für nicht-objektorientierte Funktionen nict explizit angeben zu müssen. Dies kann beispielsweise 
+    bei Funktionen der Datenbank-Schnittstelle \textit{mysqli} von Vorteil sein, da dort die gewünschte Datenbankverbindung 
+    explizit angegeben werden muss. Wird stets die selbe Verbindung genutzt, ist die Angabe überflüssig und kann durch die 
+    Nutzung der Fassaden-Klasse entfallen. 
     \subsection{Extrahieren}
         Bei der Extraktion von Funktionen sollen häufig genutzte Programmteile in eine eigene, wiederverwendbare Funktion ausgelagert werden. Dazu wird die neue Funktion
         angelegt, 
