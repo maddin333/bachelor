@@ -78,7 +78,14 @@ im Vordergrund. Geeigente Methoden und Mittel werden im folgenden Kapitel vorges
         Bei der Extraktion von Funktionen sollen häufig genutzte Programmteile in eine eigene, wiederverwendbare Funktion ausgelagert werden. Dazu wird die neue Funktion
         angelegt, 
     \subsection{Zerlegung von Funktionen}
-    \subsection{Unit-Tests}
+    \subsection{Unit Tests}
+    Ein zentraler Bestandteil des Refactorings ist das Testen der Software. 
+    Fowler spricht von Tests sogar als eine notwendige Bedingung für erfolgreiches Refactoring.\cite[S. 73]{fowler_refactoring_1999} 
+    Eine Hilfe, insbesondere bei der Automatisierung des Testens stellen Unit Tests (auch ,,Modultest'' oder ,,Komponenententests'')
+    dar. Hierbei werden für Komponenten einer Software, d.h. einzelne Funktionen oder ganze Klassen, Testfälle erstellt, welche 
+    die gewünschten Ergebnisse überprüfen und Fehler an den Entwickler melden. Obgleich durch Unit Tests keine Korrektheit einer 
+    Komponente bewiesen werden kann, können durch gute Tests wiederkehrende Fehler früher entdeckt und ausgemerzt werden. 
+    Ein Framework für die Nutzung von Unit Tests unter \ac{PHP} ist beispielsweise \textit{PHPUnit}\footnote{PHPUnit, Sebastian Bergmann, \url{https://phpunit.de/}} 
 
 \section{Lauffähigkeit historischen Codes}\label{VCS}
     Der Standard ISO/IEC 14764 sieht auch nach der erfolgten Migration eine Unterstützung der alten Umgebung vor. Dies ist natürlich vor allem bei Produkten sinnvoll, 
