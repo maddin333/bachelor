@@ -198,7 +198,7 @@ einzelne Funktionsparameter entfernt wurden oder andere Datentypen zurückgegebe
         ?>
     \end{lstlisting}
 
-    \subsection{setlocale}
+    \subsection{setlocale}\label{setlocale_speed}
     Die Funktion \textit{setlocale()} dient dazu, regionale Eigenheiten abzubilden. Dazu gehören zum Beispiel unterschiedliche Datumsformate oder die Formatierung von 
     Zahlen (bspw. Trennzeichen für Dezimalzahlen). Für die Einstellung einer Region können Kategorien angegeben werden, auf die sich die Änderung auswirken soll. 
     Ab Version 7 ist es nicht mehr möglich, die Kategorie als Zeichenkette anzugeben. Für diese Änderung ist kein Grund angegeben, allerdings liegt die Vermutung
@@ -224,7 +224,7 @@ einzelne Funktionsparameter entfernt wurden oder andere Datentypen zurückgegebe
         ?>
     \end{lstlisting}
 
-    \subsection{preg\_replace\_callback\_array()}
+    \subsection{preg\_replace\_callback\_array()}\label{preg_speed}
     Ähnlich wie die im Abschnitt \ref{preg_replace} beschriebene Funktion \textit{preg\_replace()} mit dem Modifikator \textit{/e}, ersetzt 
     \textit{preg\_replace\_callback\_array()} Zeichenketten anhand eines Musters und einer Ersetzungsfuntion. Im eingeführten \textit{preg\_replace\_callback\_array()} 
     kann nun ein assiozatives Array angegeben werden, das mehrere Muster und ihre entsprechenden Callback-Funktionen enthält. Durch die Nutzung verschiedener 
@@ -263,8 +263,9 @@ Die Ziele der Weiterentwicklung von \acs{PHP} lassen sich folgendermaßen zusamm
     \item Bessere Verständlichkeit des geschriebenen Quellcodes
     \item Höhere Ausführungsgeschwindigkeit
 \end{itemize}  
-Die Erhöhung der Sicherheit wird hauptsächlich durch die Entfernung von Erweiterungen erreicht, die nicht weiterentwickelt werden. Entwickler werden dadurch gezwungen,
+Die Erhöhung der Sicherheit soll hauptsächlich durch die Entfernung von veralteten Erweiterungen erreicht werden, die nicht weiterentwickelt werden. Entwickler werden dadurch gezwungen,
 diese mit Mitteln zu ersetzen, welche zum Einen auch zukünftig mit Sicherheitsupdates versorgt werden und zum Anderen Features bieten um den Quellcode zusätzlich
 zu härten. Auch die Erweiterung von Konzepten der Typsicherheit und die Ersetzung von als Sicherheitsrisiko geltenden Funktionen dient diesem Zweck.\\
 Dem Ziel der besseren Verständlichkeit von Quellcode dienen beispielsweise die Vereinheitlichung von Variableninterpretation, die Abschaffung der doppelten Konzepte
-der Deklaration von Konstruktoren und die Anpassung der \textit{list()}-Funktion an gewohnte Denkweisen.\\
+der Deklaration von Konstruktoren und die Anpassung der \textit{list()}-Funktion an gewohnte Denkweisen. Die Ausführungsgeschwindigkeit 
+soll in erster Linie durch die, in Kapitel~\ref{zend} vorgestellte, neue Version der \textit{Zend Engine} steigen. 

@@ -106,13 +106,19 @@ für den Debugger der Entwicklungsumgebung bereitgestellt wird.
     die Funktion \textit{mysqli\_real\_escape\_string}, welche Sonderzeichen unter Berücksichtigung des eingestellten Zeichensatzes maskiert.
     
     \subsection{Korrektur indirekter Variablenzugriffe}\label{indirect}
-    %TODO
-    \begin{lstlisting}[language=php, caption={Anpassung indirekter Variablenzugriffe}, label={lst:php7newReference}]
+    Die in Kapitel~\ref{indirectVar} gezeigte Einführung einer strikten Evaluierung von Variablen von links nach rechts führt dazu, 
+    dass indirekte Variablenzugriffe aus \acs{PHP} 5 in \acs{PHP} 7 falsch evaluiert werden. Die korrekte Evaluierung kann durch 
+    die Einführung geschweifter Klammern erzwungen werden. Beispiel~\ref{lst:php7newIndirect} zeigt die vorgenommene Änderung am 
+    indirekten Zugriff auf die Session-Variable. Dabei ist anzumerken, dass die ursprüngliche Version nur unter \acs{PHP} 5 
+    korrekt ausgeführt wird, die angepasste Version jedoch sowohl unter \acs{PHP} 7 als auch unter \acs{PHP} 5. 
+    \begin{lstlisting}[language=php, caption={Anpassung indirekter Variablenzugriffe}, label={lst:php7newIndirect}]
         <?php
         if (isset ($$_SESSION['payment']->form_action_url)) {
             $form_action_url = $$_SESSION['payment']->form_action_url;
         }
         
+        //wird zu:
+
         if (isset (${$_SESSION}['payment']->form_action_url)) {
             $form_action_url = ${$_SESSION}['payment']->form_action_url;
         }       

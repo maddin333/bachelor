@@ -74,10 +74,10 @@ im Vordergrund. Geeigente Methoden und Mittel werden im folgenden Kapitel vorges
     bei Funktionen der Datenbank-Schnittstelle \textit{mysqli} von Vorteil sein, da dort die gewünschte Datenbankverbindung 
     explizit angegeben werden muss. Wird stets die selbe Verbindung genutzt, ist die Angabe überflüssig und kann durch die 
     Nutzung der Fassaden-Klasse entfallen. 
-    \subsection{Extrahieren}
-        Bei der Extraktion von Funktionen sollen häufig genutzte Programmteile in eine eigene, wiederverwendbare Funktion ausgelagert werden. Dazu wird die neue Funktion
-        angelegt, 
-    \subsection{Zerlegung von Funktionen}
+    \subsection{Auslagerung von wiederverwendetem Code}
+    Wenn an mehreren Stellen in der Codebasis ähnlicher Code ausgeführt wird können diese Vorkommen unter Umständen zu einer 
+    einzigen Funktion zusammengefasst werden.\cite[S. 63]{fowler_refactoring_1999} Dadurch wird die Codebasis besser verständlich 
+    und besser wartbar. Dadurch steigt die Produktivität in der Entwicklung.\cite{martin_clean_2012}    
     \subsection{Unit Tests}
     Ein zentraler Bestandteil des Refactorings ist das Testen der Software. 
     Fowler spricht von Tests sogar als eine notwendige Bedingung für erfolgreiches Refactoring.\cite[S. 73]{fowler_refactoring_1999} 

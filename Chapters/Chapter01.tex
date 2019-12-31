@@ -19,7 +19,7 @@ Folgende Aktionen sind durch den Ausführenden nach \textbf{ISO/IEC 14764} umzus
     \item Support der alten Umgebung
 \end{itemize}
 
-\section{Die Programmiersprache PHP}
+\section{Die Programmiersprache PHP}\label{zend}
 \ac{PHP} ist eine Skriptsprache, welche seit 1994 entwickelt wird und seit 1995 Open-Source bereitgestellt wird.
 Obwohl \ac{PHP} viele Einsatzzwecke abdeckt, wird es meist dazu genutzt, dynamische Websites zu programmieren.
 Rasmus Lerdorf, der Erfinder von \ac{PHP}, entwickelte zunächst eine Reihe von \acp{CGI} in \textit{C}, um die Anzahl der 
@@ -30,6 +30,10 @@ für bekannte Projekte wie das Content Management System \textit{Wordpress}\foot
 oder die e-Commerce Plattform \textit{Magento}\footnote{Magento, \url{https://magento.com}}. Die Weiterentwicklung 
 von \ac{PHP} wird von einem Team von Freiwilligen vorangetrieben. Vorschläge für neue Funktionen oder Änderungen bestehender 
 Funktionen werden über \acp{RFC} eingebracht, über deren Implementation in \ac{PHP} das Team abstimmen kann\footnote{PHP: How to get involved, \url{https://www.php.net/get-involved.php}}. 
+Die Weiterentwicklung von \acs{PHP} schreitet nicht nur in der für Nutzer sicht- und nutzbaren \ac{API} voran. Einen wichtigen Teil 
+von \acs{PHP} stellt die \textit{Zend Engine} dar. Dies ist der Compiler, der \acs{PHP}-Quellcode auführt. Offizielle 
+Benchmarks nennen eine Optimierung der Auführungszeit von 1000 Anfragen an \textit{Wordpress 3.6.0} mit der neuen Engine von
+rund 26,8 Sekunden auf 10,4 Sekunden (entspricht einer Optimierung von über 60\%).\cite{php_group_php:_nodate-6} 
 
 \begin{figure}[bth]
     \myfloatalign
