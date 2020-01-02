@@ -32,8 +32,8 @@ Wechsel der Ausführungsumgebung zwingend vorrausgesetzt.
     \subsection{Abfrage von Funktionsparametern mit func\_get\_args()}
     Der Aufruf der Funktion \textit{func\_get\_args()} in einer benutzerdefinierten Methode liefert ein Array mit Kopien der 
     Argumente, mit denen die Methode aufgerufen wurde. Damit lassen sich Funktionen mit einer variablen Anzahl an Parametern 
-    realisieren. Im Gegensatz zu \ac{PHP} 5 werden nun nicht mehr die Argumente zum Zeitpunkt des Aufrufs der Methode 
-    zurückgegeben, sondern deren (möglicherweise bis dahin veränderte) Wert zum Zeitpunkt des Aufrufs von 
+    realisieren. Im Gegensatz zu \ac{PHP} 5 werden nun nicht mehr die Werte der Argumente zum Zeitpunkt des Aufrufs der Methode 
+    zurückgegeben, sondern deren (möglicherweise bis dahin veränderte) Werte zum Zeitpunkt des Aufrufs von 
     \textit{func\_get\_args()}. Das Beispiel~\ref{lst:phpfuncget} gibt unter \ac{PHP} 5 den Wert ,,1`` aus, unter \ac{PHP} 7 
     hingegen den Wert ,,2``.
 
