@@ -66,9 +66,16 @@ für den Debugger der Entwicklungsumgebung bereitgestellt wird.
     \textit{PDO\_MySQL} werden zwei \acp{API} bereitgestellt, deren Funktionalitäten weit über die der alten Erweiterung hinausgehen. Die Entscheidung zwischen 
     beiden Möglichkeiten fiel aufgrund zweier Faktoren auf \textit{mysqli}: Zum einen die syntaktische Ähnlichkeit zwischen \textit{mysql} und \textit{mysqli}, 
     da bei vielen Funktionen nur der \textit{mysql}-Präfix geändert, sowie eine explizite Datenbankverbindung angegeben werden muss. Zum anderen bietet \textit{mysqli} 
-    sowohl ein objektorientiertes, als auh ein prozedurales Interface, \textit{PDO\_MySQL} ist dagegen nur objektorientiert nutzbar. Da \textit{mysql} rein 
+    sowohl ein objektorientiertes, als auh ein prozedurales Interface, \textit{PDO\_MySQL} ist dagegen nur objektorientiert nutzbar. Da \textit{mysql} nur 
     prozedural genutzt werden konnte, bietet es sich an, dies voerst beizubehalten und bei Bedarf auf einen objektorientierten Ansatz zu wechseln.
-    %TODO
+    In einigen Teilen der Software wird für die Datenbankfunktionen eine Fassadenklasse nach der in Kapitel~\ref{facade} 
+    dargestellten Methode verwendet. Hier muss neben des Austauschs der einzelnen \textit{mysql}-Funktionen noch eine 
+    Variable eingeführt werden, welche die aktuelle Datenbankverbindung hält. 
+    Da diese Fassadenklasse nicht in allen Teilen der Software zum Einsatz kommt, muss die Datenbankverbindung hier vorerst 
+    über eine globale Variable gesetzt werden. In einem späteren Refactoring sollten dies durch den Einsatz der Fassadenklasse 
+    ersetzt werden.
+
+    %TODO Besipiele insb. nicht ersetzbare Funktionen
 
     \subsection{Ersetzen impliziter Konstruktoren}\label{construct}
     Die Ersetzung impliziter Konstruktoren (vgl. Kapitel~\ref{php5implicit} im Quellcode stellt sich im Grunde trivial dar, da der 

@@ -64,8 +64,8 @@ im Vordergrund. Geeigente Methoden und Mittel werden im folgenden Kapitel vorges
     Änderungen erzwingt.
     Die Ziele des Refatorings können durch verschiedenste Techniken erreicht werden, beispielsweise die Zerlegung von Funktionen in kleinere, bessere verständliche 
     Funktionen oder die Auslagerung von immer wieder genutztem Code in eine eigene Funktion.
-    \subsection{Fassaden-Klassen}
-    Eine Fassaden-Klasse (engl. ,,facade class'' oder ,,wrapper facade'') bezeichnet nach Schmidt eine oder mehrere Klassen, die 
+    \subsection{Fassadenklassen}\label{facade}
+    Eine Fassadenklasse (engl. ,,facade class'' oder ,,wrapper facade'') bezeichnet nach Schmidt eine oder mehrere Klassen, die 
     existierende Funktionen und deren Daten zusammenfasst. Diese Klasse(n) bilden eine Abstraktion, die eine spezielle 
     Funktionalität bereitstellt. \cite[S. 54]{schmidt_pattern-oriented_2000} 
     Dies kann wünschenswert sein, um einzelne nicht-objektorientierte Funktionen zusammenfassen und gleichzeitig deren Daten 
@@ -73,7 +73,7 @@ im Vordergrund. Geeigente Methoden und Mittel werden im folgenden Kapitel vorges
     verwendete Daten für nicht-objektorientierte Funktionen nict explizit angeben zu müssen. Dies kann beispielsweise 
     bei Funktionen der Datenbank-Schnittstelle \textit{mysqli} von Vorteil sein, da dort die gewünschte Datenbankverbindung 
     explizit angegeben werden muss. Wird stets die selbe Verbindung genutzt, ist die Angabe überflüssig und kann durch die 
-    Nutzung der Fassaden-Klasse entfallen. 
+    Nutzung der Fassadenklasse entfallen. 
     \subsection{Auslagerung von wiederverwendetem Code}
     Wenn an mehreren Stellen in der Codebasis ähnlicher Code ausgeführt wird können diese Vorkommen unter Umständen zu einer 
     einzigen Funktion zusammengefasst werden.\cite[S. 63]{fowler_refactoring_1999} Dadurch wird die Codebasis besser verständlich 
