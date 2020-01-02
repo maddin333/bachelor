@@ -8,13 +8,15 @@ des zu ändernden Codes aufgrund der Menge nahezu unmöglich ist und nur mit tec
 zu überblicken ist. Dazu ist jedoch auch zu erwähnen, dass diese Hilfsmittel unter Umständen fehlerhaft sind oder nicht alle Bereiche der Migration abdecken und 
 dementsprechend erst (weiter-) entwickelt werden müssen. Die in \textbf{ISO/IEC 14764} geforderte Unterstützung des historischen Codes kann zwar auf klassischem Wege 
 gelöst werden, stellt sich jedoch, wie in Kapitel~\ref{VCS} dargelegt, für umfangreiche Projekte nur unter Verwendung von Virtualisierung als sinnvoll dar. 
-Die in Kapitel~\ref{develop} gezeigten Änderungen an der Software zeigen, wie wichtig die aufgezeigten Techniken des Refactorings für die Migration einer Software sind.
+Die in Kapitel~\ref{develop} gezeigten Änderungen an der Software zeigen, wie wichtig die aufgezeigten Techniken des Refactorings für die Migration einer Software sind
+und wie umfangreich sich Code aufgrund eines Major-Releases ändert und welche Herausforderungen sich daraus ergeben.
 Zudem zeigen diese Änderungen, dass zwei der in Kapitel~\ref{ch:php7} herausgearbeiteteten Ziele des neuen Major-Release von \ac{PHP} erreicht wurden: \\
 So zeigen beispielsweise die Kapitel~\ref{indirect} und \ref{construct}, dass Sonderfälle reduziert wurden und Sprachkonstrukte in \ac{PHP} vereinheitlicht wurden. 
 Das Ziel der erhöhten Sicherheit von Software wird über die Entfernung veralteter Erweiterungen (vgl. Kapitel~\ref{mysql}) sowie potentiell gefährlicher Optionen (vgl. Kapitel~\ref{preg}) 
 erreicht. Das letzte Ziel, die Erhöhung der Ausführungsgeschwindigkeit, lässt sich über das in Kapitel~\ref{newrelic} vorgestellte Tool \textit{New Relic} überprüfen. 
 Eine Auswertung der 24 Stunden vor, sowie nach der Migration (dargstellt in Abbildung~\ref{fig:time}) zeigt, dass die durchschnittliche Ausführungszeit von Anfragen an den Onlineshop 
-von 66,05ms auf 43,38ms und somit um ca. 34\% zurückgegangen ist.
+von 66,05ms auf 43,38ms und somit um ca. 34\% zurückgegangen ist. Zusammenfassend lässt sich sagen, dass die Umstellung auf ein neues Major-Release durch entsprechende 
+Hilfsmittel effizient möglich ist, und im praktischen Beispiel durch erreichen der Ziele einen messbaren Mehrwert bietet.
 
 \begin{figure}[bth]
     \myfloatalign

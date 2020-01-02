@@ -70,12 +70,50 @@ für den Debugger der Entwicklungsumgebung bereitgestellt wird.
     prozedural genutzt werden konnte, bietet es sich an, dies voerst beizubehalten und bei Bedarf auf einen objektorientierten Ansatz zu wechseln.
     In einigen Teilen der Software wird für die Datenbankfunktionen eine Fassadenklasse nach der in Kapitel~\ref{facade} 
     dargestellten Methode verwendet. Hier muss neben des Austauschs der einzelnen \textit{mysql}-Funktionen noch eine 
-    Variable eingeführt werden, welche die aktuelle Datenbankverbindung hält. 
+    Variable eingeführt werden, welche die aktuelle Datenbankverbindung hält.
     Da diese Fassadenklasse nicht in allen Teilen der Software zum Einsatz kommt, muss die Datenbankverbindung hier vorerst 
     über eine globale Variable gesetzt werden. In einem späteren Refactoring sollten dies durch den Einsatz der Fassadenklasse 
-    ersetzt werden.
+    ersetzt werden. Beispiel~\ref{lst:php7mysqlilow} zeigt den Austausch der veralteten \textit{mysql}-Funktionen \textit{mysql\_query} und \textit{mysql\_error} 
+    durch die neuen Funktionen der \textit{mysqli}-Erweiterung. Dabei ist die explizite Angabe der Datenbankverbindung in beiden Funktionen besonders hervorzuheben. 
+    Eine Schwierigkeit ergibt sich bei \textit{mysql}-Funktionen, welche kein entsprechendes Pendant in der neuen Erweiterung besitzen. Dies wird in Beispiel~\ref{lst:php7mysqlihard} 
+    gezeigt. \textit{mysql\_result} liefert ein einzelnes Feld aus einer angegebenen Zeile einer Abfrage. Um das selbe Verhalten in \textit{mysqli} zu erzeugen muss 
+    der Ergebniszeiger mit \textit{mysqli\_data\_seek} auf die entsprechende Zeile gerichtet werden, welche anschließend Feld für Feld durchlaufen wird um das entsprechende 
+    Ergebnis zu liefern.
 
-    %TODO Besipiele insb. nicht ersetzbare Funktionen
+    \begin{lstlisting}[language=php, caption={Beispiel der Ersetzung von \textit{mysql} durch \textit{mysqli}}, label={lst:php7mysqlilow}]
+        <?php
+        //veralteter Aufruf von mysql_query & mysql_error
+        $gm_query_result = mysql_query($gm_query[$i]);
+        if(!$gm_query_result) $gm_query_result_output .= GM_SQL_ERROR . mysql_error() . '<br />';
+
+        //Ersatz durch mysqli_query & mysqli_error
+        $gm_query_result = mysqli_query($db_link, $gm_query[$i]);
+		if(!$gm_query_result) $gm_query_result_output .= GM_SQL_ERROR . mysqli_error($db_link) . '<br />';
+        ?>
+    \end{lstlisting}
+
+    \begin{lstlisting}[language=php, caption={Beispiel der Ersetzung von \textit{mysql\_result} durch \textit{mysqli}}, label={lst:php7mysqlihard}]
+        <?php
+        //veraltete Funktion mysql_result
+        mysql_result(xsb_db_query("SELECT MIN(_EBAY_START_TIME) as MinTime FROM xtb_auctions"),0,'MinTime');
+
+        //Ersatz durch mysqli_data_seek
+        $result = xsb_db_query("SELECT MIN(_EBAY_START_TIME) as MinTime FROM xtb_auctions");
+        $field = 'MinTime';
+        mysqli_data_seek($result, 0);
+        if(!empty($field)) {
+            while($fieldInfo = mysqli_fetch_field($result)) {
+                if( $field == $fieldInfo->name ) {
+                    $row = mysqli_fetch_assoc($result);
+                    $fetch =  $row[$field];
+                }
+            }
+        } else {
+            $row = mysqli_fetch_array($result);
+            $fetch = $row[0];
+        }
+        ?>
+    \end{lstlisting}
 
     \subsection{Ersetzen impliziter Konstruktoren}\label{construct}
     Die Ersetzung impliziter Konstruktoren (vgl. Kapitel~\ref{php5implicit} im Quellcode stellt sich im Grunde trivial dar, da der 
