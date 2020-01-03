@@ -6,12 +6,15 @@ Derzeit setzen 79,1\% der 10 Millionen meistgenutzten Webseiten PHP als serverse
 \url{https://w3techs.com/technologies/details/pl-php/all/all}}. Diese Installationen können allesamt als unsicher eingestuft werden. Seit der letzten Veröffentlichung 
 unter Version 5 wurden vier neue Schwachstellen veröffentlicht\footnote{CVE details, \glqq PHP 5.6.40 Security Vulnerabilities\grqq , 
 \url{https://www.cvedetails.com/vulnerability-list/vendor_id-74/product_id-128/version_id-298516/PHP-PHP-5.6.40.html}}, die in unterstützten Versionen bereits geschlossen 
-wurden.
+wurden. Durch diese Sicherheitslücken alleine ist eine Weiterverwendung der veralteten Software unverantwortlich, besonders dann, wenn 
+persönliche Daten von Kunden betroffen sein könnten. Angriffe auf Kundendaten, wie beispielsweise bei dem Spieleentwickler \textit{Zynga} im September 2019, 
+von dem bis zu 218 Millionen Menschen betroffen sein könnten\footnote{cnet, Zynga data breach exposed 200 million Words with Friends players, \url{https://www.cnet.com/news/words-with-friends-hack-reportedly-exposes-data-of-more-than-200m-players/}}, 
+zeigen, welche Verantwortung Onlinedienstleister gegenüber ihren Kunden haben. 
 
 \section{Motivation}
 Die Firma \textit{tickets75}, eine unabhängige Ticketagentur, die sich auf die Vermittlung von Tickets für begehrte 
 Veranstaltungen über den eigenen Onlineshop spezialisiert hat. Als e-Commerce-Unternehmen ist der reibungslose Betrieb der 
-Onlinepräsenz besonders wichtig. Ebenso hat die Sicherheit von Kunden, insbesondere in Bezug auf deren Zahlungsmittel oberste 
+Onlinepräsenz besonders wichtig. Ebenso hat die Sicherheit von Kunden, insbesondere in Bezug auf deren persönliche Daten und Zahlungsmittel oberste 
 Priorität. Um diese Sicherheit weiterhin gewährleisten zu können, soll der Onlineshop für die Ausführung unter \ac{PHP} optimiert 
 werden. Der Shop basiert auf der quelloffenen e-Commerce-Plattform \textit{Gambio}, wurde in der Vergangenheit jedoch stark 
 angepasst, sodass eine einfache Aktualisierung des Grundsystems nicht mehr in betracht gezogen werden kann.
@@ -24,14 +27,14 @@ Als Leitfaden für die Migration des Onlineshops dient dabei der Internationale 
 
 \section{Aufbau}
 Kapitel 2 beleuchtet die Grundlagen, welche dieser Arbeit zugrunde liegen. Dazu wird die Entwicklung der Programmiersprache PHP 
-beleuchtet, sowie auf die Hintergründe von Wartung und Versionierung von Software eingegangen.
-Kapitel 3 zeigt die Änderungen der PHP-API von Version 5.6 zu 7.0 anhand von Beispielen und zeigt dadurch die Ziele in der 
-Entwicklung der neuen Version auf.
+beleuchtet, sowie auf die Hintergründe von Wartung und Versionierung von Software eingegangen.\\
+Kapitel 3 zeigt die Änderungen der PHP-API von Version 5.6 zu 7.0 anhand von Beispielen und zeigt dadurch auf, welche Ziele die Entwickler 
+mit dem neuen Major-Release verfolgen.\\
 Kapitel 4 stellt die Werkzeuge zur Vorbereitung und Durchführung der Migration vor und diskutiert Vor- und Nachteile verschiedener 
-Optionen.
+Optionen.\\
 Kapitel 5 geht auf die Ausführung der Migration ein. Dazu wird eine Analyse des Quellcodes vorgenommen, deren Ergebnisse 
-zur Migration genutzt werden. 
-In Kapitel 6 werden die Ergebnisse aus Kapitel 3 am praktichen Beispiel geprüft und insbesondere im Hinblick auf die 
-Ausführungsgeschwindigkeit ausgewertet.
+zur Migration genutzt werden. \\
+In Kapitel 6 werden die Ergebnisse aus Kapitel 3 am praktischen Beispiel geprüft und insbesondere im Hinblick auf die 
+Ausführungsgeschwindigkeit ausgewertet.\\
 Kapitel 7 zeigt Schlussbetrachtungen und gibt einen Ausblick auf mögliche weitere Arbeitsthemen.
 %TODO

@@ -24,15 +24,15 @@ Folgende Aktionen sind durch den Ausführenden nach \textbf{ISO/IEC 14764} umzus
 Obwohl \ac{PHP} viele Einsatzzwecke abdeckt, wird es meist dazu genutzt, dynamische Websites zu programmieren.
 Rasmus Lerdorf, der Erfinder von \ac{PHP}, entwickelte zunächst eine Reihe von \acp{CGI} in \textit{C}, um die Anzahl der 
 Besucher seiner Webseite zu erfassen. Diese \acp{CGI} wurden immer umfangreicher, wodurch sich im Laufe der Zeit eine 
-eigenständige Programmiersprache entwickelte, die durch den \textbf{Zend-Engine} genannten Compiler interpretiert wird.
+eigenständige Programmiersprache entwickelte, die durch den \textbf{Zend-Engine} genannten Compiler interpretiert wird.\cite{php_group_php:_nodate-3}
 \ac{PHP} steht auf Platz 6 der beliebstesten Programmiersprachen weltweit\cite{carbonnelle_pypl_2019} und ist die Grundlage
 für bekannte Projekte wie das Content Management System \textit{Wordpress}\footnote{Wordpress, \url{https://wordpress.org}}
 oder die e-Commerce Plattform \textit{Magento}\footnote{Magento, \url{https://magento.com}}. Die Weiterentwicklung 
 von \ac{PHP} wird von einem Team von Freiwilligen vorangetrieben. Vorschläge für neue Funktionen oder Änderungen bestehender 
 Funktionen werden über \acp{RFC} eingebracht, über deren Implementation in \ac{PHP} das Team abstimmen kann\footnote{PHP: How to get involved, \url{https://www.php.net/get-involved.php}}. 
-Die Weiterentwicklung von \acs{PHP} schreitet nicht nur in der für Nutzer sicht- und nutzbaren \ac{API} voran. Einen wichtigen Teil 
-von \acs{PHP} stellt die \textit{Zend Engine} dar. Dies ist der Compiler, der \acs{PHP}-Quellcode auführt. Offizielle 
-Benchmarks nennen eine Optimierung der Auführungszeit von 1000 Anfragen an \textit{Wordpress 3.6.0} mit der neuen Engine von
+Die Weiterentwicklung von \acs{PHP} schreitet nicht nur im für Nutzer sicht- und nutzbaren \ac{API} voran. Einen wichtigen Teil 
+von \acs{PHP} stellt die \textit{Zend Engine} dar. Dies ist der Compiler, der \acs{PHP}-Quellcode interpretiert und ausführt. Offizielle 
+Benchmarks nennen für die neueste Version, welche die Grundlage für \acs{PHP} 7 bildet, eine Optimierung der Ausführungszeit von 1000 Anfragen an \textit{Wordpress 3.6.0} mit der neuen Engine von
 rund 26,8 Sekunden auf 10,4 Sekunden (entspricht einer Optimierung von über 60\%).\cite{php_group_php:_nodate-6} 
 
 \begin{figure}[bth]
@@ -51,10 +51,10 @@ Die Versionsnummer folgt immer dem Muster \\ \centerline{\textbf{Major}.\textbf{
 Mit jedem Release wird eine der Nummern inkrementiert, wobei die nachfolgenden Nummern auf ,,0`` zurückgesetzt werden 
 und folgende Regeln für die Nummerierung gelten \cite{preston-werner_semantic_nodate}:
 \begin{itemize}
-    \item \textbf{Major} wird inkrementiert, wenn inkompatible Änderungen an der API vorgenommen werden
-    \item \textbf{Minor} wird inkrementiert, wenn abwärtskompatible Funktionalitäten eingeführt werden
-    \item \textbf{Patch} wird inkrementiert, wenn abwärtskompatible Bugfixes implementiert werden
-    \item \textbf{Pre-Release} ist eine alphanumerische Zeichenkette, die frei vergeben werden kann
+    \item \textbf{Major} wird inkrementiert, wenn inkompatible Änderungen an der API vorgenommen werden.
+    \item \textbf{Minor} wird inkrementiert, wenn abwärtskompatible Funktionalitäten eingeführt werden oder Funktionen als veraltet markiert werden.
+    \item \textbf{Patch} wird inkrementiert, wenn abwärtskompatible Bugfixes implementiert werden.
+    \item \textbf{Pre-Release} ist eine alphanumerische Zeichenkette, die frei vergeben werden kann.
 \end{itemize}
 Von einem \textbf{Major-Release} spricht man folglich dann, wenn inkompatible Änderungen an der API stattfinden. 
 Die Nummerierung der Releases bei \ac{PHP} folgt zwar der Spezifikation, jedoch mit einer Ausnahme. So beträgt der 

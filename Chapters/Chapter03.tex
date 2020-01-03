@@ -15,10 +15,10 @@ im Vordergrund. Geeigente Methoden und Mittel werden im folgenden Kapitel vorges
     Vor- und Nachteile diskutiert.
     \subsection{Manuelle Erkennung}
         Eine manuelle Erkennung des Codes bietet sich vor allem bei kleinen Softwareprojekten an, bei denen ein vollumfänglicher Überblick über den eingesetzten Code
-        besteht. Hier kann durch die in typischen Editoren und Entwicklungsumgebungen integrierte Suche genutzt werden um alle Vorkommen von nicht lauffähigen
+        besteht. Hier kann durch die, in typischen Editoren und Entwicklungsumgebungen integrierte, Suche genutzt werden um alle Vorkommen von nicht lauffähigen
         Funktionen zu finden und diese anschließend einem Refactoring zu unterziehen. Besonders einfach gestaltet sich diese Methode bei entfernten Funktionen,
-        beispielsweise die der Erweiterung \textit{ereg}\ref{ereg}. Diese kann der Entwickler in der Dokumentation nachschlagen und den Code auf etwaige Vorkommen prüfen.
-        Schwierig wird die manuelle Erkennung bei Änderungen wie der Einhaltung des Standards in Switch-Anweisungen\ref{switch}. Hier ist eine Suche nur über umfangreiche
+        beispielsweise die der Erweiterung \textit{ereg}(Kapitel~\ref{ereg}). Diese kann der Entwickler in der Dokumentation nachschlagen und den Code auf etwaige Vorkommen prüfen.
+        Schwierig wird die manuelle Erkennung bei Änderungen wie der Einhaltung des Standards in Switch-Anweisungen(Kapitel~\ref{switch}). Hier ist eine Suche nur über umfangreiche
         Suchmuster (Reguläre Ausdrücke) möglich, die meist nicht trivial zu erstellen sind und viele Einzelfälle (z.B. verschachtelte Switch-Anweisungen) abdecken müssen.
         In diesen Fällen ist durch die manuelle Suche höchstens eine Eingrenzung des Problems möglich.
     \subsection{Automatisierte Erkennung}\label{automatic}
@@ -27,7 +27,7 @@ im Vordergrund. Geeigente Methoden und Mittel werden im folgenden Kapitel vorges
         wurde das Tool \textit{\ac{php7mar}}\footnote{Alexia. php7mar. URL: \url{https://github.com/Alexia/php7mar}} des Entwicklers \textit{Alexia} genutzt.
         \textit{\ac{php7mar}} erkennt mithilfe von \textbf{Regulären Audrücken}, \textbf{String-Matching} und \textbf{Lexikalischer Analyse} kritischen Code in 
         Projekten und generiert daraus einen Bericht, bestehend aus Zeilenangaben, gefundenen Problemen und Lösungshinweisen. Ein Beispiel eines solchen Berichts findet
-        sich in Listing\ref{lst:php7mar}. In der Datei \textit{GMCSS.php} werden drei Fehlerklassen gefunden: Erstens mehrere Fälle der Nutzung der veralteten Definition von
+        sich in Listing~\ref{lst:php7mar}. In der Datei \textit{GMCSS.php} werden drei Fehlerklassen gefunden: Erstens mehrere Fälle der Nutzung der veralteten Definition von
         Konstruktoren, zweitens einige Vorkommen der Entfernten Erweiterung \textit{mysql}, sowie drittens ein indirekter Variablenzugriff, dessen Aussage unter PHP 7
         möglicherweise eine andere ist (vgl. Kapitel~\ref{indirectVar}). Insbesondere der erste Fall zeigt die Überlegenheit eines Analysetools, da solche Fehler nur
         schwer mit einer trivialen Suche zu finden sind. Trotzdem ist auch dieses Werkzeug nicht vollständig. Beispielsweise werden Fehler, die die Funktion 
@@ -62,8 +62,9 @@ im Vordergrund. Geeigente Methoden und Mittel werden im folgenden Kapitel vorges
     die Strktur des Codes. Ein Beispiel dafür ist der Austausch der Datenbank-Schnittstelle, der das Verhalten des Programms 
     nicht verändert, in der Struktur des Codes allerdings, bspw. durch veränderte Parameter und andere Funktionsaufrufe, 
     Änderungen erzwingt.
-    Die Ziele des Refatorings können durch verschiedenste Techniken erreicht werden, beispielsweise die Zerlegung von Funktionen in kleinere, bessere verständliche 
-    Funktionen oder die Auslagerung von immer wieder genutztem Code in eine eigene Funktion.
+    Die Ziele des Refactorings können durch verschiedenste Techniken erreicht werden, beispielsweise die Zerlegung von Funktionen in kleinere, bessere verständliche 
+    Funktionen oder die Auslagerung von immer wieder genutztem Code in eine eigene Funktion. Zudem ist das ständige Testen der Funktionalität der Software 
+    während des Refactorings von hoher Bedeutung, um durch das Refactoring entstandene Fehler schnell korrigieren zu können.
     \subsection{Fassadenklassen}\label{facade}
     Eine Fassadenklasse (engl. ,,facade class'' oder ,,wrapper facade'') bezeichnet nach Schmidt eine oder mehrere Klassen, die 
     existierende Funktionen und deren Daten zusammenfasst. Diese Klasse(n) bilden eine Abstraktion, die eine spezielle 
@@ -113,14 +114,14 @@ im Vordergrund. Geeigente Methoden und Mittel werden im folgenden Kapitel vorges
         auf dem relevanten System (beispielsweise dem Computer des Entwicklers) zu installieren. Dies hat den Vorteil, dass 
         keine zusätzliche Software benötigt wird und die volle Geschwindigkeit des Systems zur Ausführung bereitsteht. 
         Allerdings hat diese Variante den Nachteil, dass der Nutzer (im Besipiel der Entwickler) selbst dafür verantwortlich ist, 
-        die passende Ausführungsumgebung bereitzustellen und sicherstellen muss, dass diese richtig konfiguriert sind. 
+        die passende Ausführungsumgebung zu nutzen und sicherstellen muss, dass diese richtig konfiguriert ist.
         \subsubsection{Continuous Integration mittels Containern}
         Container sind eine Art der Virtualisierung von Betriebssystemen, die schon seit einigen Jahren, beispielsweise 
         seit 2008 durch \textit{LXC}\footnote{Linux Containers, \url{https://linuxcontainers.org/}} zum Einsatz kommt. 
         Container unterscheiden sich von herkömmlichen virtuellen Maschinen darin, dass diese sich den Kernel des 
         Host-Betriebssystems teilen und dadurch deutlich leichtgewichtiger und portabler sind \cite{scheepers_virtualization_2014}. 
-        Docker, eine populäre Software zur Containervirtualisierung, bietet neben der Unterstützung von Windows als Host-
-        Betriebssystem auch eine Plattform zum Austausch von fertig konfigurierten Conatainern an und stellt zudem einfache 
+        \textit{Docker}, eine populäre Software zur Containervirtualisierung, bietet neben der Unterstützung von Windows als Host-Betriebssystem 
+        auch eine Plattform zum Austausch von fertig konfigurierten Conatainern an und stellt zudem einfache 
         Mechanismen zur Anpassung bereit. So können Container sehr einfach über ein sogenanntes \textit{Dockerfile} konfiguriert 
         werden. Dieses enthält alle Informationen über den Container, beispielsweise das gewünschte Betriebssystem und die 
         installierten Applikationen mitsamt deren Konfigurationen \cite{anderson_docker_2015}. Diese Datei kann im Repository platziert werden, wodurch jeder 

@@ -18,7 +18,7 @@ Bei dieser Zahl ist zu beachten, dass Zeilen mit mehreren zu migrierenden Funkti
 Eine granularere Analyse erlaubt das angehängte Python-Skript, welches die tatsächlich genutzten Funktionen aus dem Report 
 herausfiltert. Die Ergebnisse in Tabelle~\ref{tab:migrationFunctions} zeigen, dass die Datenbankverbindung mittels der 
 Erweiterung \textit{mysql} den größten Schwerpunkt der Migration darstellt. Ähnlich große Verbreitung haben implizite 
-Konstruktoren. Die Fehlerklassen \textit{Arraywert per Referenz} sowie \textit{foreach per Referenz} wird von \textit{php7mar} zwar ausgewiesen, stehen jedoch 
+Konstruktoren. Die Fehlerklassen \textit{Arraywert per Referenz} sowie \textit{foreach per Referenz} werden von \textit{php7mar} zwar ausgewiesen, stehen jedoch 
 nur bedingt in Zusammenhang mit der Migration zu \ac{PHP} 7. Diese Konstrukte sind keine Fehler, werden aufgrund ihrer Implikationen (beispielsweise des empfohlenen 
 Zurücksetzen des Arrayzeigers nach der Benutzung von foreach mit Referenz) von einigen Entwicklern nicht zur Benutzung empfohlen\footnote{Johannes Schlüter, 'References and foreach', \url{https://schlueters.de/blog/archives/141-references-and-foreach.html} (besucht am 30.10.2019)}.
 \begin{table}
@@ -39,7 +39,7 @@ Zurücksetzen des Arrayzeigers nach der Benutzung von foreach mit Referenz) von 
     \begin{tabular}{llll}
                                             & Anzahl betroffener Codezeilen \\
     \textbf{mysql}                          & 722 \\
-    \textbf{Implizite Konstrukoren}         & 453 \\
+    \textbf{Implizite Konstrukoren}         & 547 \\
     \textbf{funcGetArg}                     & 86 \\
     \textbf{foreach per Referenz}           & 21 \\
     \textbf{Magic Quotes}                   & 20 \\
@@ -88,11 +88,10 @@ für den Debugger der Entwicklungsumgebung bereitgestellt wird.
 
         //Ersatz durch mysqli_query & mysqli_error
         $gm_query_result = mysqli_query($db_link, $gm_query[$i]);
-		if(!$gm_query_result) $gm_query_result_output .= GM_SQL_ERROR . mysqli_error($db_link) . '<br />';
+	    if(!$gm_query_result) $gm_query_result_output .= GM_SQL_ERROR . mysqli_error($db_link) . '<br />';
         ?>
     \end{lstlisting}
-
-    \begin{lstlisting}[language=php, caption={Beispiel der Ersetzung von \textit{mysql\_result} durch \textit{mysqli}}, label={lst:php7mysqlihard}]
+    \begin{lstlisting}[float=tp, language=php, caption={Beispiel der Ersetzung von \textit{mysql\_result} durch \textit{mysqli}}, label={lst:php7mysqlihard}]
         <?php
         //veraltete Funktion mysql_result
         mysql_result(xsb_db_query("SELECT MIN(_EBAY_START_TIME) as MinTime FROM xtb_auctions"),0,'MinTime');
@@ -116,7 +115,7 @@ für den Debugger der Entwicklungsumgebung bereitgestellt wird.
     \end{lstlisting}
 
     \subsection{Ersetzen impliziter Konstruktoren}\label{construct}
-    Die Ersetzung impliziter Konstruktoren (vgl. Kapitel~\ref{php5implicit} im Quellcode stellt sich im Grunde trivial dar, da der 
+    Die Ersetzung impliziter Konstruktoren (vgl. Kapitel~\ref{php5implicit}) im Quellcode stellt sich im Grunde trivial dar, da der 
     Funktionsname des Konstruktors direkt durch das Schlüsselwort \textit{\_\_construct} ersetzt werden kann. 
     Dadurch bleiben alle Konstruktoraufrufe durch \textit{new} funktionsfähig. Allerdings 
     ist dabei zu beachten, dass die betreffende Konstruktorfunktion auch direkt über ihren Namen aufgerufen werden kann.
@@ -127,7 +126,6 @@ für den Debugger der Entwicklungsumgebung bereitgestellt wird.
     wurde der ursprüngliche Konstruktor unverändert belassen, die Funktion \textit{\_\_construct} wurde hinzugefügt. Diese 
     nimmt den Parameter \textit{\$order\_id} entgegen und ruft die Funktion \textit{order} mit diesem auf. Dadurch 
     bleibt \textit{order} innerhalb der Klasse aufrufbar.
-
     \begin{lstlisting}[language=php, caption={Beispiel der Ersetzung impliziter Konstruktoren}, label={lst:php7implicit}]
         <?php
         class order {
@@ -194,7 +192,7 @@ für den Debugger der Entwicklungsumgebung bereitgestellt wird.
     Verwendung einer anonymen Funktion ersetzen kann. Die erste Zeile zeigt die ursprüngliche Variante, darunter ist die 
     Ersetzung zu sehen. Diese definiert eine anonyme Funktion, die wiederrum die Funktion \textit{removeEvilAttributes} aufruft. 
     Diese Verkettung geschieht, um maximale Kompatibilität zu gewährleisten, da \textit{removeEvilAttributes} einen String 
-    als Argument erwartet, beim direkten Aufruf über \textit{preg\_relace\_callback} ein Array übergeben bekommen würde. Um 
+    als Argument erwartet, beim direkten Aufruf über \textit{preg\_relace\_callback} jedoch ein Array übergeben bekommen würde. Um 
     die Funktion nicht ändern zu müssen und somit möglicherweise Inkompatibilitäten zu schaffen, wurde dieser Workaround 
     gewählt.
         
@@ -234,7 +232,7 @@ für den Debugger der Entwicklungsumgebung bereitgestellt wird.
 \section{Durchführung der Migration}
 Für die Ausführung der im vorangegangenen Kapitel entwickelten Software wird eine neue Ausführungsumgebung mit \ac{PHP} 7 benötigt. Dazu wurden zwei neue 
 Server angemietet, um die alte Infrastruktur nachzubilden und beide Systeme für Tests an der neuen Umgebung parallel zueinander zu betreiben. Auf den neuen 
-Servern, die identische Konfigurationen zu den bisher zum Einsatz gekommenen Geräten aufweisen, wurde \ac{PHP} 7.2 als Ausführungsumgebung installiert. 
+Servern, die einde identische Konfigurationen zu den bisher zum Einsatz gekommenen Geräten aufweisen, wurde \ac{PHP} 7.2 als Ausführungsumgebung installiert. 
 Als Software für den Webserver wird Apache\footnote{Apache HTTP Server Project, \url{https://httpd.apache.org/}} eingesetzt. Nach erfolgreichen Tests konnte die 
 alte Infrastruktur durch die neue ersetzt werden, die migrierte Software also produktiv eingesetzt werden. Durch den vorgeschalteten Load-Balancer konnte jeweils 
 ein Server aus dem Produktivbetrieb entfernt werden und durch den neuen ersetz werden. Dadurch konnte die Webseite mit geringer Ausfallzeit migiriert werden und 

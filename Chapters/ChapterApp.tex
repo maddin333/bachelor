@@ -1,3 +1,7 @@
+\chapter{Anhang}
+\section{Skript zur Analyse des Migrationsreports}\label{analysePy}
+Dieses Skript ist auch im digitalen Anhang als Datei ,,count.py'' enthalten.
+\begin{lstlisting}[language=python, caption={Skript zur Analyse des Migrationsreports}, label={lst:pyanalyse}]
 """
 This program analyses reports from php7mar. The analyse a markdown report issue the command:
     python count.py [report]
@@ -42,4 +46,4 @@ def getAnalysis(filename):
         return count
 
 prettyPrint(getAnalysis(sys.argv[1]))
-
+\end{lstlisting}
