@@ -14,7 +14,7 @@ Wirtschaftlichkeit einer Migration. Ist der Anteil zu migrierenden Codes zu hoch
 komlett neu zu schreiben. Im vorliegenden Fall wurde die Analyse mit dem Programm \textit{php7mar} durchgeführt.
 Die Ergebnisse, dargestellt in Tabelle~\ref{tab:migrationPercentage}, zeigen, dass zwar über 10\% der Dateien unter \ac{PHP} 7 
 Fehler enthalten, gemessen an den betroffenen Codezeilen aber nur ein kleiner Teil (0,24\%) des Codes migiriert werden muss.
-Bei dieser Zahl ist zu beachten, dass Zeilen mit mehreren 
+Bei dieser Zahl ist zu beachten, dass Zeilen mit mehreren zu migrierenden Funktionen nur ein einziges Mal gezählt werden. %TODO
 Eine granularere Analyse erlaubt das angehängte Python-Skript, welches die tatsächlich genutzten Funktionen aus dem Report 
 herausfiltert. Die Ergebnisse in Tabelle~\ref{tab:migrationFunctions} zeigen, dass die Datenbankverbindung mittels der 
 Erweiterung \textit{mysql} den größten Schwerpunkt der Migration darstellt. Ähnlich große Verbreitung haben implizite 
@@ -51,7 +51,7 @@ Zurücksetzen des Arrayzeigers nach der Benutzung von foreach mit Referenz) von 
     \end{tabular}
 \end{table}
 
-\section{Entwicklung von Werkzeugen zur Durchführung der Migration}
+\section{Entwicklung von Werkzeugen zur Durchführung der Migration}\label{migrationtools}
 Für die Durchführung der Migration, im speziellen die Anpassung der Software an die neue Umgebung, wurde ein Docker-Container 
 erstellt, welcher eine einheitliche Konfiguration der Auführungsumgebung bereitstellt. Dazu wurde auf zwei vorgefertigte 
 Images zurückgegriffen, eine \ac{PHP}-Installation in Version 7.2 und eine \textit{MySQL}-Datenbank um eine lokale Kopie 
@@ -245,7 +245,9 @@ Zur Verifikation der Migration wurden zum einen eigene Tests durchgeführt, vor 
 sowie administrative Tätigkeiten wie die Anpassung der Startseite und das Hinzufügen von Produkten zum Katalog. Zum Anderen wurde die Funktion der Webseite durch das 
 Monitoring-Tool \textit{New Relic}\footnote{New Relic, \url{https://newrelic.de}} überwacht. Dieses Werkzeug überwacht die Performance der Applikation und meldet Fehler 
 in der Ausführung. Durch diese Überwachung wäre es möglich gewesen, möglichst schnell auf etwaige Fehler zu reagieren und geeignete 
-Gegenmaßnahmen zu ergreifen, bspw. einen Rollback auf die alte Infrastruktur oder einen Hotfix der neuen Version.
+Gegenmaßnahmen zu ergreifen, bspw. einen Rollback auf die alte Infrastruktur oder einen Hotfix der neuen Version. 
+Auf die Einführung von Unit Tests im Projekt musste leider verzichtet werden, da bisher keine Infrastruktur dafür vorhanden ist 
+und eine nachträgliche Einführung in einem zeitlich angemessenen Rahmen nicht möglich war.
 
 \section{Support der alten Umgebung}
 Diese Anforderung im Standard \textbf{ISO/IEC 14764} betrifft vor allem Software, die an Kunden ausgeliefert wird und dort möglicherweise auch nach der Migration 
@@ -254,3 +256,14 @@ die einen weiteren Einsatz unmöglich machen und den erneuten Einsatz der alten 
 Zu diesem Zweck wurde für eine Übergangszeit von einem Monat die alte Infrastruktur weiter in Betrieb gehalten, bevor diese abgeschaltet wurde. Der ursprüngliche 
 Code, der nicht unter \ac{PHP} 7 lauffähig ist, steht mitsamt einer lauffähigen Ausführungsumgebung, wie in Kapitel~\ref{VCS} beschrieben, weiter über die 
 Versionsverwaltung zur Verfügung.
+
+\section{Zusammenfassung}
+Dieses Kapitel beschreibt die Migration der Software nach dem Standard \textbf{ISO/IEC 14764}. \\
+Im ersten Abschnitt wird eine Anforderungsanalyse durchgeführt, die den Umfang der Migration fetlegt. Diese zeigt, dass 
+zwar über 10\% der Dateien im vorliegenden Projekt migriert werden müssen, dabei jedoch nur ein kleiner Teil der Codezeilen 
+betroffen ist. \\
+Der Abschnitt~\ref{migrationtools} geht auf die Entwicklung von Containern mittels der Software \textit{Docker} ein. \\
+Die eigentliche Entwicklung der angepassten Software wird im Abschnitt~\ref{develop} beschrieben. Dabei wird im einzelnen 
+auf die veralteten Funktionen und deren Überführung zu \acs{PHP} 7 eingegangen. \\
+Die letzten Abschnitte zeigen den Ablauf der Migration, wie diese verifiziert wird und wie die geforderte Unterstützung 
+der alten Umgebung realisiert wurde.

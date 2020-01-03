@@ -52,7 +52,7 @@ im Vordergrund. Geeigente Methoden und Mittel werden im folgenden Kapitel vorges
         * Line 359: `global $$shippingModule; //notice $$`
         \end{lstlisting}
 
-\section{Refactoring} %TODO
+\section{Refactoring}\label{refactoring} %TODO
     Refactoring beschreibt nach Fowler die Technik, bestehenden Code in seiner Struktur so zu verändern, dass dieser änderbar bleibt und wichtige Bestandteile leicht indentifizierbar 
     bleiben, ohne jedoch den eigentlichen Sinn des Programms zu verändern. \cite{fowler_refactoring_1999} Bei der Migration von Software muss dem Refactoring ein hoher Stellenwert zugemessen werden, 
     da große Bestandteile des Codes ausgetauscht und verändert werden, was nach Lehman \cite[S. 1060-1076]{lehman_programs_1980} zur Degeneration von Software führt.
@@ -88,7 +88,7 @@ im Vordergrund. Geeigente Methoden und Mittel werden im folgenden Kapitel vorges
     Ein Framework für die Nutzung von Unit Tests unter \ac{PHP} ist beispielsweise \textit{PHPUnit}\footnote{PHPUnit, Sebastian Bergmann, \url{https://phpunit.de/}} 
 
 \section{Lauffähigkeit historischen Codes}\label{VCS}
-    Der Standard ISO/IEC 14764 sieht auch nach der erfolgten Migration eine Unterstützung der alten Umgebung vor. Dies ist natürlich vor allem bei Produkten sinnvoll, 
+    Der Standard \textbf{ISO/IEC 14764} sieht auch nach der erfolgten Migration eine Unterstützung der alten Umgebung vor. Dies ist natürlich vor allem bei Produkten sinnvoll, 
     die von Dritten eingesetzt werden, die dadurch vor nicht erwartetem Verhalten der Software geschützt werden. Allerdings ist eine Unterstützung der alten Umgebung 
     auch bei unternehmenseigener Software sinnvoll. Beispielsweise lassen sich Fehler im Programm zurückverfolgen, Änderungen nachvollziehen und sichergestellt werden,
     dass im Falle eines Fehlers bei der Migration eine lauffähige Version zur Verfügung steht. Daraus ergeben sich jedoch einige Probleme. So muss nicht nur der Quellcode 
@@ -131,4 +131,13 @@ im Vordergrund. Geeigente Methoden und Mittel werden im folgenden Kapitel vorges
         die Konfiguration der Ausführungsumgebung (etwa des Webservers) betrifft, sondern auch die des Betriebssystems sowie 
         der Virtualisierungssoftware.
 
-
+\section{Zusammenfassung}
+Die vorgestellten Hilfsmittel sind zur Erfüllung des Standards \textbf{ISO/IEC 14764} und zur Einhaltung eines angemessenen 
+zeitlichen Rahmens der Migration unabdingbar. Eine manuelle Erkennung des zu ändernden Codes ist in Einzelfällen möglich, 
+besonders im Hinblick auf eine dokumentierte Anforderungsanalyse nicht sinnvoll. Die automatisierte Erkennung ist hier 
+zwar klar im Vorteil, musste jedoch angepasst werden um eine vollständige Analyse zu liefern. \\
+Abschnitt~\ref{refactoring} zeigt zum Einen, dass die Migration selber als Refactoring begriffen werden kann, zum Anderen, dass 
+einige Techniken (beispielsweise die Einführung von Fassadenklassen) die Migration deutlich vereinfachen. \\
+Abschließend wurden die technischen Hilfsmittel gezeigt, um die durch \textbf{ISO/IEC 14764} geforderte Lauffähigkeit historischen 
+Codes zu erfüllen. Dafür wurde auf eine Versionsverwaltung mittels \textit{git} sowie die Einführung des Containersystems 
+\textit{Docker} gesetzt.
